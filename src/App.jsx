@@ -55,7 +55,7 @@ function App() {
   const maxY = window.innerHeight - paddleHeight;
 
   const clampedTarget = Math.max(0, Math.min(targetY, maxY));
-  const speed = aiPaddleHitCount.current < 2 ? 11 : 7.5;
+  const speed = aiPaddleHitCount.current < 2 ? 11 : 7;
   
     
 
