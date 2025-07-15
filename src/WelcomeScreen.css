@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+@font-face {
+    font-family: 'pixelfont';
+    src: url('assets/fonts/pixelfont.ttf') format(truetype);
+    font-weight: bold;
+    font-style: normal;
+}
+.imageee{
+    width: 100%;
+    height: 100%;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  background: #050801;
+}
+
+.welcomeScreen {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 1000ms ease;
+  
+  
+}
+.welcomeScreen.fade-out {
+  opacity: 0;
+  pointer-events: none; /* Prevent clicks during fade */
+}
+
+.welcomeScreen a.game{
+  position: relative;
+  display: flex;
+  padding: 25px 30px;
+  margin: 40px 0;
+  color: #03e9f4;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 4px;
+  overflow: hidden;
+  border-radius: 20px;
+  height: 100px;
+  width: 500px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-family: 'pixelfont', 'sans-serif';
+  border: 4px solid #03e9f4;
+  font-size: 17px;
+
+}
+
+.welcomeScreen a.game:hover {
+  background: #03e9f4;
+  color: #050801;
+  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
+    0 0 200px #03e9f4;
+  
+  border-radius: 30px;
+}
+.welcomeScreen a.rules{
+  position: relative;
+  display: flex;
+  padding: 25px 30px;
+  margin: 40px 0;
+  color: #ff00ff;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 4px;
+  overflow: hidden;
+  border-radius: 20px;
+  height: 100px;
+  width: 500px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-family: 'pixelfont', 'sans-serif';
+  border: 4px solid #ff00ff;
+  font-size: 17px;
+  
+
+}
+
+.welcomeScreen a.rules:hover  {
+  background: #ff00ff;
+  color: #ffffff;
+  box-shadow: 0 0 5px #ff00ff, 0 0 25px #ff00ff, 0 0 50px #ff00ff,
+    0 0 200px #ff00ff;
+  
+  border-radius: 30px;
+  
+}
+.button{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    text-align: center;
+    justify-content: center;
+}
+.button2{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    text-align: center;
+    justify-content: center;
+    
+}
+
+.container{
+    
+    align-self: center;
+    height: 600px;
+    width: 800px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 100px;
+}
+
+
+
