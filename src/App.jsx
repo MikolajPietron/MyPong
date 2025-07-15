@@ -7,6 +7,7 @@ import PunktyGracz1 from './assets/punktyPlayer1.png';
 import PunktyGracz2 from './assets/punktyPlayer2.png';
 
 function App() {
+  const [aiPaddleHits, setAiPaddleHits] = useState(0);
   const [paddleY, setPaddleY] = useState(350)
   const [paddleY2, setPaddleY2] = useState(350)
   const [Player2Points, setPlayer2Points] = useState(0)
@@ -21,7 +22,7 @@ function App() {
     vx: 10,
     vy: 10,
   })
-  const aiPaddleHitCount = useRef(0);
+  // const aiPaddleHitCount = useRef(0);
 
   const ballRef = useRef(ball);
   const keysPressed2 = useRef({})
@@ -55,7 +56,7 @@ function App() {
   const maxY = window.innerHeight - paddleHeight;
 
   const clampedTarget = Math.max(0, Math.min(targetY, maxY));
-  const speed = aiPaddleHitCount.current < 2 ? 11 : 1;
+  const speed = 8.6;
   
     
 
@@ -99,7 +100,7 @@ function App() {
         // Bounce top/bottom
         if (newY <= 0 || newY >= window.innerHeight - 30) {
           newVy = -newVy
-          aiPaddleHitCount.current = 0; 
+          
         }
 
         // Left paddle collision
@@ -110,7 +111,7 @@ function App() {
         ) {
           newX = 80
           newVx = Math.abs(newVx)+ 2
-          aiPaddleHitCount.current += 1;
+          setAiPaddleHits(h => h + 1);
         }
 
         // Right paddle collision middle
@@ -126,6 +127,7 @@ function App() {
 
         // Reset if out of bounds
         if (newX <= 0) {
+          setAiPaddleHits(0);
           newX = window.innerWidth / 2
           newY = window.innerHeight / 2
           newVx = 10 * (Math.random() > 0.5 ? 1 : -1)
@@ -137,6 +139,7 @@ function App() {
           })
         }
         if (newX >= innerWidth) {
+          setAiPaddleHits(0);
           newX = window.innerWidth / 2
           newY = window.innerHeight / 2
           newVx = 10 * (Math.random() > 0.5 ? 1 : -1)
