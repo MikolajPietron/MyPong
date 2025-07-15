@@ -26,7 +26,7 @@ function WelcomeScreen() {
 
   return (
     <div className={`welcomeScreen ${fadeOut ? 'fade-out' : ''}`}>
-      <img className='imageee' src={mypongGif} />
+      
       <div className='container'>
         <a href="#" className='game' onClick={(e) => { handleGameNavigation(e); playSound(); }}>
           Enter The Game
