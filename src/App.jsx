@@ -55,7 +55,7 @@ function App() {
   const maxY = window.innerHeight - paddleHeight;
 
   const clampedTarget = Math.max(0, Math.min(targetY, maxY));
-  const speed = aiPaddleHitCount.current < 2 ? 11 : 8.2;
+  const speed = aiPaddleHitCount.current < 2 ? 11 : 7.5;
   
     
 
@@ -131,7 +131,7 @@ function App() {
           newVx = 10 * (Math.random() > 0.5 ? 1 : -1)
           newVy = 10 * (Math.random() > 0.5 ? 1 : -1)
           setPlayer2Points(prevPoints => {
-              const updated = prevPoints + 1 / 2;
+              const updated = prevPoints + 1;
               if (updated >= 10) setGameOver(true);
               return updated;
           })
@@ -142,7 +142,7 @@ function App() {
           newVx = 10 * (Math.random() > 0.5 ? 1 : -1)
           newVy = 10 * (Math.random() > 0.5 ? 1 : -1)
           setPlayer1Points(prevPoints =>{
-              const updated = prevPoints + 1 / 2;
+              const updated = prevPoints + 1;
               if (updated >= 10) setGameOver(true);
               return updated;
           })
