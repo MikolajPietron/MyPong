@@ -194,8 +194,8 @@ function App() {
           
 
 
-          <div className='rightText'><img src={PunktyGracz2} alt="Punkty Gracz 2" /> {Player2Points}</div>
-          <div className='leftText'> <img src={PunktyGracz1} alt="Punkty Gracz 1" /> {Player1Points}</div>
+          <div className='rightText'><img src={PunktyGracz2} alt="Punkty Gracz 2" /><span className='player2pointstext'>{Player2Points}</span> </div>
+          <div className='leftText'> <img src={PunktyGracz1} alt="Punkty Gracz 1" /><span className='player1pointstext'>{Player1Points}</span></div>
 
 
           <div
@@ -204,8 +204,7 @@ function App() {
               position: 'absolute',
               top: ball.y + 'px',
               left: ball.x + 'px',
-              width: '30px',
-              height: '30px',
+              
               backgroundColor: 'red',
               borderRadius: '50%',
             }}

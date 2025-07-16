@@ -13,8 +13,8 @@
   
 }
 .leftPaddle{
-  height: 200px;
-  width: 30px;
+  height: 20vh;
+  width: 1.5vw;
   background-color: #ff00ff;
   border-radius: 15px;
   border: 3px solid #ffffff;
@@ -22,8 +22,8 @@
   
 }
 .rightPaddle{
-  height: 200px;
-  width: 30px;
+  height: 20vh;
+  width: 1.5vw;
   background-color: #00ffff;
   border-radius: 15px;
   border: 3px solid #ffffff;
@@ -89,4 +89,53 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
-  
+@media (max-width: 768px) {
+  .winnerText {
+    font-size: 1rem;
+  }
+
+  .pressSpace img {
+    width: 80%;
+    height: 40%;
+  }
+
+  .rightText,
+  .leftText {
+    font-size: 1.5rem;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    z-index: 10;
+  }
+
+  .leftText {
+    left: 0;
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .rightText {
+    right: 0;
+    
+    text-align: right;
+  }
+
+  .leftText img,
+  .rightText img {
+    width: 35vw;
+    height: 50px;
+    object-fit: contain;
+  }
+  .rightText span, .leftText span {
+    font-size: 4vw;
+    font-family: 'Montserrat';
+    font-weight: bolder;
+  }
+  .leftPaddle, .rightPaddle {
+    width: 2vw;
+    height: 10vh;
+  }
+}
