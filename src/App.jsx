@@ -52,6 +52,7 @@ function App() {
 
     const handleTouchMove = (e) => {
       e.preventDefault();
+      setisGameStarted(true);
       const touchY = e.touches[0].clientY;
       const paddle = document.querySelector('.rightPaddle');
       const container = document.querySelector('.gameContainer');
