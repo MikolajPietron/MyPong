@@ -5,8 +5,23 @@ import mystartGif from './assets/spacestart.gif';
 import myBall from './assets/ball.png';
 import PunktyGracz1 from './assets/punktyPlayer1.png';
 import PunktyGracz2 from './assets/punktyPlayer2.png';
+import { pass, velocity } from 'three/tsl';
 
 function App() {
+
+
+  function getSpeedFactor() {
+  const baseWidth = 1920; 
+  const baseHeight = 1080;
+
+  const widthFactor = window.innerWidth / baseWidth;
+  const heightFactor = window.innerHeight / baseHeight;
+
+  
+  return Math.min(widthFactor, heightFactor);
+}
+  const speedFactor = getSpeedFactor();
+
   const [aiPaddleHits, setAiPaddleHits] = useState(0);
   const [paddleY, setPaddleY] = useState(350)
   const [paddleY2, setPaddleY2] = useState(350)
@@ -17,10 +32,11 @@ function App() {
   
 
   const [ball, setBall] = useState({
+    
     x: 965,
     y: 105,
-    vx: 10,
-    vy: 10,
+    vx: 10 * speedFactor * (Math.random() > 0.5 ? 1 : -1),
+    vy: 10 * speedFactor * (Math.random() > 0.5 ? 1 : -1),
   })
   // const aiPaddleHitCount = useRef(0);
 
@@ -28,8 +44,36 @@ function App() {
   const keysPressed2 = useRef({})
   const paddleYRef = useRef(paddleY)
   const paddleY2Ref = useRef(paddleY2)
+  const leftPaddleRef = useRef(null);
+  const rightPaddleRef = useRef(null);
+  const ballRefElement = useRef(null);
 
   useEffect(() => {
+
+    const handleTouchMove = (e) => {
+      e.preventDefault();
+      const touchY = e.touches[0].clientY;
+      const paddle = document.querySelector('.rightPaddle');
+      const container = document.querySelector('.gameContainer');
+
+      if(paddle && container) {
+        const containerRect = container.getBoundingClientRect();
+        const paddleHeight = paddle.offsetHeight;
+
+
+        let newTop = touchY - containerRect.top - paddleHeight / 2;
+        newTop = Math.max(0, Math.min(newTop, container.offsetHeight - paddleHeight));
+
+        paddle.style.top = `${newTop}px`;
+      }
+    };
+
+    
+
+    
+      
+    
+
     function handleKeyDown(e) {
       if(e.code === 'Space' && !isgameStarted) {
         setisGameStarted(true);
@@ -42,7 +86,7 @@ function App() {
       
       keysPressed2.current[e.key] = false
     }
-
+    window.addEventListener('touchmove', handleTouchMove, {passive: false});
     window.addEventListener('keydown', handleKeyDown)
     window.addEventListener('keyup', handleKeyUp)
 
@@ -51,12 +95,12 @@ function App() {
       
       setPaddleY(prev => {
   
-  const paddleHeight = 200;
+  const paddleHeight = leftPaddleRef.current?.getBoundingClientRect().height || 200;
   const targetY = ballRef.current.y - paddleHeight / 2 + 15;
   const maxY = window.innerHeight - paddleHeight;
 
   const clampedTarget = Math.max(0, Math.min(targetY, maxY));
-  const speed = 8.6;
+  const speed = 8.6 * speedFactor + 10;
   
     
 
@@ -80,49 +124,71 @@ function App() {
       
       setPaddleY2(prev => {
         let newY2 = prev
-        if (keysPressed2.current['ArrowUp']) {
-          newY2 = Math.max(prev - 15, 0)
-        }
         if (keysPressed2.current['ArrowDown']) {
-          newY2 = Math.min(prev + 15, window.innerHeight - 200)
+          const paddleHeight = rightPaddleRef.current?.getBoundingClientRect().height || 200;
+          newY2 = Math.min(prev + 15, window.innerHeight - paddleHeight);
+        }
+
+        if (keysPressed2.current['ArrowUp']) {
+          
+          newY2 = Math.max(prev - 15, 0);
         }
         paddleY2Ref.current = newY2
         return newY2
       })
+      function isColliding(rect1, rect2) {
+        return !(
+          rect1.right < rect2.left ||
+           rect1.left > rect2.right ||
+          rect1.bottom < rect2.top ||
+          rect1.top > rect2.bottom
+        );
+      }
+      function getVelocityIncrement() {
+        const baseIncrement = 2; 
+        const speedFactor = getSpeedFactor();
+        return baseIncrement * speedFactor;
+      }
 
       // Move ball
       setBall(prev => {
+        const velocityIncrement = getVelocityIncrement();
         let newX = prev.x + prev.vx
         let newY = prev.y + prev.vy
         let newVx = prev.vx
         let newVy = prev.vy
 
+        const ballRect = ballRefElement.current?.getBoundingClientRect();
+        const leftPaddleRect = leftPaddleRef.current?.getBoundingClientRect();
+        const rightPaddleRect = rightPaddleRef.current?.getBoundingClientRect();
+
         // Bounce top/bottom
-        if (newY <= 0 || newY >= window.innerHeight - 30) {
+        if (newY <= 0 || newY + ballRect.height >= window.innerHeight) {
           newVy = -newVy
           
         }
 
         // Left paddle collision
         if (
-          newX <= 80 &&
-          newY + 30 >= paddleYRef.current &&
-          newY <= paddleYRef.current + 200
+          ballRect && leftPaddleRect && isColliding(ballRect, leftPaddleRect)
         ) {
-          newX = 80
-          newVx = Math.abs(newVx)+ 2
+          newX = leftPaddleRect.right + 1
+          if(newVx < 0) {
+          newVx = Math.abs(newVx)+ velocityIncrement;
           setAiPaddleHits(h => h + 1);
         }
+      }
 
         // Right paddle collision middle
         if (
-          newX >= window.innerWidth - 130 && //naprawia overflow
-          newY + 30 >= paddleY2Ref.current &&
-          newY <= paddleY2Ref.current + 190
+          ballRect && rightPaddleRect && isColliding(ballRect, rightPaddleRect)
+          
         ) {
-          newX = window.innerWidth - 130
-          newVx = -Math.abs(newVx) - 2
+          newX = rightPaddleRect.left - ballRect.width - 1
+          if(newVx > 0) {
+          newVx = -Math.abs(newVx);
         }
+      }
         //Right paddle collision top
 
         // Reset if out of bounds
@@ -130,8 +196,10 @@ function App() {
           setAiPaddleHits(0);
           newX = window.innerWidth / 2
           newY = window.innerHeight / 2
-          newVx = 10 * (Math.random() > 0.5 ? 1 : -1)
-          newVy = 10 * (Math.random() > 0.5 ? 1 : -1)
+          const speedFactor = getSpeedFactor();
+          newVx = 10 * speedFactor * (Math.random() > 0.5 ? 1 : -1);
+          newVy = 10 * speedFactor * (Math.random() > 0.5 ? 1 : -1);
+
           setPlayer2Points(prevPoints => {
               const updated = prevPoints + 1;
               if (updated >= 10) setGameOver(true);
@@ -142,14 +210,29 @@ function App() {
           setAiPaddleHits(0);
           newX = window.innerWidth / 2
           newY = window.innerHeight / 2
-          newVx = 10 * (Math.random() > 0.5 ? 1 : -1)
-          newVy = 10 * (Math.random() > 0.5 ? 1 : -1)
+          const speedFactor = getSpeedFactor();
+          newVx = 10 * speedFactor * (Math.random() > 0.5 ? 1 : -1);
+          newVy = 10 * speedFactor * (Math.random() > 0.5 ? 1 : -1);
+
           setPlayer1Points(prevPoints =>{
               const updated = prevPoints + 1;
               if (updated >= 10) setGameOver(true);
               return updated;
           })
         }
+
+        // Left paddle jezeli uzezamy koncami
+        if (isColliding(ballRect, leftPaddleRect)) {
+          const paddleCenter = leftPaddleRect.top + leftPaddleRect.height / 2;
+          const offset = (ballRect.top + ballRect.height / 2) - paddleCenter;
+          newVy += offset * 0.3; 
+        }
+        if (isColliding(ballRect, rightPaddleRect)) {
+          const paddleCenter = rightPaddleRect.top + rightPaddleRect.height / 2;
+          const offset = (ballRect.top + ballRect.height / 2) - paddleCenter;
+          newVy += offset * 0.050; 
+        }
+
 
         const updatedBall =  { x: newX, y: newY, vx: newVx, vy: newVy }
         ballRef.current = updatedBall;
@@ -158,6 +241,7 @@ function App() {
     }, 16)
 
     return () => {
+      window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('keydown', handleKeyDown)
       window.removeEventListener('keyup', handleKeyUp)
       clearInterval(moveInterval)
@@ -172,17 +256,19 @@ function App() {
         >
           <div
             className="leftPaddle"
+            ref = {leftPaddleRef}
             style={{
               position: 'absolute',
               top: paddleY + 'px',
-              left: 50,
+              
             }}
           />
           <div
             className="rightPaddle"
+            ref={rightPaddleRef}
             style={{
               position: 'absolute',
-              right: 50,
+              
               top: paddleY2 + 'px',
             }}
           />
@@ -200,6 +286,7 @@ function App() {
 
           <div
             className="ball"
+            ref={ballRefElement}
             style={{
               position: 'absolute',
               top: ball.y + 'px',

@@ -18,6 +18,7 @@
   background-color: #ff00ff;
   border-radius: 15px;
   border: 3px solid #ffffff;
+  left: 50px;
   
   
 }
@@ -27,11 +28,12 @@
   background-color: #00ffff;
   border-radius: 15px;
   border: 3px solid #ffffff;
+  right: 50px;
   
 }
 .ball {
-  width: 30px;
-  height: 30px;
+  width: 2.5%;
+  height: 3%;
   background-color: red;
   border-radius: 50%;
   position: absolute;
@@ -134,8 +136,22 @@
     font-family: 'Montserrat';
     font-weight: bolder;
   }
-  .leftPaddle, .rightPaddle {
+  .leftPaddle{
     width: 2vw;
     height: 10vh;
+    left: 20px;
+
   }
+
+  .rightPaddle {
+    width: 2vw;
+    height: 10vh;
+    right: 20px;
+    
+  }
+  .ball{
+    width: 3%;
+    height: 2%;
+  }
+  
 }
