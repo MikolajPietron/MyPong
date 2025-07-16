@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import mypongGif from './assets/mypongWelcome.gif';
+import WelcomeScreenBackground from './assets/WelcomeScreenBackground.png';
 import './WelcomeScreen.css';
 import { useNavigate } from 'react-router-dom';
 import Modal from './Modal.jsx';
 import Song from './assets/gameSong.mp3';
+import Logo from './assets/akanzaLogo.png';
 
 function WelcomeScreen() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,7 +28,7 @@ function WelcomeScreen() {
 
   return (
     <div className={`welcomeScreen ${fadeOut ? 'fade-out' : ''}`}>
-      
+      <img src={Logo} alt='Akanza Logo' className='logo' />
       <div className='container'>
         <a href="#" className='game' onClick={(e) => { handleGameNavigation(e); playSound(); }}>
           Enter The Game
