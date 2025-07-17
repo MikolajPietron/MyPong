@@ -8,10 +8,11 @@ import BitSong from './assets/gameSong.mp3';
 import ChillSong from './assets/ChillLofiSong.mp3';
 import RockSong from './assets/RockSong.mp3';
 import PingPong from './assets/pingPongSound.mp3';
-
+import Andrzej from './assets/AndrzejGrubba.jpg';
+import Natalia from './assets/NataliaPartyka.png';
 import Logo from './assets/akanzaLogo.png';
 import Icon from "@mdi/react";
-import { mdiGuitarElectric, mdiHome, mdiNintendoGameBoy, mdiSofaSingle, mdiTennisBall } from "@mdi/js";
+import { mdiGuitarElectric, mdiHome, mdiHumanHandsup, mdiNintendoGameBoy, mdiSofaSingle, mdiTennisBall } from "@mdi/js";
 import { pass } from 'three/tsl';
 
 function WelcomeScreen() {
@@ -23,13 +24,15 @@ function WelcomeScreen() {
   const audioRockRef = useRef(new Audio(RockSong));
   const audioPingRef = useRef(new Audio(PingPong)); 
   const [selectedMusic, setSelectedMusic] = useState(null);
+  const [isShown, setIsShown] = useState(false);
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
 
   const handleGameNavigation = (e) => {
     e.preventDefault();
     pauseAll();
      setFadeOut(true);
     setTimeout(() => {
-      navigation('/game', {state: {selectedMusic}});
+      navigation('/game', {state: {selectedMusic, selectedPlayer}});
     }, 1000);
 
     
@@ -70,6 +73,15 @@ const playSoundRock = () => {
   audioRockRef.current.play();
   
 };
+const playSoundPing = () => {
+  
+  setSelectedMusic('rock');
+  pauseAll();
+  audioPingRef.current.currentTime = 0;
+  audioPingRef.current.loop = true;
+  audioPingRef.current.play();
+  
+};
 
 
 
@@ -86,6 +98,11 @@ const playSound = () => {
     audioRockRef.current.play();
   } 
 };
+const togglePlayersModal = () => {
+  setIsShown(prev => !prev);
+};
+
+
 
 
 
@@ -93,6 +110,17 @@ const playSound = () => {
   return (
     <div className={`welcomeScreen ${fadeOut ? 'fade-out' : ''}`}>
       <img src={Logo} alt='Akanza Logo' className='logo' />
+      <div className='showPlayers'>
+        <h1>Wybierz<br />Zawodnika</h1>
+        <div className='playerIconContainer'>
+          <button className='showPlayersButton' onClick={togglePlayersModal}/>
+          <Icon path={mdiHumanHandsup}  className='sport'/>
+        </div>
+      </div>
+      <div className={`choosePlayer ${isShown ? 'show' : ''}`}>
+        <button className='nataliaPartyka' onClick={() => {setSelectedPlayer('nataliaPartyka'); togglePlayersModal();}}/>
+        <button className='andrzejGrubba' onClick={() => {setSelectedPlayer('andrzejGrubba'); togglePlayersModal();}}/>
+      </div>
         <div className='musicButtons'>
 
           <h1>Wybierz<br />muzyke</h1>
@@ -114,6 +142,7 @@ const playSound = () => {
           </div>
           <div className='pingcontainer'>
             <input type = 'radio' name = 'music' className='PingButton' onClick={() =>{
+              playSoundPing();
               setSelectedMusic('ping');
               pauseAll();
 

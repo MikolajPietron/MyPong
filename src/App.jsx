@@ -8,7 +8,8 @@ import PunktyGracz2 from './assets/punktyPlayer2.png';
 import BitSong from './assets/gameSong.mp3';
 import ChillSong from './assets/ChillLofiSong.mp3';
 import RockSong from './assets/RockSong.mp3';
-
+import NataliaPartyka from './assets/nataliaPartyka.png';
+import AndrzejGrubba from './assets/andrzejGrubba.jpg';
 import pingPongSound from './assets/pingPongSound.mp3';
 import { useLocation } from 'react-router-dom';
 import Icon from "@mdi/react";
@@ -89,6 +90,15 @@ useEffect(() => {
   
   const location = useLocation();
       const selectedMusic = location.state?.selectedMusic || null;
+  const location2 = useLocation();
+  const {selectedPlayer} = location2.state || {};
+
+
+  const playerImage = selectedPlayer === 'nataliaPartyka'
+  ? NataliaPartyka
+  : selectedPlayer === 'andrzejGrubba'
+    ? AndrzejGrubba
+    : null;
 
       function playPingSound() {
   if (!isMuted && selectedMusic === 'ping' && pingSoundRef.current) {
@@ -373,8 +383,12 @@ useEffect(() => {
             ref={rightPaddleRef}
             style={{
               position: 'absolute',
-              
               top: paddleY2 + 'px',
+              backgroundImage: playerImage ? `url(${playerImage})` : 'none',
+              backgroundSize: 'cover',
+              backgroundPosition: '60% center',
+              backgroundRepeat: 'no-repeat',
+              backgroundColor: playerImage ? 'transparent' : '#ffffff',
             }}
           />
           <div className='myPongNapis'>

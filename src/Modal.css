@@ -13,8 +13,8 @@ h2{
 .modal-overlay {
   position: fixed;
   
-  width: 700px;
-  height: 700px;
+  width: 40vw;
+  height: 70vh;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
@@ -51,4 +51,19 @@ h2{
   font-size: 2rem;
   color: red;
   cursor: pointer;
+}
+@media (max-width: 768px) {
+  .modal-content {
+    
+    font-size: 0.7rem;
+    
+  }
+  .modal-overlay {
+    width: 80%;
+    height: 40%;
+    position: absolute;
+    top: 60%;
+    transform: translate(0, -50%);
+  }
+  
 }

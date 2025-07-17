@@ -164,6 +164,7 @@ body {
   grid-column: 1 / -1; 
   margin: 0 auto 20px;
   font-size: 1.5rem;
+  color: white;
   
   
 }
@@ -175,7 +176,7 @@ body {
   -webkit-appearance: none;
   -moz-appearance: none;
   background-color: transparent;
-  border: 3px solid #000;
+  border: 3px solid #ffffff;
   z-index: 100;
   cursor: pointer;
   border-radius: 5px;
@@ -187,7 +188,7 @@ body {
   border-radius: 50px;
 }
 .musicButtons input[type = "radio"]:checked {
-  border-color: white;
+  border-color: rgb(0, 0, 0);
   border-radius: 50px;
   
   
@@ -200,7 +201,7 @@ body {
 }
 .biticon{
   position: absolute;
-  color: black;
+  color: rgb(255, 255, 255);
   width: 60%;
   height: 60%;
   transition: color 0.3s ease;
@@ -218,7 +219,7 @@ body {
 }
 .chillicon{
   position: absolute;
-  color: black;
+  color: rgb(255, 252, 252);
   transition: color 0.3s ease;
   cursor: pointer;
   width: 60%;
@@ -232,7 +233,7 @@ body {
 }
 .rockicon{
   position: absolute;
-  color: black;
+  color: rgb(255, 255, 255);
   transition: color 0.3s ease;
   cursor: pointer;
   width: 60%;
@@ -246,7 +247,7 @@ body {
 }
 .pingicon{
   position: absolute;
-  color: black;
+  color: rgb(255, 254, 254);
   transition: color 0.3s ease;
   cursor: pointer;
   width: 60%;
@@ -275,6 +276,117 @@ body {
     position: absolute;
     
     bottom: 1vh;
+}
+.choosePlayer {
+  position: absolute;
+  display: flex;
+  left: 50px;
+  top: 250px;
+  pointer-events: none;
+  display: flex;
+  flex-direction: row;
+  opacity: 0;
+  height: 60vh;
+  width: 25vw;
+  transition: opacity 0.5s ease;
+  
+}
+.choosePlayer.show{
+  opacity: 1;
+  pointer-events: auto;
+}
+.nataliaPartyka {
+  flex: 1;
+  background-color: transparent;
+  border: 2px solid rgb(0, 0, 0);
+  transition: border-color 0.3s ease;
+  background-image: url("./assets/NataliaPartyka.png");
+  
+  background-size: cover;
+  background-position: center;
+}
+.andrzejGrubba {
+  flex: 1;
+  background-color: transparent;
+  border: 2px solid rgb(0, 0, 0);
+  transition: border-color 0.3s ease;
+  background-image: url("./assets/AndrzejGrubba.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.andrzejGrubba:hover {
+  border-color: white;
+  
+}
+.nataliaPartyka:hover {
+  border-color: white;
+  
+}
+.showPlayers{
+  
+  height: 20vh;
+  width: 10vw;
+  position: absolute;
+  flex-direction: column;
+  display: flex;
+  left: 180px;
+  top: 12px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  
+}
+.showPlayers h1{
+  position: relative;
+  font-size: 1.5rem;
+  color: rgb(255, 250, 250);
+  font-family: 'pixelfont', 'sans-serif';
+  margin-bottom: 15px;
+  
+  
+  
+  padding-bottom: 10px;
+  
+}
+.playerIconContainer {
+  position: relative;
+
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 50%;
+  flex: 1;
+}
+.sport{
+  position: absolute;
+  width: 70%;
+  height: 50%;
+  left: 50%;
+  transform: translate(-50%,0);
+  color: white;
+}
+.showPlayersButton{
+  border: 3px solid rgb(255, 255, 255);
+  position: relative;
+  width: 80%;
+  height: 80%;
+  border-radius: 5px;
+  background-color: transparent;
+  z-index: 100;
+  transition: all 0.5s ease;
+  color: rgb(0, 0, 0);
+  font-family: 'pixelfont', 'sans-serif';
+  font-size: 1.5rem;
+  cursor: pointer;
+  aspect-ratio: 1/1;
+}
+.showPlayersButton:hover{
+  border-radius: 100px;
+}
+.showPlayersButton:focus{
+  border-color: white;
 }
 @media (max-width: 768px) {
   .welcomeScreen{
@@ -311,12 +423,34 @@ body {
   
 }
 .musicButtons input[type="radio"] {
-    width: 2vw;  /* bigger tap target on mobile */
+    width: 2vw;  
     height: 4vw;
     min-width: 40px;
     min-height: 40px;
   }
+  .showPlayers h1{
+    font-size: 1rem;
+  }
+  .playerIconContainer{
+    width: 15vw;  
+    
+    
 
+  }
+  .showPlayers{
+     height: 15vh;
+     width: 20vw;
+    left: 20px;
+    top: 10px;
+  }
+  .choosePlayer {
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    height: 50vh;
+    width: 95vw;
+    z-index: 100;
+  }
 }
 
 
