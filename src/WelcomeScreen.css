@@ -343,7 +343,7 @@ body {
 .showSoundsContainer {
   flex: 1;
   max-width: 45%;
-  height: 6vh;
+  height: 7vh;
   min-height: 20px;
 }
 
@@ -419,7 +419,7 @@ body {
     
   }
   .containerForTwo{
-    gap: 20px;
+    gap: 25px;
   }
   
   
