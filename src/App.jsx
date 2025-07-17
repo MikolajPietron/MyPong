@@ -5,11 +5,14 @@ import mystartGif from './assets/spacestart.gif';
 import myBall from './assets/ball.png';
 import PunktyGracz1 from './assets/punktyPlayer1.png';
 import PunktyGracz2 from './assets/punktyPlayer2.png';
-import { pass, velocity } from 'three/tsl';
+import BitSong from './assets/gameSong.mp3';
+import ChillSong from './assets/ChillLofiSong.mp3';
+import RockSong from './assets/RockSong.mp3';
+
 import pingPongSound from './assets/pingPongSound.mp3';
 import { useLocation } from 'react-router-dom';
 import Icon from "@mdi/react";
-import { mdiVolumeOff } from '@mdi/js';
+import { mdiBagPersonalPlusOutline, mdiPause, mdiVolumeOff } from '@mdi/js';
 
 function App() {
 
@@ -34,6 +37,7 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [isgameStarted, setisGameStarted] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const [gamePaused, setGamePaused] = useState(false);
   
 
   const [ball, setBall] = useState({
@@ -47,25 +51,58 @@ function App() {
 
   const ballRef = useRef(ball);
   const keysPressed2 = useRef({})
+  const escPressed = useRef({});
   const paddleYRef = useRef(paddleY)
   const paddleY2Ref = useRef(paddleY2)
   const leftPaddleRef = useRef(null);
   const rightPaddleRef = useRef(null);
   const ballRefElement = useRef(null);
-  const pingSoundRef = useRef(new Audio(pingPongSound));
+ const pingSoundRef = useRef(null);
+const audioRefs = useRef({});
+const gamePausedRef = useRef(gamePaused)
+
+useEffect(() => {
+  pingSoundRef.current = new Audio(pingPongSound);
+
+  audioRefs.current['8bit'] = new Audio(BitSong);
+  audioRefs.current['chill'] = new Audio(ChillSong);
+  audioRefs.current['rock'] = new Audio(RockSong);
+
+  Object.values(audioRefs.current).forEach(audio => {
+    audio.loop = true;
+  });
+
+  return () => {
+    if (pingSoundRef.current) {
+      pingSoundRef.current.pause();
+      pingSoundRef.current.src = '';
+    }
+    Object.values(audioRefs.current).forEach(audio => {
+      audio.pause();
+      audio.src = '';
+    });
+  };
+}, []);
+
+
+  
   
   const location = useLocation();
       const selectedMusic = location.state?.selectedMusic || null;
 
       function playPingSound() {
-        if (selectedMusic === 'ping' &&!isMuted) {
-          pingSoundRef.current.currentTime = 0;
-          pingSoundRef.current.play();
-        }
-      }
+  if (!isMuted && selectedMusic === 'ping' && pingSoundRef.current) {
+    pingSoundRef.current.pause();
+    pingSoundRef.current.currentTime = 0;
+    pingSoundRef.current.play().catch(err => console.log('Ping sound error:', err));
+  }
+}
+
+
+
 
   useEffect(() => {
-    pingSoundRef.current.muted = isMuted;
+    gamePausedRef.current = gamePaused;
     const handleTouchMove = (e) => {
       e.preventDefault();
       setisGameStarted(true);
@@ -96,9 +133,13 @@ function App() {
         setisGameStarted(true);
         
       }
+      if (e.key === 'Escape') {
+        setGamePaused(prev => !prev);
+      }
       keysPressed2.current[e.key] = true
       
     }
+    
     function handleKeyUp(e) {
       
       keysPressed2.current[e.key] = false
@@ -108,7 +149,7 @@ function App() {
     window.addEventListener('keyup', handleKeyUp)
 
     const moveInterval = setInterval(() => {
-      if (gameOver || !isgameStarted) return;
+      if (gameOver || !isgameStarted || gamePausedRef.current) return;
       
       setPaddleY(prev => {
   
@@ -267,7 +308,39 @@ function App() {
       window.removeEventListener('keyup', handleKeyUp)
       clearInterval(moveInterval)
     }
-  }, [gameOver, isgameStarted, isMuted])
+  }, [gameOver, isgameStarted, isMuted, gamePaused])
+  
+  
+  
+  
+  useEffect(() => {
+      
+     if (selectedMusic === 'pingpong') return;
+
+
+  const audio = audioRefs.current[selectedMusic];
+  if (audio) {
+    audio.loop = true; // Make sure it loops
+    audio.muted = isMuted;
+
+    // Only play if not muted
+    if ( !gamePaused && !isMuted) {
+      audio.play().catch(err => {
+        console.log('Could not play audio:', err);
+      });
+    } else {
+      audio.pause();
+      audio.currentTime = 0; // Reset to start
+    }
+  }
+
+  return () => {
+    if (audio) {
+      audio.pause();
+    }
+  };
+}, [selectedMusic, isMuted, gamePaused]);
+
 
   return (
     
@@ -278,7 +351,13 @@ function App() {
           
           <div className='muteButtonContainer'>
             <button className='muteButton' onClick={() => setIsMuted(prev => !prev)}/>
-            <Icon path={mdiVolumeOff} size={2} className='muteicon' />
+            <Icon path={mdiVolumeOff}  className='muteicon' />
+          </div>
+
+          <div className='pauseButtonContainer'>
+            <button className='pauseButton' onClick={() => setGamePaused(prev => !prev)} />
+            <Icon path={mdiPause} className='pauseicon' />
+
           </div>
           <div
             className="leftPaddle"
