@@ -109,48 +109,45 @@ const togglePlayersModal = () => {
   return (
     <div className={`welcomeScreen ${fadeOut ? 'fade-out' : ''}`}>
       <img src={Logo} alt='Akanza Logo' className='logo' />
-      <div className='showPlayers'>
-        <h1>Wybierz<br />Zawodnika</h1>
-        <div className='playerIconContainer'>
-          <button className='showPlayersButton' onClick={togglePlayersModal}/>
-          <Icon path={mdiHumanHandsup}  className='sport'/>
-        </div>
-      </div>
       <div className={`choosePlayer ${isShown ? 'show' : ''}`}>
         <button className='nataliaPartyka' onClick={() => {setSelectedPlayer('nataliaPartyka'); togglePlayersModal();}}/>
         <button className='andrzejGrubba' onClick={() => {setSelectedPlayer('andrzejGrubba'); togglePlayersModal();}}/>
       </div>
-        <div className='musicButtons'>
+      
+      
 
-          <h1>Wybierz<br />muzyke</h1>
-
-          
-          <div className='bitcontainer'>
-            
-              <input  type = "radio" name = 'music' className='8bitButton' onClick={playSound8bit}></input>
-              <Icon path={mdiNintendoGameBoy}  className='biticon'/>
-            
-          </div>  
-          <div className='chillcontainer'>
-            <input type ='radio' name = 'music' className='ChillButton' onClick={playSoundChill}></input>
-            <Icon path={mdiSofaSingle} className='chillicon'/>
-          </div>
-          <div className='rockcontainer'>
-            <input type = 'radio' name = 'music' className='RockButton' onClick={playSoundRock}></input>
-            <Icon path={mdiGuitarElectric} className='rockicon'/>
-          </div>
-          <div className='pingcontainer'>
-            <input type = 'radio' name = 'music' className='PingButton' onClick={() =>{
-              playSoundPing();
-              setSelectedMusic('ping');
-              pauseAll();
-
-            }}></input>
-            <Icon path={mdiTennisBall} className='pingicon'/>
+          <div className='showPlayers'>
+            <h1>Wybierz<br />Zawodnika</h1>
+            <div className='playerIconContainer'>
+              <button className='showPlayersButton' onClick={togglePlayersModal}/>
+              <Icon path={mdiHumanHandsup}  className='sport'/>
+            </div>
           </div>
           
-
-        </div>
+            <div className='musicButtons'>
+                <h1>Wybierz<br />muzyke</h1>
+                  <div className='bitcontainer'>
+                    <input  type = "radio" name = 'music' className='8bitButton' onClick={playSound8bit}></input>
+                    <Icon path={mdiNintendoGameBoy}  className='biticon'/>
+                  </div>  
+                  <div className='chillcontainer'>
+                    <input type ='radio' name = 'music' className='ChillButton' onClick={playSoundChill}></input>
+                    <Icon path={mdiSofaSingle} className='chillicon'/>
+                  </div>
+                  <div className='rockcontainer'>
+                    <input type = 'radio' name = 'music' className='RockButton' onClick={playSoundRock}></input>
+                    <Icon path={mdiGuitarElectric} className='rockicon'/>
+                  </div>
+                  <div className='pingcontainer'>
+                    <input type = 'radio' name = 'music' className='PingButton' onClick={() =>{
+                      playSoundPing();
+                      setSelectedMusic('ping');
+                      pauseAll();
+                    }}></input>
+                    <Icon path={mdiTennisBall} className='pingicon'/>
+                  </div>
+              </div>
+      
       <div className='container'>
         <a href="#" className='game' onClick={(e) => { handleGameNavigation(e); }}>
           Enter The Game

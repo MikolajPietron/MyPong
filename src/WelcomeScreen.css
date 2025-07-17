@@ -16,7 +16,7 @@ body {
 .welcomeScreen {
   height: 100vh;
   width: 100vw;
-  
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +41,7 @@ body {
   position: relative;
   display: flex;
   padding: 25px 30px;
-  margin: 40px 0;
+  
   color: blue;
   text-decoration: none;
   text-transform: uppercase;
@@ -331,7 +331,7 @@ body {
   display: flex;
   left: 180px;
   top: 12px;
-  padding: 10px;
+  
   justify-content: center;
   align-items: center;
   
@@ -357,7 +357,7 @@ body {
   justify-content: center;
   width: 50%;
   height: 50%;
-  flex: 1;
+  
 }
 .sport{
   position: absolute;
@@ -393,17 +393,20 @@ body {
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
+    position: relative;
   }
   .welcomeScreen a.game,
   .welcomeScreen a.rules {
-    width: 50vw;
-    height: 10vh;
+    width: 60vw;
+    height: 3vh;
     font-size: 13px;
     padding: 20px;
   }
 
   .container {
-    bottom: 5vh;
+    height: fit-content;
+    position: relative;
+    justify-content: center;
   }
 
   .welcomeScreen a.game,
@@ -411,9 +414,11 @@ body {
     letter-spacing: 2px;
   }
   .musicButtons{
-    flex-direction: row;
+    
     grid-template-columns: repeat(2,1fr);
+    top: auto;
     right: 0px;
+    bottom: 20px;
 
   }
   .musicButtons h1 {
@@ -430,18 +435,27 @@ body {
   }
   .showPlayers h1{
     font-size: 1rem;
+    
   }
   .playerIconContainer{
-    width: 15vw;  
+    width: 25vw;  
+    height: 25vh;
+    
+    
     
     
 
   }
   .showPlayers{
-     height: 15vh;
-     width: 20vw;
+    position: absolute;
+    height: 19vh;
+    top: auto;
+    padding: auto;
+    width: fit-content;
     left: 20px;
-    top: 10px;
+    bottom: 20px;
+    
+    
   }
   .choosePlayer {
     left: 50%;
@@ -450,6 +464,10 @@ body {
     height: 50vh;
     width: 95vw;
     z-index: 100;
+  }
+  .logo{
+    width: 40vw;
+    height: 20vh;
   }
 }
 
