@@ -8,8 +8,7 @@ import BitSong from './assets/gameSong.mp3';
 import ChillSong from './assets/ChillLofiSong.mp3';
 import RockSong from './assets/RockSong.mp3';
 import PingPong from './assets/pingPongSound.mp3';
-import Andrzej from './assets/AndrzejGrubba.jpg';
-import Natalia from './assets/NataliaPartyka.png';
+
 import Logo from './assets/akanzaLogo.png';
 import Icon from "@mdi/react";
 import { mdiGuitarElectric, mdiHome, mdiHumanHandsup, mdiNintendoGameBoy, mdiSofaSingle, mdiTennisBall } from "@mdi/js";
