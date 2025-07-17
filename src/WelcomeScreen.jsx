@@ -12,7 +12,7 @@ import PingPong from './assets/pingPongSound.mp3';
 import Logo from './assets/akanzaLogo.png';
 import Icon from "@mdi/react";
 import { mdiGuitarElectric, mdiHome, mdiHumanHandsup, mdiNintendoGameBoy, mdiSofaSingle, mdiTennisBall } from "@mdi/js";
-import { pass } from 'three/tsl';
+
 
 function WelcomeScreen() {
   const [isModalOpen, setIsModalOpen] = useState(false);
