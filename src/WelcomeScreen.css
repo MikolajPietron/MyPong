@@ -142,23 +142,26 @@ body {
 }
 .musicButtons{
   
-  margin-top: 35px;
-  margin-right: 20px;
-  position: absolute;
-  top: 0px;
-  right: 0px;
+  opacity: 0;
+  position: relative;
+  margin-top: 40px;
   display: grid;
   flex-direction: row;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto 1fr;
-  gap: 10px;
-  column-gap: 5px;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  column-gap: 25px;
   text-align: center;
   justify-content: center;
   align-items: center;
   width: max-content;
   font-family: 'pixelfont', 'sans-serif';
  
+}
+.musicButtons.show{
+  opacity: 1;
+  pointer-events: auto;
 }
 .musicButtons h1 {
   grid-column: 1 / -1; 
@@ -266,14 +269,15 @@ body {
 .container{
     position: relative;
     align-self: center;
-    height: 75vh;
+    height: 60vh;
     width: 90vw;
     max-width: 500px;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     display: flex;
     flex-direction: column;
     position: absolute;
+    
     
     bottom: 1vh;
 }
@@ -289,6 +293,9 @@ body {
   height: 60vh;
   width: 25vw;
   transition: opacity 0.5s ease;
+  border: 4px solid white;
+  border-radius: 30px;
+  background-color: white;
   
 }
 .choosePlayer.show{
@@ -301,7 +308,8 @@ body {
   border: 2px solid rgb(0, 0, 0);
   transition: border-color 0.3s ease;
   background-image: url("./assets/NataliaPartyka.png");
-  
+  border-radius: 30px;
+
   background-size: cover;
   background-position: center;
 }
@@ -313,6 +321,7 @@ body {
   background-image: url("./assets/AndrzejGrubba.jpg");
   background-size: cover;
   background-position: center;
+  border-radius: 30px;
 }
 .andrzejGrubba:hover {
   border-color: white;
@@ -322,71 +331,67 @@ body {
   border-color: white;
   
 }
-.showPlayers{
-  
-  height: 20vh;
-  width: 10vw;
-  position: absolute;
-  flex-direction: column;
+.containerForTwo{
+  position: relative;
   display: flex;
-  left: 180px;
-  top: 12px;
-  
-  justify-content: center;
-  align-items: center;
-  
+  flex-direction: row;
+  gap: 50px;
 }
-.showPlayers h1{
-  position: relative;
-  font-size: 1.5rem;
-  color: rgb(255, 250, 250);
-  font-family: 'pixelfont', 'sans-serif';
-  margin-bottom: 15px;
-  
-  
-  
-  padding-bottom: 10px;
-  
+.playerIconContainer,
+.showSoundsContainer {
+  flex: 1;
+  max-width: 45%;
+  height: 6vh;
+  min-height: 20px;
 }
-.playerIconContainer {
-  position: relative;
 
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  height: 50%;
-  
-}
-.sport{
-  position: absolute;
-  width: 70%;
-  height: 50%;
-  left: 50%;
-  transform: translate(-50%,0);
-  color: white;
-}
-.showPlayersButton{
-  border: 3px solid rgb(255, 255, 255);
+.showSoundsButton{
+  border: 2px solid rgb(0, 0, 0);
   position: relative;
-  width: 80%;
-  height: 80%;
-  border-radius: 5px;
-  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: white;
   z-index: 100;
+  
   transition: all 0.5s ease;
   color: rgb(0, 0, 0);
   font-family: 'pixelfont', 'sans-serif';
-  font-size: 1.5rem;
+  font-size: 0.9rem;
   cursor: pointer;
-  aspect-ratio: 1/1;
+  
+}
+.showSoundsButton:hover{
+  border-color: rgb(255, 255, 255);
+  background-color: black;
+  color: white;
+}
+.showSoundsButton:focus{
+  border-radius: 50px;
+}
+.showPlayersButton{
+  border: 2px solid rgb(0, 0, 0);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  
+  z-index: 100;
+  background-color: white;
+  transition: all 0.5s ease;
+  color: rgb(0, 0, 0);
+  font-family: 'pixelfont', 'sans-serif';
+  font-size: 0.9rem;
+  cursor: pointer;
+  
 }
 .showPlayersButton:hover{
-  border-radius: 100px;
+  border-color: rgb(255, 255, 255);
+  background-color: black;
+  color: white;
 }
 .showPlayersButton:focus{
-  border-color: white;
+  border-radius: 50px;
 }
 @media (max-width: 768px) {
   .welcomeScreen{
@@ -401,69 +406,43 @@ body {
     height: 3vh;
     font-size: 13px;
     padding: 20px;
+    letter-spacing: 2px;
   }
 
   .container {
     height: fit-content;
     position: relative;
     justify-content: center;
-  }
-
-  .welcomeScreen a.game,
-  .welcomeScreen a.rules {
-    letter-spacing: 2px;
-  }
-  .musicButtons{
     
-    grid-template-columns: repeat(2,1fr);
+    
+  }
+  
+  
+
+  
+  .musicButtons{
     top: auto;
     right: 0px;
     bottom: 20px;
 
   }
-  .musicButtons h1 {
-  
-  font-size: 1rem;
-  
-  
-}
+ 
 .musicButtons input[type="radio"] {
-    width: 2vw;  
-    height: 4vw;
+    width: 15vw;  
+    height: 15vw;
     min-width: 40px;
     min-height: 40px;
   }
-  .showPlayers h1{
-    font-size: 1rem;
-    
-  }
-  .playerIconContainer{
-    width: 25vw;  
-    height: 25vh;
-    
-    
-    
-    
-
-  }
-  .showPlayers{
-    position: absolute;
-    height: 19vh;
-    top: auto;
-    padding: auto;
-    width: fit-content;
-    left: 20px;
-    bottom: 20px;
-    
-    
-  }
+  
+  
+  
   .choosePlayer {
     left: 50%;
-    top: 60%;
+    top: 50%;
     transform: translate(-50%, -50%);
     height: 50vh;
     width: 95vw;
-    z-index: 100;
+    z-index: 10000;
   }
   .logo{
     width: 60vw;

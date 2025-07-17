@@ -25,6 +25,7 @@ function WelcomeScreen() {
   const [selectedMusic, setSelectedMusic] = useState(null);
   const [isShown, setIsShown] = useState(false);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
+  const [showMusicIcons, setShowMusicIcons] = useState(false);
 
   const handleGameNavigation = (e) => {
     e.preventDefault();
@@ -100,6 +101,9 @@ const playSound = () => {
 const togglePlayersModal = () => {
   setIsShown(prev => !prev);
 };
+const toggleMusicIcons = () => {
+  setShowMusicIcons(prev => !prev);
+}
 
 
 
@@ -114,18 +118,34 @@ const togglePlayersModal = () => {
         <button className='andrzejGrubba' onClick={() => {setSelectedPlayer('andrzejGrubba'); togglePlayersModal();}}/>
       </div>
       
-      
+      <div className='container'>
+        <a href="#" className='game' onClick={(e) => { handleGameNavigation(e); }}>
+          Enter The Game
+        </a>
 
-          <div className='showPlayers'>
-            <h1>Wybierz<br />Zawodnika</h1>
+        <a
+          href="#"
+          className='rules'
+          onClick={(e) => {
+            e.preventDefault();
+            setIsModalOpen(true);
+          }}
+        >
+          Read The Rules
+        </a>
+        
+          <div className='containerForTwo'>
             <div className='playerIconContainer'>
-              <button className='showPlayersButton' onClick={togglePlayersModal}/>
-              <Icon path={mdiHumanHandsup}  className='sport'/>
+              <button className='showPlayersButton' onClick={togglePlayersModal}>Wybierz <br/>zawodnika</button>
             </div>
+            <div className='showSoundsContainer'>
+              <button className='showSoundsButton' onClick={toggleMusicIcons}>Wybierz Muzyke</button>
+            </div>
+
           </div>
-          
-            <div className='musicButtons'>
-                <h1>Wybierz<br />muzyke</h1>
+
+            <div className={`musicButtons ${showMusicIcons ? 'show' : ''}`}>
+                
                   <div className='bitcontainer'>
                     <input  type = "radio" name = 'music' className='8bitButton' onClick={playSound8bit}></input>
                     <Icon path={mdiNintendoGameBoy}  className='biticon'/>
@@ -147,22 +167,7 @@ const togglePlayersModal = () => {
                     <Icon path={mdiTennisBall} className='pingicon'/>
                   </div>
               </div>
-      
-      <div className='container'>
-        <a href="#" className='game' onClick={(e) => { handleGameNavigation(e); }}>
-          Enter The Game
-        </a>
-
-        <a
-          href="#"
-          className='rules'
-          onClick={(e) => {
-            e.preventDefault();
-            setIsModalOpen(true);
-          }}
-        >
-          Read The Rules
-        </a>
+        
 
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
           <h2>Game Rules</h2>
