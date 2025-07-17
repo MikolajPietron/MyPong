@@ -9,7 +9,7 @@ import BitSong from './assets/gameSong.mp3';
 import ChillSong from './assets/ChillLofiSong.mp3';
 import RockSong from './assets/RockSong.mp3';
 import NataliaPartyka from './assets/NataliaPartyka.png';
-import AndrzejGrubba from './assets/andrzejGrubba.jpg';
+import AndrzejGrubba from './assets/AndrzejGrubba.jpg';
 import pingPongSound from './assets/pingPongSound.mp3';
 import { useLocation } from 'react-router-dom';
 import Icon from "@mdi/react";
