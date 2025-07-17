@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mdi/js": "^7.4.47",
+    "@mdi/react": "^1.6.1",
     "ogl": "^1.0.11",
     "postprocessing": "^6.37.6",
     "react": "^19.1.0",

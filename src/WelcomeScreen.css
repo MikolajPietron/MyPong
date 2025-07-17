@@ -10,13 +10,13 @@
 body {
   font-family: "Raleway", sans-serif;
   font-weight: bold;
-  background: #050801;
+  
 }
 
 .welcomeScreen {
   height: 100vh;
   width: 100vw;
-  background-color: rgb(0, 0, 0);
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,8 @@ body {
   justify-content: center;
   opacity: 1;
   transition: opacity 1000ms ease;
-  background-image: url('assets/WelcomeScreenBackground.png');
+  background-color: blue;
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -41,7 +42,7 @@ body {
   display: flex;
   padding: 25px 30px;
   margin: 40px 0;
-  color: #d194b7;
+  color: blue;
   text-decoration: none;
   text-transform: uppercase;
   transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
@@ -54,9 +55,9 @@ body {
   justify-content: center;
   align-items: center;
   font-family: 'pixelfont', 'sans-serif';
-  border: 4px solid #3a3a3a;
+  border: 4px solid #ffffff;
   font-size: 20px;
-  background-color: black;
+  background-color: rgb(255, 255, 255);
 
 }
 
@@ -70,14 +71,14 @@ body {
   background-color: blue;
   color: white;
   border: 4px solid white;
-  animation: glareFlash 0.5s ease forwards;
+  
 }
 .welcomeScreen a.rules{
   position: relative;
   display: flex;
   padding: 25px 30px;
   margin: 40px 0;
-  color: #d194b7;
+  color: blue;
   text-decoration: none;
   text-transform: uppercase;
   transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
@@ -90,9 +91,9 @@ body {
   justify-content: center;
   align-items: center;
   font-family: 'pixelfont', 'sans-serif';
-  border: 4px solid #3b3b3b;
+  border: 4px solid #ffffff;
   font-size: 20px;
-  background-color: black;
+  background-color: rgb(255, 255, 255);
   
   
 
@@ -119,7 +120,7 @@ body {
   background-color: blue;
   color: white;
   border: 4px solid white;
-  animation: glareFlash 0.5s ease forwards;
+  
   
 }
 .button{
@@ -139,6 +140,91 @@ body {
     justify-content: center;
     
 }
+.musicButtons{
+  margin-top: 35px;
+  margin-right: 20px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  display: grid;
+  flex-direction: row;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+ 
+}
+.musicButtons input[type = "radio"] {
+  width: 4vw;
+  height: 8vh;
+  transition: border-radius 0.3s ease, border-color 0.3s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  border: 3px solid #000;
+  z-index: 100;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.musicButtons input[type = "radio"]:hover {
+  border-radius: 50px;
+}
+.musicButtons input[type = "radio"]:checked {
+  border-color: white;
+  border-radius: 50px;
+  
+  
+}
+.bitcontainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.biticon{
+  position: absolute;
+  color: black;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  
+}
+.chillcontainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chillicon{
+  position: absolute;
+  color: black;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+.rockcontainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rockicon{
+  position: absolute;
+  color: black;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+.pingcontainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pingicon{
+  position: absolute;
+  color: black;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+
 .logo{
   width: 20vw;
   height: 25vh;

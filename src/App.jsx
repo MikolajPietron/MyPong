@@ -6,6 +6,10 @@ import myBall from './assets/ball.png';
 import PunktyGracz1 from './assets/punktyPlayer1.png';
 import PunktyGracz2 from './assets/punktyPlayer2.png';
 import { pass, velocity } from 'three/tsl';
+import pingPongSound from './assets/pingPongSound.mp3';
+import { useLocation } from 'react-router-dom';
+import Icon from "@mdi/react";
+import { mdiVolumeOff } from '@mdi/js';
 
 function App() {
 
@@ -29,6 +33,7 @@ function App() {
   const [Player1Points, setPlayer1Points] = useState(0)
   const [gameOver, setGameOver] = useState(false);
   const [isgameStarted, setisGameStarted] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
   
 
   const [ball, setBall] = useState({
@@ -47,9 +52,20 @@ function App() {
   const leftPaddleRef = useRef(null);
   const rightPaddleRef = useRef(null);
   const ballRefElement = useRef(null);
+  const pingSoundRef = useRef(new Audio(pingPongSound));
+  
+  const location = useLocation();
+      const selectedMusic = location.state?.selectedMusic || null;
+
+      function playPingSound() {
+        if (selectedMusic === 'ping' &&!isMuted) {
+          pingSoundRef.current.currentTime = 0;
+          pingSoundRef.current.play();
+        }
+      }
 
   useEffect(() => {
-
+    pingSoundRef.current.muted = isMuted;
     const handleTouchMove = (e) => {
       e.preventDefault();
       setisGameStarted(true);
@@ -150,6 +166,8 @@ function App() {
         const speedFactor = getSpeedFactor();
         return baseIncrement * speedFactor;
       }
+     
+      
 
       // Move ball
       setBall(prev => {
@@ -177,6 +195,7 @@ function App() {
           if(newVx < 0) {
           newVx = Math.abs(newVx)+ velocityIncrement;
           setAiPaddleHits(h => h + 1);
+          playPingSound();
         }
       }
 
@@ -188,6 +207,7 @@ function App() {
           newX = rightPaddleRect.left - ballRect.width - 1
           if(newVx > 0) {
           newVx = -Math.abs(newVx);
+          playPingSound();
         }
       }
         //Right paddle collision top
@@ -247,7 +267,7 @@ function App() {
       window.removeEventListener('keyup', handleKeyUp)
       clearInterval(moveInterval)
     }
-  }, [gameOver, isgameStarted])
+  }, [gameOver, isgameStarted, isMuted])
 
   return (
     
@@ -255,6 +275,11 @@ function App() {
         className="gameContainer" 
         style={{ position: 'relative', height: '100vh' }}
         >
+          
+          <div className='muteButtonContainer'>
+            <button className='muteButton' onClick={() => setIsMuted(prev => !prev)}/>
+            <Icon path={mdiVolumeOff} size={2} className='muteicon' />
+          </div>
           <div
             className="leftPaddle"
             ref = {leftPaddleRef}
