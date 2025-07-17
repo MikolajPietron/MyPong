@@ -287,12 +287,12 @@ useEffect(() => {
         if (isColliding(ballRect, leftPaddleRect)) {
           const paddleCenter = leftPaddleRect.top + leftPaddleRect.height / 2;
           const offset = (ballRect.top + ballRect.height / 2) - paddleCenter;
-          newVy += offset * 0.050; 
+          newVy += offset * 0.1; 
         }
         if (isColliding(ballRect, rightPaddleRect)) {
           const paddleCenter = rightPaddleRect.top + rightPaddleRect.height / 2;
           const offset = (ballRect.top + ballRect.height / 2) - paddleCenter;
-          newVy += offset * 0.050; 
+          newVy += offset * 0.1; 
         }
 
 
