@@ -356,7 +356,7 @@ useEffect(() => {
     
     <div 
         className="gameContainer" 
-        style={{ position: 'relative', height: '100vh' }}
+        style={{ position: 'relative', height: '100vh'}}
         >
           
           <div className='muteButtonContainer'>

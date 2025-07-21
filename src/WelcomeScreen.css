@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
 @font-face {
-    font-family: 'pixelfont';
-    src: url('assets/fonts/pixelfont.ttf') format(truetype);
+    font-family: 'kollektif';
+    src: url('assets/fonts/Kollektif-Bold.ttf') format(truetype);
     font-weight: bold;
     font-style: normal;
 }
@@ -10,7 +10,16 @@
 body {
   font-family: "Raleway", sans-serif;
   font-weight: bold;
+  background-image: url("./assets/backgroundPaddles.png");
   
+  
+}
+.backgroundPaddles{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 60%;
 }
 
 .welcomeScreen {
@@ -45,18 +54,19 @@ body {
   color: blue;
   text-decoration: none;
   text-transform: uppercase;
-  transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
-  letter-spacing: 4px;
+  transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease, border-radius 0.3s ease;
+  letter-spacing: 10px;
   overflow: hidden;
-  border-radius: 20px;
-  height: 50px;
-  width: 400px;
+  border-radius: 15px;
+  height: 30px;
+  width: 500px;
   text-align: center;
   justify-content: center;
   align-items: center;
-  font-family: 'pixelfont', 'sans-serif';
+  font-family: 'kollektif', 'sans-serif';
   border: 4px solid #ffffff;
-  font-size: 20px;
+  font-size: 40px;
+  font-weight: 900;
   background-color: rgb(255, 255, 255);
 
 }
@@ -71,28 +81,28 @@ body {
   background-color: blue;
   color: white;
   border: 4px solid white;
-  
+  border-radius: 30px;
 }
 .welcomeScreen a.rules{
   position: relative;
   display: flex;
-  padding: 25px 30px;
+  padding: 15px 30px;
   margin: 40px 0;
   color: blue;
   text-decoration: none;
   text-transform: uppercase;
-  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
-  letter-spacing: 4px;
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, border-radius 0.3s ease;
+  letter-spacing: 10px;
   overflow: hidden;
-  border-radius: 20px;
-  height: 50px;
-  width: 400px;
+  border-radius: 15px;
+  height: 30px;
+  width: 200px;
   text-align: center;
   justify-content: center;
   align-items: center;
-  font-family: 'pixelfont', 'sans-serif';
+  font-family: 'kollektif', 'sans-serif';
   border: 4px solid #ffffff;
-  font-size: 20px;
+  font-size: 40px;
   background-color: rgb(255, 255, 255);
   
   
@@ -120,6 +130,7 @@ body {
   background-color: blue;
   color: white;
   border: 4px solid white;
+  border-radius: 30px;
   
   
 }
@@ -259,8 +270,8 @@ body {
 
 
 .logo{
-  width: 20vw;
-  height: 25vh;
+  width: 25vw;
+  height: 15vh;
   position: absolute;
   top: 50px;
   left: 50%;
@@ -278,47 +289,76 @@ body {
     flex-direction: column;
     position: absolute;
     
-    margin-top: 120px;
+    gap: 30px;
+    margin-top: 50px;
     
     
-    bottom: 1vh;
+    bottom: 7vh;
+}
+.choosePlayer h1[class = "PartykaOpis"]{
+  position: absolute;
+  right: 50px;
+  top: 70px;
+  font-family: "kollektif",
+  
+}
+.choosePlayer h1[class = "GrubbaOpis"]{
+  position: absolute;
+  left: 50px;
+  bottom: 70px;
+  font-family: "kollektif",
+  
 }
 .choosePlayer {
   position: absolute;
   display: flex;
-  left: 50px;
-  top: 250px;
+  left: 30px;
+  top: 150px;
   pointer-events: none;
   display: flex;
   flex-direction: row;
   opacity: 0;
-  height: 60vh;
+  height: 75vh;
   width: 25vw;
   transition: opacity 0.5s ease;
   border: 4px solid white;
   border-radius: 30px;
-  background-color: white;
+  background-color: blue;
+  color: white;
+  background-image: url("pasekDoRozdzielenia.png");
   
+}
+.choosePlayer img{
+  width: 25vw;
 }
 .choosePlayer.show{
   opacity: 1;
   pointer-events: auto;
 }
 .nataliaPartyka {
-  flex: 1;
+  border: 3px solid white;
   background-color: transparent;
-  border: 2px solid rgb(0, 0, 0);
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 23vh;
+  width: 12vw;
   transition: border-color 0.3s ease;
   background-image: url("./assets/NataliaPartyka.png");
   border-radius: 30px;
-
+  cursor: pointer;
   background-size: cover;
   background-position: center;
 }
 .andrzejGrubba {
-  flex: 1;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  height: 23vh;
+  width: 12vw;
   background-color: transparent;
-  border: 2px solid rgb(0, 0, 0);
+  border: 3px solid rgb(255, 255, 255);
+  cursor: pointer;
   transition: border-color 0.3s ease;
   background-image: url("./assets/AndrzejGrubba.jpg");
   background-size: cover;
@@ -326,11 +366,11 @@ body {
   border-radius: 30px;
 }
 .andrzejGrubba:hover {
-  border-color: white;
+  border-color: blue;
   
 }
 .nataliaPartyka:hover {
-  border-color: white;
+  border-color: blue;
   
 }
 .containerForTwo{
@@ -342,59 +382,59 @@ body {
 .playerIconContainer,
 .showSoundsContainer {
   flex: 1;
-  max-width: 45%;
+  max-width: 60%;
   height: 7vh;
   min-height: 20px;
 }
 
 .showSoundsButton{
-  border: 2px solid rgb(0, 0, 0);
+  border: 3px solid rgb(255, 255, 255);
   position: relative;
-  width: 100%;
+  width: 10vw;
   height: 100%;
   border-radius: 15px;
   background-color: white;
   z-index: 100;
-  
+  text-transform: uppercase;
+  font-weight: 900;
   transition: all 0.5s ease;
-  color: rgb(0, 0, 0);
-  font-family: 'pixelfont', 'sans-serif';
-  font-size: 0.9rem;
+  color: blue;
+  font-family: 'kollektif', 'sans-serif';
+  font-size: 1.2rem;
   cursor: pointer;
   
 }
 .showSoundsButton:hover{
   border-color: rgb(255, 255, 255);
-  background-color: black;
+  background-color: blue;
   color: white;
+  border-radius: 30px;
 }
-.showSoundsButton:focus{
-  border-radius: 50px;
-}
+
 .showPlayersButton{
-  border: 2px solid rgb(0, 0, 0);
+  border: 3px solid rgb(255, 255, 255);
   position: relative;
-  width: 100%;
+  width: 10vw;
   height: 100%;
   border-radius: 15px;
-  
+  text-transform: uppercase;
+  font-weight: 900;
   z-index: 100;
   background-color: white;
   transition: all 0.5s ease;
-  color: rgb(0, 0, 0);
-  font-family: 'pixelfont', 'sans-serif';
-  font-size: 0.9rem;
+  color: blue;
+  font-family: 'kollektif', 'sans-serif';
+  font-size: 1.2rem;
   cursor: pointer;
   
 }
 .showPlayersButton:hover{
   border-color: rgb(255, 255, 255);
-  background-color: black;
+  background-color: blue;
   color: white;
+  border-radius: 30px;
 }
-.showPlayersButton:focus{
-  border-radius: 50px;
-}
+
 @media (max-width: 768px) {
   .welcomeScreen{
     background-size: cover;
@@ -413,8 +453,7 @@ body {
 
   .container {
     height: fit-content;
-    position: relative;
-    justify-content: center;
+    border: 1vh;
     
     
   }

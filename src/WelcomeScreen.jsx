@@ -8,7 +8,8 @@ import BitSong from './assets/gameSong.mp3';
 import ChillSong from './assets/ChillLofiSong.mp3';
 import RockSong from './assets/RockSong.mp3';
 import PingPong from './assets/pingPongSound.mp3';
-
+import BackgroundPaddles from './assets/backgroundPaddles.png';
+import PasekDoRozdzielania from './assets/pasekDoRozdzielenia.png';
 import Logo from './assets/akanzaLogo.png';
 import Icon from "@mdi/react";
 import { mdiGuitarElectric, mdiHome, mdiHumanHandsup, mdiNintendoGameBoy, mdiSofaSingle, mdiTennisBall } from "@mdi/js";
@@ -112,13 +113,18 @@ const toggleMusicIcons = () => {
 
   return (
     <div className={`welcomeScreen ${fadeOut ? 'fade-out' : ''}`}>
+      <img src={BackgroundPaddles} className='backgroundPaddles'></img>
       <img src={Logo} alt='Akanza Logo' className='logo' />
       <div className={`choosePlayer ${isShown ? 'show' : ''}`}>
+        <h1 className='PartykaOpis'>Natalia<br/> Partyka</h1>
         <button className='nataliaPartyka' onClick={() => {setSelectedPlayer('nataliaPartyka'); togglePlayersModal();}}/>
+          <img src= {PasekDoRozdzielania} alt='pasek'></img>
+        <h1 className='GrubbaOpis'>Andrzej<br/> Grubba</h1>
         <button className='andrzejGrubba' onClick={() => {setSelectedPlayer('andrzejGrubba'); togglePlayersModal();}}/>
       </div>
       
       <div className='container'>
+        
         <a href="#" className='game' onClick={(e) => { handleGameNavigation(e); }}>
           Enter The Game
         </a>
@@ -131,7 +137,7 @@ const toggleMusicIcons = () => {
             setIsModalOpen(true);
           }}
         >
-          Read The Rules
+           Rules
         </a>
         
           <div className='containerForTwo'>
