@@ -10,7 +10,7 @@
   import RockSong from './assets/RockSong.mp3';
   import NataliaPartyka from './assets/NataliaPartyka.png';
   import AndrzejGrubba from './assets/AndrzejGrubba.jpg';
-  import pingPongSound from './assets/pingPongSound.mp3';
+  import pingPongSound from './assets/pongSound.mp3';
   import { useLocation } from 'react-router-dom';
   import UserIcon from './assets/userIcon.png'
   import Icon from "@mdi/react";
