@@ -633,9 +633,7 @@ useEffect(() => {
         <div className='moveButtonsMobile'>
           <button
   className='upButton'
-  onMouseDown={handleMouseDownUp}
-  onMouseUp={handleMouseUp}
-  onMouseLeave={handleMouseUp}
+  
   onTouchStart={handleMouseDownUp}
   onTouchEnd={handleMouseUp}
   onTouchCancel={handleMouseUp}
@@ -645,9 +643,7 @@ useEffect(() => {
 
 <button
   className='downButton'
-  onMouseDown={handleMouseDownDown}
-  onMouseUp={handleMouseUp}
-  onMouseLeave={handleMouseUp}
+  
   onTouchStart={handleMouseDownDown}
   onTouchEnd={handleMouseUp}
   onTouchCancel={handleMouseUp}
