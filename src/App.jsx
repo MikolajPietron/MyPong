@@ -12,6 +12,7 @@
   import AndrzejGrubba from './assets/AndrzejGrubba.jpg';
   import pingPongSound from './assets/pingPongSound.mp3';
   import { useLocation } from 'react-router-dom';
+  import UserIcon from './assets/userIcon.png'
   import Icon from "@mdi/react";
   import Ai from "./assets/ComputerPlayer.png";
   import { mdiBagPersonalPlusOutline, mdiPause, mdiVolumeOff } from '@mdi/js';
@@ -69,6 +70,47 @@
   const gamePausedRef = useRef(gamePaused)
   const pongContainerRef = useRef(null);
   const lastHitRef = useRef(null);
+
+
+   const moveIntervalRef = useRef(null);
+
+  function movePaddleUp() {
+    setPaddleY2(prev => {
+      const containerHeight = pongContainerRef.current?.getBoundingClientRect().height || 0;
+      const paddleHeight = rightPaddleRef.current?.getBoundingClientRect().height || 0;
+      return Math.max(prev - 5, 0);  // smaller step for smoothness
+    });
+  }
+
+  function movePaddleDown() {
+    setPaddleY2(prev => {
+      const containerHeight = pongContainerRef.current?.getBoundingClientRect().height || 0;
+      const paddleHeight = rightPaddleRef.current?.getBoundingClientRect().height || 0;
+      const maxPos = containerHeight - paddleHeight - 5;
+      return Math.min(prev + 5, maxPos);
+    });
+  }
+
+  // Start moving up
+  function handleMouseDownUp() {
+    if (moveIntervalRef.current) return;  // prevent multiple intervals
+    moveIntervalRef.current = setInterval(movePaddleUp, 16); // ~60fps
+  }
+
+  // Start moving down
+  function handleMouseDownDown() {
+    if (moveIntervalRef.current) return;
+    moveIntervalRef.current = setInterval(movePaddleDown, 16);
+  }
+
+  // Stop moving
+  function handleMouseUp() {
+    if (moveIntervalRef.current) {
+      clearInterval(moveIntervalRef.current);
+      moveIntervalRef.current = null;
+    }
+  }
+
 
 
   useEffect(() => {
@@ -253,8 +295,8 @@
         })
         function isColliding(rect1, rect2) {
           return !(
-            rect1.right + 10 < rect2.left ||
-            rect1.left -7 > rect2.right ||
+            rect1.right + 5 < rect2.left ||
+            rect1.left -3 > rect2.right ||
             rect1.bottom < rect2.top ||
             rect1.top > rect2.bottom
           );
@@ -470,7 +512,7 @@ useEffect(() => {
           className="gameContainer" 
           style={{ position: 'relative', height: '100vh'}}
           >
-            
+            <h1 className='pongByATS'>Pong by ATS</h1>
             <div className='muteButtonContainer'>
               <button className='muteButton' onClick={() => setIsMuted(prev => !prev)}/>
               <Icon path={mdiVolumeOff}  className='muteicon' />
@@ -489,9 +531,13 @@ useEffect(() => {
                           <img src={Ai} className='ComputerImage'></img>
                         </div>
                         <div className='vsImage'></div>
-                        <div className='HumanPlayer' style={{
-                          backgroundImage: playerImage ? `url(${playerImage})` : 'none',
-                        }}></div>
+                        <div className='HumanPlayer'
+     style={{
+       backgroundImage: playerImage ? `url(${playerImage})` : 'none',
+     }}>
+  {!playerImage && <img src={UserIcon} className="defaultUser" />}
+</div>
+
                       </div>
 
                 
@@ -584,6 +630,32 @@ useEffect(() => {
               {Player1Points >= 10 ? 'Gracz 1 wygrał!' : 'Gracz 2 wygrał!'}
             </div>
         )}
+        <div className='moveButtonsMobile'>
+          <button
+  className='upButton'
+  onMouseDown={handleMouseDownUp}
+  onMouseUp={handleMouseUp}
+  onMouseLeave={handleMouseUp}
+  onTouchStart={handleMouseDownUp}
+  onTouchEnd={handleMouseUp}
+  onTouchCancel={handleMouseUp}
+>
+  <span className='arrowUp'>&uarr;</span>
+</button>
+
+<button
+  className='downButton'
+  onMouseDown={handleMouseDownDown}
+  onMouseUp={handleMouseUp}
+  onMouseLeave={handleMouseUp}
+  onTouchStart={handleMouseDownDown}
+  onTouchEnd={handleMouseUp}
+  onTouchCancel={handleMouseUp}
+>
+  <span className='arrowUp'>&darr;</span>
+</button>
+
+        </div>
           
       </div>
     )

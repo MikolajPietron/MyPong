@@ -10,7 +10,9 @@
   justify-content: center;
   align-items: center;
   display: flex;
+  background-image: url("./assets/backgroundPaddles.png");
   
+  background-position-x: 50%;
   
 }
 .pongPlusPlayer {
@@ -62,10 +64,19 @@
   background-size: cover;
   justify-content: center;
   justify-items: center;
+  align-self: center;
   background-repeat: no-repeat;
   background-position: left -20% top 30%;
-  
+  display: flex;
+  z-index: 10000;
+   position: relative;
 
+}
+.defaultUser{
+  align-self: center;
+  z-index: -1;
+  width: 50%;
+  height: 60%;
 }
 .PlayerVsPlayer {
   
@@ -225,8 +236,8 @@
   width: 4vw;
   height: 6vh;
   position: absolute;
-  top: 40px;
-  left: 30px;
+  top: 10px;
+  left: 100px;
   background-color: transparent;
   /* border: 2px solid #ff0000; */
   display: flex;
@@ -260,8 +271,8 @@
   width: 4vw;
   height: 6vh;
   position: absolute;
-  top: 120px;
-  left: 30px;
+  top: 10px;
+  left: 10px;
   background-color: transparent;
   display: flex;
 }
@@ -290,6 +301,50 @@
 .pauseButton:active {
   border-color: #000000;
 }
+.pongByATS{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-family: 'kollektif';
+  font-size: 1vw;
+  color: white;
+  letter-spacing: 2px;
+}
+.moveButtonsMobile{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 10vw;
+  height: 10vh;
+  
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+.upButton{
+  width: 5vw;
+  height: 10vh;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid blue;
+  border-radius: 20px;
+  visibility: hidden;
+  transition: all 0.7s ease;
+
+}
+.downButton{
+  width: 5vw;
+  height: 10vh;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid blue;
+  border-radius: 20px;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+.arrowUp{
+  font-size: 3vw;
+}
 @keyframes spinClockwise {
   0% { transform: translate(-50%, -50%) rotate(0deg); }
   100% { transform: translate(-50%, -50%) rotate(360deg); }
@@ -310,6 +365,13 @@
 
 
 @media (max-width: 768px) {
+  .gameContainer{
+    background-image: url("./assets/verticalPaddles.png");
+    background-repeat: no-repeat;
+    background-size: contain; 
+    background-position: center -50px;
+    opacity: 100%;
+  }
   .winnerText {
     font-size: 1rem;
   }
@@ -358,12 +420,12 @@
     height: 4vh;
     width: 7vw;
     left: 10px;
-    top: 80px;
+    top: 10px;
   }
   .muteButtonContainer{
     height: 4vh;
     width: 7vw;
-    left: 10px;
+    left: 70px;
   }
   .player1pointstext, .player2pointstext{
     font-size: 7vw;
@@ -402,8 +464,24 @@
     width: 10vw;
     height: 10vh;
   }
+  .downButton, .upButton{
+    visibility: visible;
+    width: 12vw;
+    height: 9vh;
+  }
+  .moveButtonsMobile{
+    width: 25vw;
+    justify-content: center;
+  }
+  .arrowUp{
+  font-size: 5vw;
+}
+.downButton:focus, .upButton:focus{
+  background-color: blue;
+  border-color: white;
+}
   
-  @media (max-width:450px) {
+  @media (max-width:550px) {
     .ComputerPlayer{
         width: 12vw;
         height: 4vh;
@@ -430,6 +508,18 @@
       width: 12vw;
       height: 4vh;
     }
+    .downButton, .upButton{
+    visibility: visible;
+    width: 20vw;
+    height: 9vh;
+  }
+  .moveButtonsMobile{
+    width: 35vw;
+    justify-content: center;
+  }
+   .arrowUp{
+  font-size: 7vw;
+}
   }
   
 }

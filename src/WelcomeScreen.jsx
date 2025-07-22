@@ -113,7 +113,7 @@ const toggleMusicIcons = () => {
 
   return (
     <div className={`welcomeScreen ${fadeOut ? 'fade-out' : ''}`}>
-      <img src={BackgroundPaddles} className='backgroundPaddles'></img>
+      
       <img src={Logo} alt='Akanza Logo' className='logo' />
       <div className={`choosePlayer ${isShown ? 'show' : ''}`}>
         <h1 className='PartykaOpis'>Natalia<br/> Partyka</h1>
