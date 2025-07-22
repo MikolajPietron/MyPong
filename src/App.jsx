@@ -1,7 +1,7 @@
   import { useEffect, useState, useRef } from 'react'
   import './App.css'
   import mypongGif from './assets/mypong.gif';
-  import mystartGif from './assets/spacestart.gif';
+  import mystartGif from './assets/Spacebar.gif';
   import myBall from './assets/FullA.png';
   import PunktyGracz1 from './assets/punktyPlayer1.png';
   import PunktyGracz2 from './assets/punktyPlayer2.png';
@@ -13,6 +13,7 @@
   import pingPongSound from './assets/pingPongSound.mp3';
   import { useLocation } from 'react-router-dom';
   import Icon from "@mdi/react";
+  import Ai from "./assets/ComputerPlayer.png";
   import { mdiBagPersonalPlusOutline, mdiPause, mdiVolumeOff } from '@mdi/js';
 
   function App() {
@@ -294,7 +295,7 @@
       const ballRect = ballElement.getBoundingClientRect();
 
       // Bounce off top & bottom
-      if (y <= 0 || y + ballRect.height >= containerRect.height) {
+      if (y <= 5 || y + ballRect.height >= containerRect.height - 15) {
         vy = -vy;
         playPingSound();
       }
@@ -481,70 +482,90 @@ useEffect(() => {
 
             </div>
 
-
-              <div className='pongContainer' ref={pongContainerRef}>
-
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    bottom: 0,
-                    left: '50%',
-                    width: '2px',               // line thickness
-                    marginLeft: '-1px',          // center the line exactly at 50%
-                    borderLeft: '2px dashed white', // dashed white line
-                    pointerEvents: 'none',       // makes sure clicks pass through the line
-                    zIndex: 10,                  // above background but below paddles/ball
-                  }}
-                />
-
-                    <div
-                      className="leftPaddle"
-                      ref = {leftPaddleRef}
-                      style={{
-                        position: 'absolute',
-                        top: paddleY + 'px',
-                        
-                      }}
-                    />
-                    <div
-                      className="rightPaddle"
-                      ref={rightPaddleRef}
-                      style={{
-                        position: 'absolute',
-                        top: paddleY2 + 'px',
-                        backgroundImage: playerImage ? `url(${playerImage})` : 'none',
-                        backgroundSize: 'cover',
-                        backgroundPosition: '60% center',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundColor: playerImage ? 'transparent' : '#ffffff',
-                      }}
-                    />
-                      <div
-                        className="ball"
-                        ref={ballRefElement}
-                        style={{
-                          position: 'absolute',
-                          top: ball.y + 'px',
-                          left: ball.x + 'px',
-                        }}
-                      >
-                        <img
-                          src={myBall}
-                          alt="Ball"
-                          style={{
-                            width: '80%',
-                            height: '80%',
-                            position: 'absolute',
-                            left: '50%',
-                            top: '50%',
-                            transform: `translate(-50%, -50%) rotate(${ballRotation}deg)`,
-                            transition: 'transform 0.05s linear', // makes spin smooth
-                          }}
-                        />
+                <div className='pongPlusPlayer'>
+                  
+                      <div className='PlayerVsPlayer'>
+                        <div className='ComputerPlayer'>
+                          <img src={Ai} className='ComputerImage'></img>
+                        </div>
+                        <div className='vsImage'></div>
+                        <div className='HumanPlayer' style={{
+                          backgroundImage: playerImage ? `url(${playerImage})` : 'none',
+                        }}></div>
                       </div>
 
-              </div>
+                
+                    <div className='pongContainer' ref={pongContainerRef}>
+                      {!isgameStarted && (
+                      <div className='pressSpace'>
+                        <img src= {mystartGif} alt="Press Space to Start" />
+                      </div>
+                                        )}
+
+                      <div
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          bottom: 0,
+                          left: '50%',
+                          width: '2px',               // line thickness
+                          marginLeft: '-1px',          // center the line exactly at 50%
+                          borderLeft: '2px dashed white', // dashed white line
+                          pointerEvents: 'none',       // makes sure clicks pass through the line
+                          zIndex: 10,                  // above background but below paddles/ball
+                        }}
+                      />
+
+                          <div
+                            className="leftPaddle"
+                            ref = {leftPaddleRef}
+                            style={{
+                              position: 'absolute',
+                              top: paddleY + 'px',
+                              
+                            }}
+                          />
+                          <div
+                            className="rightPaddle"
+                            ref={rightPaddleRef}
+                            style={{
+                              position: 'absolute',
+                              top: paddleY2 + 'px',
+                              
+                              backgroundColor:'white'
+                            }}
+                          />
+                            <div
+                              className="ball"
+                              ref={ballRefElement}
+                              style={{
+                                position: 'absolute',
+                                top: ball.y + 'px',
+                                left: ball.x + 'px',
+                              }}
+                            >
+                              <img
+                                src={myBall}
+                                alt="Ball"
+                                style={{
+                                  width: '80%',
+                                  height: '80%',
+                                  position: 'absolute',
+                                  left: '50%',
+                                  top: '50%',
+                                  transform: `translate(-50%, -50%) rotate(${ballRotation}deg)`,
+                                  transition: 'transform 0.05s linear', // makes spin smooth
+                                }}
+                              />
+                            </div>
+
+                    </div>
+
+                    <div className='bottomPoints'>
+                      <div className='Player1points'><span className='player2pointstext'>{Player1Points}</span></div>
+                      <div className='Player2points'><span className='player1pointstext'>{Player2Points}</span></div>
+                    </div>
+                </div>
             
             
             
@@ -553,8 +574,7 @@ useEffect(() => {
             
 
 
-            <div className='rightText'><img src={PunktyGracz2} alt="Punkty Gracz 2" /><span className='player2pointstext'>{Player2Points}</span> </div>
-            <div className='leftText'> <img src={PunktyGracz1} alt="Punkty Gracz 1" /><span className='player1pointstext'>{Player1Points}</span></div>
+            
 
 
             
@@ -564,11 +584,7 @@ useEffect(() => {
               {Player1Points >= 10 ? 'Gracz 1 wygrał!' : 'Gracz 2 wygrał!'}
             </div>
         )}
-          {!isgameStarted && (
-            <div className='pressSpace'>
-              <img src= {mystartGif} alt="Press Space to Start" />
-            </div>
-          )}
+          
       </div>
     )
   }
