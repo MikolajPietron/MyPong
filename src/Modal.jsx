@@ -8,7 +8,7 @@ function Modal({isOpen, onClose, children}) {
     <div className="modal-overlay" onClick={onClose}>
         <div
         className="modal-content"
-        onClick={(e) => e.stopPropagation()} // Prevent click from closing modal
+        onClick={(e) => e.stopPropagation()} 
         >
         <button className="close-button" onClick={onClose}>&times;</button>
         {children}

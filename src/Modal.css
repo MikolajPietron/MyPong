@@ -8,6 +8,8 @@
 h2{
     color: blue;
     font-weight: bolder;
+    font-family: 'kollektif';
+    font-size: 4vw;
 }
 
 .modal-overlay {
@@ -24,22 +26,23 @@ h2{
 }
 
 .modal-content {
-  background: rgb(0, 0, 0, 1);
-  border: 4px solid #ffffff;
+  background: rgb(255, 255, 255);
+  border: 4px solid #000000;
   padding: 2rem;
   border-radius: 8px;
   position: relative;
   align-self: center;
-  top: 50%;
+  top: 56%;
   left: 50%;
   transform: translate(-50%, -65%);
   height: 90%;
   width: 90%;
   font-size: 1.8rem;
-  color: white;
+  color: rgb(0, 0, 0);
+  font-family: 'kollektif';
   
   
-  font-family: 'pixelfont', 'sans-serif';
+  
 }
 
 .close-button {

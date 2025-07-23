@@ -198,7 +198,7 @@ const toggleMusicIcons = () => {
           <p>1. Use the right paddle to control the player.</p>
           <p>2. The left paddle is controlled by AI.</p>
           <p>3. Score 10 points to win the game.</p>
-          <p>4. Press 'Enter' to start the game.</p>
+          <p>4. Press 'Start' or Drag the Right paddle to start the game.</p>
           <p>5. Have fun!</p>
         </Modal>
       </div>
