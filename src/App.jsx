@@ -44,6 +44,7 @@
     const [gamePaused, setGamePaused] = useState(false);
     const [paddleDirection, setPaddleDirection] = useState(null); 
     const [ballRotation, setBallRotation] = useState(0);
+    
 
 
     
@@ -324,6 +325,7 @@
     vx *= scale;
     vy *= scale;
   }
+  setBallRotation(prevRotation => prevRotation + (vx * 0.5));
 
     // Get container size
     const container = pongContainerRef.current;
