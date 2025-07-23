@@ -37,7 +37,7 @@ h2{
   transform: translate(-50%, -65%);
   height: 90%;
   width: 90%;
-  font-size: 1.8rem;
+  font-size: 1.5vw;
   color: rgb(0, 0, 0);
   font-family: 'kollektif';
   
@@ -58,15 +58,23 @@ h2{
 @media (max-width: 768px) {
   .modal-content {
     
-    font-size: 0.7rem;
+    font-size: 2.5vw;
     
   }
   .modal-overlay {
     width: 80%;
-    height: 90%;
+    height: 45vh;
     position: absolute;
     top: 60%;
     transform: translate(0, -50%);
+  }
+  @media (max-width :450px){
+      .modal-content{
+        font-size: 3.5vw;
+      }
+      .modal-overlay{
+        height: 35vh;
+      }
   }
   
 }
