@@ -270,8 +270,8 @@ body {
 
 
 .logo{
-  width: 25vw;
-  height: 15vh;
+  width: 20vw;
+  height: 20vh;
   position: absolute;
   top: 50px;
   left: 50%;
@@ -295,7 +295,7 @@ body {
     
     bottom: 7vh;
 }
-.choosePlayer h1[class = "PartykaOpis"]{
+/* .choosePlayer h1[class = "PartykaOpis"]{
   position: absolute;
   right: 50px;
   top: 70px;
@@ -308,41 +308,98 @@ body {
   bottom: 70px;
   font-family: "kollektif",
   
-}
+} */
 .choosePlayer {
-  position: absolute;
+  position: fixed;
   display: flex;
   left: 30px;
   top: 150px;
   pointer-events: none;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   opacity: 0;
   height: 75vh;
-  width: 25vw;
+  width: 30vw;
   transition: opacity 0.5s ease;
-  border: 4px solid white;
+  border: 5px solid white;
   border-radius: 30px;
   background-color: blue;
   color: white;
-  background-image: url("pasekDoRozdzielenia.png");
+  
   
 }
-.choosePlayer img{
-  width: 25vw;
+.HeroSelection{
+  width: 100%;
+  height: 70%;
+  align-items: center;
+  position: relative;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  place-items: center;
+  gap: 10px;
+  margin-top: auto;
+  flex-direction: column;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 3px dashed white;
+  padding-top: 10px;
 }
+.WybierzZawodnika{
+  font-size: 3vw;
+  font-family: 'kollektif';
+  position: relative;
+  color: blue;
+}
+.WybierzZawodnikaContainer{
+  position: relative;
+  display: flex;
+  height: 17vh;
+  width: 20vw;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 20px;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  margin-top: 15px;
+}
+.HeroSelection button:hover {
+  box-shadow: 0 0 50px 20px rgba(255, 255, 255, 0.7);
+  transition: box-shadow 0.3s ease;
+}
+/* .HeroSelection button::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  transform: rotate(25deg) translateX(-100%);
+  transition: transform 0.5s ease;
+  pointer-events: none;
+}
+
+.HeroSelection button:hover::after {
+  transform: rotate(25deg) translateX(100%);
+} */
+
 .choosePlayer.show{
   opacity: 1;
   pointer-events: auto;
 }
 .nataliaPartyka {
-  border: 3px solid white;
+  border: 3px solid rgb(0, 0, 0);
   background-color: transparent;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  height: 23vh;
-  width: 12vw;
+  
+  
+  height: 15vh;
+  width: 8vw;
   transition: border-color 0.3s ease;
   background-image: url("./assets/NataliaPartyka.png");
   border-radius: 30px;
@@ -351,13 +408,12 @@ body {
   background-position: center;
 }
 .andrzejGrubba {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  height: 23vh;
-  width: 12vw;
+  
+  
+  height: 15vh;
+  width: 8vw;
   background-color: transparent;
-  border: 3px solid rgb(255, 255, 255);
+  border: 3px solid rgb(0, 0, 0);
   cursor: pointer;
   transition: border-color 0.3s ease;
   background-image: url("./assets/AndrzejGrubba.jpg");
@@ -365,12 +421,26 @@ body {
   background-position: center;
   border-radius: 30px;
 }
+.locked{
+  height: 15vh;
+  width: 8vw;
+  background-color: white;
+  border: 3px solid rgb(0, 0, 0);
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  background-image: url("./assets/locked.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 10px;
+  border-radius: 30px;
+}
 .andrzejGrubba:hover {
-  border-color: blue;
+  border-color: rgb(255, 255, 255);
   
 }
 .nataliaPartyka:hover {
-  border-color: blue;
+  border-color: rgb(255, 255, 255);
   
 }
 .containerForTwo{
@@ -434,7 +504,18 @@ body {
   color: white;
   border-radius: 30px;
 }
-
+.x{
+  position: absolute;
+  top: 0px;
+  right: 15px;
+  color: white;
+  font-size: 3vw;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.x:hover{
+  color: red;
+}
 @media (max-width: 768px) {
   .welcomeScreen{
     background-size: cover;
@@ -457,6 +538,10 @@ body {
     
     letter-spacing: 2px;
   }
+  .HeroSelection button:active {
+  box-shadow: 0 0 50px 20px rgba(255, 255, 255, 0.7);
+  transition: box-shadow 0.3s ease;
+}
 
   .container {
     height: fit-content;
@@ -510,11 +595,74 @@ body {
     width: 40vw;
     height: 10vh;
   }
+  .andrzejGrubba{
+    width: 20vw;
+    border-radius: 10px;
+    height: 10vh;
+  }
+  .nataliaPartyka{
+    width: 20vw;
+    border-radius: 10px;
+    height: 10vh;
+  }
+  .locked{
+    width: 20vw;
+    border-radius: 10px;
+    height: 10vh;
+  }
+  .HeroSelection{
+    align-items: center;
+    place-items: center;
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
+    display: grid;
+    gap: 0;
+    column-gap: 0;
+  }
+  .WybierzZawodnikaContainer{
+    margin-top: 20px;
+    width: 30vw;
+    height: 8vh;
+  }
+  .WybierzZawodnika{
+    font-size: 5vw;
+  }
+  .x{
+    font-size: 7vw;
+  }
   @media(max-width : 450px){
     .showPlayersButton, .showSoundsButton{
       width: 30vw;
       font-size: 2vw;
     }
+    .andrzejGrubba{
+    width: 20vw;
+    border-radius: 10px;
+    height: 10vh;
+  }
+  .nataliaPartyka{
+    width: 20vw;
+    border-radius: 10px;
+    height: 10vh;
+  }
+  .locked{
+    width: 20vw;
+    border-radius: 10px;
+    height: 10vh;
+  }
+  .WybierzZawodnikaContainer{
+    margin-top: 20px;
+    width: 40vw;
+    height: 8vh;
+    
+  }
+  .WybierzZawodnika{
+    font-size: 5vw;
+  }
+  .x{
+    font-size: 8vw;
+  }
   }
 }
 

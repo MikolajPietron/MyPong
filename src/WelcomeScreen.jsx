@@ -10,7 +10,7 @@ import RockSong from './assets/RockSong.mp3';
 import PingPong from './assets/pingPongSound.mp3';
 import BackgroundPaddles from './assets/backgroundPaddles.png';
 import PasekDoRozdzielania from './assets/pasekDoRozdzielenia.png';
-import Logo from './assets/akanzaLogo.png';
+import Logo from './assets/AtsAkanzaLogo.png';
 import Icon from "@mdi/react";
 import { mdiGuitarElectric, mdiHome, mdiHumanHandsup, mdiNintendoGameBoy, mdiSofaSingle, mdiTennisBall } from "@mdi/js";
 
@@ -102,6 +102,9 @@ const playSound = () => {
 const togglePlayersModal = () => {
   setIsShown(prev => !prev);
 };
+const closePlayerModal = () => {
+  setIsShown(false);
+}
 const toggleMusicIcons = () => {
   setShowMusicIcons(prev => !prev);
 }
@@ -116,11 +119,26 @@ const toggleMusicIcons = () => {
       
       <img src={Logo} alt='Akanza Logo' className='logo' />
       <div className={`choosePlayer ${isShown ? 'show' : ''}`}>
-        <h1 className='PartykaOpis'>Natalia<br/> Partyka</h1>
+        <span className='x' onClick={closePlayerModal}>&times;</span>
+        <div className='WybierzZawodnikaContainer'>
+
+        <h1 className='WybierzZawodnika'>Wybierz Zawodnika</h1>
+        </div>
+        <div className='HeroSelection'>
+
+        {/* <h1 className='PartykaOpis'>Natalia<br/> Partyka</h1> */}
         <button className='nataliaPartyka' onClick={() => {setSelectedPlayer('nataliaPartyka'); togglePlayersModal();}}/>
-          <img src= {PasekDoRozdzielania} alt='pasek'></img>
-        <h1 className='GrubbaOpis'>Andrzej<br/> Grubba</h1>
+          
+        {/* <h1 className='GrubbaOpis'>Andrzej<br/> Grubba</h1> */}
         <button className='andrzejGrubba' onClick={() => {setSelectedPlayer('andrzejGrubba'); togglePlayersModal();}}/>
+        <button className='locked'/>
+        <button className='locked'/>
+        <button className='locked'/>
+        <button className='locked'/>
+        <button className='locked'/>
+        <button className='locked'/>
+        <button className='locked'/>
+        </div>
       </div>
       
       <div className='container'>
