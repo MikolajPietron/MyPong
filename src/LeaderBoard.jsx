@@ -5,8 +5,7 @@ function LeaderBoard() {
   const [leaderboardData, setLeaderboardData] = useState([]); // ✅ Initialize as []
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/getgamescore`)
- // ✅ Use HTTP, not HTTPS
+    fetch("http://localhost:5000/api/getgamescore") // ✅ Use HTTP, not HTTPS
       .then((res) => res.json())
       .then((data) => setLeaderboardData(data))
       .catch((err) =>
