@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, use } from 'react';
 import mypongGif from './assets/mypongWelcome.gif';
 import WelcomeScreenBackground from './assets/WelcomeScreenBackground.png';
 import './WelcomeScreen.css';
@@ -12,6 +12,8 @@ import BackgroundPaddles from './assets/backgroundPaddles.png';
 import PasekDoRozdzielania from './assets/pasekDoRozdzielenia.png';
 import Logo from './assets/AtsAkanzaLogo.png';
 import Icon from "@mdi/react";
+import CurrentUser from './assets/userIconBlackBg.png';
+import LeaderBoard from './LeaderBoard.jsx';
 import { mdiGuitarElectric, mdiHome, mdiHumanHandsup, mdiNintendoGameBoy, mdiSofaSingle, mdiTennisBall } from "@mdi/js";
 
 
@@ -27,13 +29,14 @@ function WelcomeScreen() {
   const [isShown, setIsShown] = useState(false);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [showMusicIcons, setShowMusicIcons] = useState(false);
+  const [currentUserName, setCurrnetUserName] = useState(null);
 
   const handleGameNavigation = (e) => {
     e.preventDefault();
     pauseAll();
      setFadeOut(true);
     setTimeout(() => {
-      navigation('/game', {state: {selectedMusic, selectedPlayer}});
+      navigation('/game', {state: {selectedMusic, selectedPlayer, currentUserName}});
     }, 1000);
 
     
@@ -126,18 +129,44 @@ const toggleMusicIcons = () => {
         </div>
         <div className='HeroSelection'>
 
-        {/* <h1 className='PartykaOpis'>Natalia<br/> Partyka</h1> */}
-        <button className='nataliaPartyka' onClick={() => {setSelectedPlayer('nataliaPartyka'); togglePlayersModal();}}/>
-          
-        {/* <h1 className='GrubbaOpis'>Andrzej<br/> Grubba</h1> */}
-        <button className='andrzejGrubba' onClick={() => {setSelectedPlayer('andrzejGrubba'); togglePlayersModal();}}/>
+        
+        <div className='partykaContainer'>
+            <button className='nataliaPartyka'/>
+            <div className='partykaText'>Natalia Partyka</div>
+            <button className='partykaButton'  onClick={() => {setSelectedPlayer('nataliaPartyka'); togglePlayersModal();}}>Wybierz</button>
+        </div>
+        
+        
+        <div className='grubbaContainer'>
+            <button className='andrzejGrubba'/>
+            <div className='grubbaText'>Andrzej Grubba</div>
+            <button className='grubbaButton'  onClick={() => {setSelectedPlayer('andrzejGrubba'); togglePlayersModal();}}>Wybierz</button>
+        </div>
+
+        <div className='currentUserContainer'>
+          <form>
+
+            <button className='currentUser'/>
+            <div className='currentUserText'>
+              <input type='text'
+               className='currentUserTextInput' 
+               maxLength={11} 
+               autoCorrect='off' 
+               autoComplete='off' 
+               spellCheck={false} 
+               placeholder='Twoje Imie'
+               onChange={(e) => setCurrnetUserName(e.target.value)}
+               ></input>
+            </div>
+            <button className='currentUserButton' type='submit' onClick={(e) => { e.preventDefault(); setSelectedPlayer('currentUser'); togglePlayersModal();}}>Wybierz</button>
+          </form>
+        </div>
+        {/* <button className='locked'/>
         <button className='locked'/>
         <button className='locked'/>
         <button className='locked'/>
         <button className='locked'/>
-        <button className='locked'/>
-        <button className='locked'/>
-        <button className='locked'/>
+        <button className='locked'/> */}
         </div>
       </div>
       
@@ -146,6 +175,9 @@ const toggleMusicIcons = () => {
         <a href="#" className='game' onClick={(e) => { handleGameNavigation(e); }}>
           Enter The Game
         </a>
+        
+            <button className='leaderboardButton' onClick={() =>navigation("/leaderboard")}>RANKING</button>
+          
 
         <a
           href="#"
@@ -158,6 +190,7 @@ const toggleMusicIcons = () => {
            Rules
         </a>
         
+        
           <div className='containerForTwo'>
             <div className='playerIconContainer'>
               <button className='showPlayersButton' onClick={togglePlayersModal}>Wybierz <br/>zawodnika</button>
@@ -167,6 +200,7 @@ const toggleMusicIcons = () => {
             </div>
 
           </div>
+          
 
             <div className={`musicButtons ${showMusicIcons ? 'show' : ''}`}>
                 

@@ -1,0 +1,71 @@
+
+.leaderBoardContainer{
+    position: absolute;
+    display: flex;
+    height: 90vh;
+    width: 50vw;
+    border-radius: 50px ;
+    border: 4px solid rgb(255, 255, 255);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 100000;
+    justify-content: center;
+    align-items: flex-end;
+}
+.tablicaWynikowContainer{
+    position: absolute;
+    display: flex;
+    top:20px;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: 70%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 6vh;
+    border: 4px solid rgb(255, 255, 255);
+    background-color: white;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5vw;
+    
+}
+.tablicaWynikow{
+    color: blue;
+    text-align: center;
+    font-weight: 900;
+}
+.leaderList{
+    position: relative;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 30px;
+    height: 80%;
+    width: 90%;
+    background-color: white;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    flex-direction: column;
+}
+.leaderEntry{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    height: 5vh;
+    width: 97%;
+    border: 2px solid blue;
+    padding: 10px;
+    border-radius: 30px;
+    background-color: blue;
+    justify-content: flex-start;
+    align-items: center;
+}
+.leaderEntry span{
+    font-family: 'kollektif';
+    color: white;
+    font-size: 2rem;
+}

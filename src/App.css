@@ -212,16 +212,82 @@
   top: 10px;
   transform: translate(-50%, 0);
 }
-.winnerText{
-   font-size: 150px;
+.winContainer{
+  border: 4px solid rgb(0, 0, 0);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 255, 0.3);
+
+  border-radius: 20px;
+   height: 50vh;
+   width:25vw;
    position: fixed;
    left: 50%;
    top: 50%;
    transform: translate(-50%, -50%);
-   font-family: 'pixelfont', 'sans-serif';
+   font-family: 'kollektif', 'sans-serif';
+   justify-content: start;
+   flex-direction: column;
+   align-items: center;
+   display: flex;
+   gap: 40px;
+   background-color: white;
+   z-index: 10;
+}
+.winnerAts{
+  width: 9vw;
+  height: 9vh;
+}
+.winnerText{
+   margin-top: 20px;
+   font-size: 3vw;
+   position: relative;
+   display: flex;
    
-   color: rgb(255, 255, 255);
+   color: blue;
    font-weight: bolder;
+}
+.playAgain{
+  display: flex;
+  position: relative;
+  width: 20vw;
+  height: 7vh;
+  font-family: 'kollektif';
+  font-size: 1.5vw;
+ text-align: center;
+ justify-content: center;
+ align-items: center;
+ background-color: white;
+ border-radius: 20px;
+ border: 2px solid black;
+ color: blue;
+ z-index: 10000;
+ cursor: pointer;
+ transition: all 0.3s ease;
+}
+.zapiszWynik{
+  display: flex;
+  position: relative;
+  width: 20vw;
+  height: 7vh;
+  font-family: 'kollektif';
+  font-size: 1.5vw;
+ text-align: center;
+ justify-content: center;
+ align-items: center;
+ background-color: white;
+ border-radius: 20px;
+ border: 2px solid black;
+ color: blue;
+ z-index: 10000;
+ cursor: pointer;
+ transition: all 0.3s ease;
+}
+.playAgain:hover{
+  background-color: blue;
+  color: white;
+}
+.zapiszWynik:hover{
+  background-color: blue;
+  color: white;
 }
 .pressSpace img{
   width: 10%;

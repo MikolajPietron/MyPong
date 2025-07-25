@@ -1,4 +1,5 @@
   import { useEffect, useState, useRef } from 'react'
+  import {useNavigate} from 'react-router-dom';
   import './App.css'
   import mypongGif from './assets/mypong.gif';
   import mystartGif from './assets/Spacebar.gif';
@@ -10,15 +11,17 @@
   import RockSong from './assets/RockSong.mp3';
   import NataliaPartyka from './assets/NataliaPartyka.png';
   import AndrzejGrubba from './assets/AndrzejGrubba.jpg';
+  import CurrentPlayer from './assets/userIconBlackBg2.png'
   import pingPongSound from './assets/pongSound.mp3';
   import { useLocation } from 'react-router-dom';
   import UserIcon from './assets/userIcon.png'
   import Icon from "@mdi/react";
   import Ai from "./assets/ComputerPlayer.png";
+  import AtsLogo from './assets/atsAkanzaLogoBlue.png'
   import { mdiBagPersonalPlusOutline, mdiPause, mdiVolumeOff } from '@mdi/js';
 
   function App() {
-    
+    const navigate = useNavigate();
 
     function getSpeedFactor() {
     const baseWidth = 1920; 
@@ -44,6 +47,7 @@
     const [gamePaused, setGamePaused] = useState(false);
     const [paddleDirection, setPaddleDirection] = useState(null); 
     const [ballRotation, setBallRotation] = useState(0);
+    const [TotalHits, setTotalHits] = useState(0);
     
 
 
@@ -143,14 +147,27 @@
     const location = useLocation();
         const selectedMusic = location.state?.selectedMusic || null;
     const location2 = useLocation();
-    const {selectedPlayer} = location2.state || {};
+    const {selectedPlayer, currentUserName} = location2.state || {};
 
+    let playerImage = null;
 
-    const playerImage = selectedPlayer === 'nataliaPartyka'
-    ? NataliaPartyka
-    : selectedPlayer === 'andrzejGrubba'
-      ? AndrzejGrubba
-      : null;
+    if(selectedPlayer === 'andrzejGrubba'){
+      playerImage = AndrzejGrubba;
+    }else if(selectedPlayer === 'nataliaPartyka'){
+      playerImage = NataliaPartyka;
+    }else if(selectedPlayer === 'currentUser'){
+      playerImage = CurrentPlayer;
+    }else{
+      playerImage = null;
+    }
+
+    // const playerImage = selectedPlayer === 'nataliaPartyka'
+    // ? NataliaPartyka
+    // : selectedPlayer === 'andrzejGrubba'
+    // ? AndrzejGrubba
+    // : selectedPlayer === 'currentUser'
+    // ?
+    //   : null;
 
         function playPingSound() {
     if (!isMuted && selectedMusic === 'ping' && pingSoundRef.current) {
@@ -364,6 +381,7 @@ if (x + ballRect.width >= containerRect.width) {
     vx = Math.abs(vx) + 1; // Reflect to the right
     // Slight push-out to avoid sticking
     playPingSound();
+    setTotalHits(prev => prev + 1);
   }
 
 
@@ -377,6 +395,7 @@ if (x + ballRect.width >= containerRect.width) {
   // Reflect ball horizontally
   vx = -Math.abs(vx) - 1;
   playPingSound();
+  setTotalHits(prev => prev + 1);
 
   // Calculate paddle center and ball center Y positions
   const paddleCenterY = paddleRightRect.top + paddleRightRect.height / 2;
@@ -420,6 +439,7 @@ if (x + ballRect.width >= containerRect.width) {
     ballRef.current = { x, y, vx, vy };
     return { x, y, vx, vy };
   });
+  
 
 
 
@@ -434,7 +454,7 @@ if (x + ballRect.width >= containerRect.width) {
     }, [gameOver, isgameStarted, isMuted, gamePaused])
 
     useEffect(() => {
-  if (Player1Points >= 10 || Player2Points >= 10) {
+  if (Player1Points >= 1 || Player2Points >= 1) {
     setGameOver(true);
     
   }
@@ -508,6 +528,34 @@ useEffect(() => {
   }, [selectedMusic, isMuted, gamePaused]);
 
 
+  const handleSaveGame = async () => {
+  const score = TotalHits * 10;
+
+  try {
+    const response = await fetch('http://localhost:5000/api/gamescore', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        playerName: currentUserName,
+        score: score,
+        totalHits: TotalHits
+      }),
+    });
+    
+    const data = await response.json();
+    console.log('Success:', data);
+    alert('Wynik zapisany!');
+    setTotalHits(0);
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Błąd podczas zapisu wyniku');
+  }
+};
+
+
+
     return (
       
       <div 
@@ -536,8 +584,10 @@ useEffect(() => {
                         <div className='HumanPlayer'
      style={{
        backgroundImage: playerImage ? `url(${playerImage})` : 'none',
+       
      }}>
   {!playerImage && <img src={UserIcon} className="defaultUser" />}
+   <h1>{selectedPlayer === 'currentUser' ? currentUserName : selectedPlayer}!</h1>
 </div>
 
                       </div>
@@ -628,8 +678,14 @@ useEffect(() => {
             
 
           {gameOver && (
-            <div className="winnerText">
-              {Player1Points >= 10 ? 'Gracz 1 wygrał!' : 'Gracz 2 wygrał!'}
+            <div className="winContainer">
+              <div className='winnerText'>
+              {Player1Points >= 2 ? 'Przegrana!' : 'Wygrana!!!'}
+              </div>
+              <button className='playAgain' onClick={() => navigate('/')}>Zagraj jeszcze raz!</button>
+              <button className='zapiszWynik'  onClick={handleSaveGame}>Zapisz wynik!</button>
+              <img src= {AtsLogo} alt = "AtsAkanzaLogo" className='winnerAts'></img>
+
             </div>
         )}
         <div className='moveButtonsMobile'>
