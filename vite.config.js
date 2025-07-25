@@ -1,4 +1,4 @@
-// vite.config.js
+// vite.config.jsd
 export default {
   server: {
     proxy: {
