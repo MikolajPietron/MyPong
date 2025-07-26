@@ -89,6 +89,38 @@
     color: white;
     font-size: 1.6vw;
 }
+/* The scrollbar itself */
+::-webkit-scrollbar {
+  width: 12px; /* For vertical scrollbars */
+  height: 12px; /* For horizontal scrollbars */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Handle (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Corner of the scrollbar (where vertical and horizontal meet) */
+::-webkit-scrollbar-corner {
+  background: #f1f1f1;
+}
+
+/* Buttons at the end of the scrollbar track (if present) */
+::-webkit-scrollbar-button {
+  /* You can style these if they appear */
+}
 @media (max-width : 768px){
     .leaderBoardContainer{
         width: 90vw;
