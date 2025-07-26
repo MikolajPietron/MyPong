@@ -257,6 +257,8 @@
       window.addEventListener('keydown', handleKeyDown)
       window.addEventListener('keyup', handleKeyUp)
 
+      // GLOWNY INTERVAL GRY ----------------------  GLOWNY INTERVAL GRY ----------------------  GLOWNY INTERVAL GRY ----------------------  GLOWNY INTERVAL GRY ----------------------
+
       const moveInterval = setInterval(() => {
         if (gameOver || !isgameStarted || gamePausedRef.current) return;
         const containerRect = pongContainerRef.current?.getBoundingClientRect();
@@ -461,6 +463,7 @@ if (x + ballRect.width >= containerRect.width) {
   }
 }, [Player1Points, Player2Points]);
 
+//USEFFECT DO USTAWIENIA PILKI NA SRODKU ZAWSZE ----------------------------------------------------------------------------- USEFFECT DO USTAWIENIA PILKI NA SRODKU ZAWSZE
 useEffect(() => {
   const container = pongContainerRef.current;
   if (container) {
@@ -478,7 +481,7 @@ useEffect(() => {
   }
 }, []); 
 
-
+//USEEFFECT DO USTAWIENIA PALETEK NA SRODKU OSI ZAWSZE ---------------------------------------------------------------------- USEEFFECT DO USTAWIENIA PALETEK NA SRODKU OSI ZAWSZE 
 useEffect(() => {
   const container = pongContainerRef.current;
   if (container) {
@@ -498,7 +501,7 @@ useEffect(() => {
 
     
     
-    
+//USEEFFECT DO DZWIEKOW NIE RUSZAC BO CHUJ WI JAK TO DZIALA ------------------------------------------------ USEEFFECT DO DZWIEKOW NIE RUSZAC BO CHUJ WI JAK TO DZIALA
     
     useEffect(() => {
         
@@ -507,17 +510,17 @@ useEffect(() => {
 
     const audio = audioRefs.current[selectedMusic];
     if (audio) {
-      audio.loop = true; // Make sure it loops
+      audio.loop = true; 
       audio.muted = isMuted;
 
-      // Only play if not muted
+      
       if ( !gamePaused && !isMuted) {
         audio.play().catch(err => {
           console.log('Could not play audio:', err);
         });
       } else {
         audio.pause();
-        audio.currentTime = 0; // Reset to start
+        audio.currentTime = 0; 
       }
     }
 
@@ -528,9 +531,21 @@ useEffect(() => {
     };
   }, [selectedMusic, isMuted, gamePaused]);
 
-
+// ZAPIS DO BAZY DANYCH ----------------------------------------- ZAPIS DO BAZY DANYCH ----------------------------------------- ZAPIS DO BAZY DANYCH -----------------------------------------
   const handleSaveGame = async () => {
   const score = TotalHits * 10;
+  let playerNameForDb;
+
+   if (selectedPlayer === 'currentUser') {
+      playerNameForDb = currentUserName || 'Nieznajomy';
+    } else if (selectedPlayer === 'nataliaPartyka') {
+      playerNameForDb = 'Natalia Partyka';
+    } else if (selectedPlayer === 'andrzejGrubba') {
+      playerNameForDb = 'Andrzej Grubba';
+    } else {
+      // Fallback if no specific player or current user is selected
+      playerNameForDb = 'Nieznajomy';
+    }
 
   try {
     const response = await fetch(`${BACKEND_BASE_URL}/api/gamescore`, {
@@ -539,7 +554,7 @@ useEffect(() => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        playerName: currentUserName,
+        playerName: playerNameForDb,
         score: score,
         totalHits: TotalHits
       }),
@@ -596,14 +611,18 @@ useEffect(() => {
                               
                               >
                                 
-                            
+                            {!playerImage && <img src={UserIcon} className="defaultUser" />}
                           </div>
                           
                           
                           
                           
-                          {!playerImage && <img src={UserIcon} className="defaultUser" />}
-                          <div className='playerName'>{selectedPlayer === 'currentUser' ? currentUserName : selectedPlayer}</div>
+                                                  
+                          <div className='playerName'>
+  {selectedPlayer === 'currentUser'
+    ? (currentUserName || 'Nieznajomy')
+    : (selectedPlayer || 'Nieznajomy')} 
+</div>
                         </div>
                         
 

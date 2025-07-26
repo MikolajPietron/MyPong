@@ -51,19 +51,23 @@
     font-weight: 900;
 }
 .leaderList{
-    position: relative;
-    border: 2px solid rgb(255, 255, 255);
-    border-radius: 30px;
-    height: 80%;
-    width: 90%;
-    background-color: white;
-    margin-bottom: 10px;
-    display: flex;
-    gap: 1px;
-    padding: 20px;
-    flex-direction: column;
-    overflow-y: auto;
-    scroll-behavior: smooth;
+     position: relative;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 30px;
+  /* Change 'height' to 'max-height' */
+  max-height: 80%; /* This means it will take up to 80% of its parent's height */
+  width: 90%;
+  background-color: white;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px; /* Increased gap for better spacing, adjust as needed */
+  padding: 20px;
+  flex-direction: column;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  /* Add flex-shrink to prevent it from growing beyond max-height if parent is flex item */
+  flex-shrink: 0; 
 }
 .leaderEntry{
     position: relative;

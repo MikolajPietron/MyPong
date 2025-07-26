@@ -32,7 +32,7 @@ app.post('/api/gamescore', async (req, res) =>{
 
 app.get('/api/getgamescore' , async (req, res) =>{
     try{
-        const scores = await Game.find().sort({score : -1}).limit(10);
+        const scores = await Game.find().sort({score : -1});
         res.json(scores);
     }catch(err){
         console.error(err);

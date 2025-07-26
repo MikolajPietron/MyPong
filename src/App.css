@@ -124,18 +124,24 @@
   background-position: left -20% top 30%;
   display: flex;
   z-index: 10000;
+  position: relative;
    position: relative;
+  
 
 }
 .defaultUser{
-  align-self: center;
-  z-index: -1;
+  position: absolute;
+  
+  
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 50%;
   height: 60%;
 }
 .PlayerVsPlayer {
   
-  width: 90%;
+  width: 100%;
   height: 25%;
   display: flex;
   justify-content: space-between;
