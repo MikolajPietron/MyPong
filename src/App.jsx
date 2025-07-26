@@ -532,7 +532,7 @@ useEffect(() => {
   const score = TotalHits * 10;
 
   try {
-    const response = await fetch('http://localhost:5000/api/gamescore', {
+    const response = await fetch('/api/gamescore', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

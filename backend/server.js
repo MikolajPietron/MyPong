@@ -39,7 +39,7 @@ app.get('/api/getgamescore' , async (req, res) =>{
         res.status(500).json({message : "Nie udalo sie porac danych"});
     }
 });
-
-app.listen(PORT, () =>{
-    console.log(`🚀 Server listening on http://localhost:${PORT}`);
-});
+module.exports = app;
+// app.listen(PORT, () =>{
+//     console.log(`🚀 Server listening on http://localhost:${PORT}`);
+// });
