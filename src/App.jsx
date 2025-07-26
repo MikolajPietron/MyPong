@@ -16,6 +16,7 @@
   import { useLocation } from 'react-router-dom';
   import UserIcon from './assets/userIcon.png'
   import Icon from "@mdi/react";
+  import { BACKEND_BASE_URL } from './apiConfig.js'; 
   import Ai from "./assets/ComputerPlayer.png";
   import AtsLogo from './assets/atsAkanzaLogoBlue.png'
   import { mdiBagPersonalPlusOutline, mdiPause, mdiVolumeOff } from '@mdi/js';
@@ -532,7 +533,7 @@ useEffect(() => {
   const score = TotalHits * 10;
 
   try {
-    const response = await fetch('http://localhost:5000/api/gamescore', {
+    const response = await fetch(`${BACKEND_BASE_URL}/api/gamescore`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

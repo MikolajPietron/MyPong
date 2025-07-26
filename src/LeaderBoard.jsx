@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import "./LeaderBoard.css";
+import { BACKEND_BASE_URL } from './apiConfig.js'; 
 
 function LeaderBoard() {
   const [leaderboardData, setLeaderboardData] = useState([]); // ✅ Initialize as []
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/getgamescore") // ✅ Use HTTP, not HTTPS
+    fetch(`${BACKEND_BASE_URL}/api/getgamescore`) // ✅ Use HTTP, not HTTPS
       .then((res) => res.json())
       .then((data) => setLeaderboardData(data))
       .catch((err) =>

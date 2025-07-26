@@ -40,6 +40,7 @@ app.get('/api/getgamescore' , async (req, res) =>{
     }
 });
 
-app.listen(PORT, () =>{
-    console.log(`🚀 Server listening on http://localhost:${PORT}`);
-});
+module.exports = app;
+// app.listen(PORT, () =>{
+//     console.log(`🚀 Server listening on http://localhost:${PORT}`);
+// });
