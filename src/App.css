@@ -32,16 +32,16 @@
   width: 7vw;
   border: 3px solid white;
   border-radius: 20px;
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;;
   background-color: rgb(0, 0, 255, 0.4);
 }
 .ComputerImage{
-  position: relative;
-  display: flex;
-  
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
+  position: static; /* or remove position altogether */
+  left: auto;
+  top: auto;
+  transform: none;
 }
 .vsImage{
   height: 10vh;
@@ -56,6 +56,61 @@
   background-position: center;
   
 }
+.humanPlayerContainer{
+  
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  height: 80%;
+}
+
+.playerName{
+  align-self: center;
+  background-color: white;
+  text-transform: uppercase;
+  border-radius: 10px;
+  height: 3vh;
+  width: 95%;
+  display: flex;
+  border: 2px solid rgb(255, 255, 255);
+  justify-content: center;
+  align-items: center;
+  color: blue;
+  font-family: 'kollektif';
+  font-size: 1vw;
+  text-align: center;
+  
+
+}
+.ComputerContainer{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  height: 80%;
+ 
+
+}
+.ComputerText{
+  align-self: center;
+  text-transform: uppercase;
+  background-color: white;
+  border-radius: 10px;
+  height: 3vh;
+  width: 95%;
+  display: flex;
+  border: 2px solid rgb(255, 255, 255);
+  justify-content: center;
+  align-items: center;
+  color: blue;
+  font-family: 'kollektif';
+  font-size: 1vw;
+  text-align: center;
+}
+
 .HumanPlayer{
   height: 10vh;
   width: 7vw;
@@ -81,15 +136,16 @@
 .PlayerVsPlayer {
   
   width: 90%;
-  height: 15%;
+  height: 25%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   flex-direction: row;
   /* Replace this: */
   /* gap: 350px; */
   gap: clamp(20px, 10vw, 80px); /* ✅ responsive gap */
   margin-top: 20px;
+  margin-bottom: 0px;
   flex-wrap: wrap; /* Optional: allows wrapping on small screens */
 }
 
@@ -445,7 +501,10 @@
   .pressSpace img {
     visibility: hidden
   }
-
+  .humanPlayerContainer{
+    margin: 0;
+    padding: 0;
+  }
   
   .pongContainer{
     width: 80vw;
@@ -459,7 +518,16 @@
     top: 50%;
     transform: translate(-50%,  -50%);
   }
-  
+  .playerName{
+    border-radius: 5px;
+    font-size: 2vw;
+    height: 2vh;
+  }
+  .ComputerText{
+    border-radius: 5px;
+    font-size: 2vw;
+    height: 2vh;
+  }
   .rightText span, .leftText span {
     font-size: 4vw;
     font-family: 'Montserrat';
@@ -513,17 +581,17 @@
   .ComputerPlayer{
     width: 10vw;
     height: 6vh;
-    margin-bottom: 20px;
+    
     border-radius: 10px;
   }
   .ComputerImage{
-    width: 70%;
-    height: 70%;
+    width: 60%;
+    height: 60%;
   }
   .HumanPlayer{
     width: 10vw;
     height: 6vh;
-    margin-bottom: 20px;
+    
     border-radius: 10px;
   }
   .vsImage{
@@ -550,7 +618,7 @@
   @media (max-width:550px) {
     .ComputerPlayer{
         width: 12vw;
-        height: 4vh;
+        height: 10vh;
         margin-top: 15px;
         border-radius: 10px;
         border: 2px solid white;
@@ -561,7 +629,7 @@
     }
     .HumanPlayer{
       width: 12vw;
-        height: 4vh;
+        height: 10vh;
         margin-top: 15px;
         border-radius: 10px;
         border: 2px solid white;

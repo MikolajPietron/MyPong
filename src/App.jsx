@@ -578,18 +578,34 @@ useEffect(() => {
                 <div className='pongPlusPlayer'>
                   
                       <div className='PlayerVsPlayer'>
-                        <div className='ComputerPlayer'>
-                          <img src={Ai} className='ComputerImage'></img>
+                        <div className='ComputerContainer'>
+
+                          <div className='ComputerPlayer'>
+                            <img src={Ai} className='ComputerImage'></img>
+                          </div>
+                          <div className='ComputerText'>Komputer</div>
                         </div>
                         <div className='vsImage'></div>
-                        <div className='HumanPlayer'
-     style={{
-       backgroundImage: playerImage ? `url(${playerImage})` : 'none',
-       
-     }}>
-  {!playerImage && <img src={UserIcon} className="defaultUser" />}
-   <h1>{selectedPlayer === 'currentUser' ? currentUserName : selectedPlayer}!</h1>
-</div>
+                        <div className='humanPlayerContainer'>
+                          <div className='HumanPlayer'
+                        
+                              style={{
+                                backgroundImage: playerImage ? `url(${playerImage})` : 'none',
+                                
+                              }}
+                              
+                              >
+                                
+                            
+                          </div>
+                          
+                          
+                          
+                          
+                          {!playerImage && <img src={UserIcon} className="defaultUser" />}
+                          <div className='playerName'>{selectedPlayer === 'currentUser' ? currentUserName : selectedPlayer}</div>
+                        </div>
+                        
 
                       </div>
 
