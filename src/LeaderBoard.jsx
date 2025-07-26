@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./LeaderBoard.css";
 import { BACKEND_BASE_URL } from './apiConfig.js'; 
 
 function LeaderBoard() {
   const [leaderboardData, setLeaderboardData] = useState([]); // ✅ Initialize as []
-
+  const [isShown, setIsShown] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     fetch(`${BACKEND_BASE_URL}/api/getgamescore`) // ✅ Use HTTP, not HTTPS
       .then((res) => res.json())
@@ -14,8 +16,13 @@ function LeaderBoard() {
       );
   }, []);
 
+  function handleClose(){
+    setIsShown(false);
+  }
+
   return (
   <div className="leaderBoardContainer">
+    <span className="closeButton" onClick={() => navigate('/')}>&times;</span>
     <div className="tablicaWynikowContainer">
       <h1 className="tablicaWynikow">TABLICA WYNIKÓW</h1>
       

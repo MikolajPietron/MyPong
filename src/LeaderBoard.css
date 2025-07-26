@@ -1,9 +1,9 @@
 
 .leaderBoardContainer{
-    position: absolute;
+    position: fixed;
     display: flex;
     height: 90vh;
-    width: 50vw;
+    width: 40vw;
     border-radius: 50px ;
     border: 4px solid rgb(255, 255, 255);
     left: 50%;
@@ -12,6 +12,7 @@
     z-index: 100000;
     justify-content: center;
     align-items: flex-end;
+    padding: 20px;
 }
 .tablicaWynikowContainer{
     position: absolute;
@@ -29,8 +30,20 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
+    font-family: 'kollektif';
     
+}
+.closeButton{
+    position: absolute;
+    font-size: 3vw;
+    color: red;
+    background-color: transparent;
+    border: 0px solid none;
+    z-index: 10000000;
+    top: 5px;
+    right: 20px;
+    cursor: pointer;
 }
 .tablicaWynikow{
     color: blue;
@@ -46,15 +59,17 @@
     background-color: white;
     margin-bottom: 10px;
     display: flex;
-    gap: 10px;
+    gap: 1px;
     padding: 20px;
     flex-direction: column;
+    overflow-y: auto;
+    scroll-behavior: smooth;
 }
 .leaderEntry{
     position: relative;
     display: flex;
     flex-direction: row;
-    gap: 100px;
+    gap: 10px;
     height: 5vh;
     width: 97%;
     border: 2px solid blue;
@@ -63,9 +78,30 @@
     background-color: blue;
     justify-content: flex-start;
     align-items: center;
+    column-gap: 30px;
 }
 .leaderEntry span{
     font-family: 'kollektif';
     color: white;
-    font-size: 2rem;
+    font-size: 1.6vw;
+}
+@media (max-width : 768px){
+    .leaderBoardContainer{
+        width: 90vw;
+        height: 90vh;
+    }
+    .closeButton{
+        font-size: 10vw;
+    }
+    .leaderList{
+        width: 80%;
+    }
+    .leaderEntry span{
+        font-size: 3vw;
+    }
+    .tablicaWynikowContainer{
+        font-size: 3vw;
+    }
+
+
 }

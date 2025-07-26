@@ -503,6 +503,7 @@ body {
   align-self: bottom;
   width: 90%;
   height: 5vh;
+  margin-top: 17px;
   background-color: rgb(0, 0, 0);
   border-radius: 5px;
   border: none;
@@ -858,6 +859,7 @@ body {
   }
   .currentUserButton{
     font-size: 3vw;
+    margin-top: 22px;
   }
   .andrzejGrubba{
     background-repeat: no-repeat;

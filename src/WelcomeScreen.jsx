@@ -144,7 +144,7 @@ const toggleMusicIcons = () => {
         </div>
 
         <div className='currentUserContainer'>
-          <form>
+          
 
             <button className='currentUser'/>
             <div className='currentUserText'>
@@ -159,7 +159,7 @@ const toggleMusicIcons = () => {
                ></input>
             </div>
             <button className='currentUserButton' type='submit' onClick={(e) => { e.preventDefault(); setSelectedPlayer('currentUser'); togglePlayersModal();}}>Wybierz</button>
-          </form>
+          
         </div>
         {/* <button className='locked'/>
         <button className='locked'/>
