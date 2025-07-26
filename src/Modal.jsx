@@ -19,3 +19,4 @@ function Modal({isOpen, onClose, children}) {
   );
 }
 export default Modal;
+//c
