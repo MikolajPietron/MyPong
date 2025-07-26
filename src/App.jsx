@@ -457,7 +457,7 @@ if (x + ballRect.width >= containerRect.width) {
     }, [gameOver, isgameStarted, isMuted, gamePaused])
 
     useEffect(() => {
-  if (Player1Points >= 1 || Player2Points >= 1) {
+  if (Player1Points >= 10 || Player2Points >= 10) {
     setGameOver(true);
     
   }
@@ -716,7 +716,7 @@ useEffect(() => {
           {gameOver && (
             <div className="winContainer">
               <div className='winnerText'>
-              {Player1Points >= 2 ? 'Przegrana!' : 'Wygrana!!!'}
+              {Player1Points >= 10 ? 'Przegrana!' : 'Wygrana!!!'}
               </div>
               <button className='playAgain' onClick={() => navigate('/')}>Zagraj jeszcze raz!</button>
               <button className='zapiszWynik'  onClick={handleSaveGame}>Zapisz wynik!</button>
