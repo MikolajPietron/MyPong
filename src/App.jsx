@@ -61,7 +61,7 @@
       vx: 10 * speedFactor * (Math.random() > 0.5 ? 1 : -1),
       vy: 10 * speedFactor * (Math.random() > 0.5 ? 1 : -1),
     })
-    // const aiPaddleHitCount = useRef(0);
+    // const aiPaddleHitCount = useRef(0);ss
 
     const ballRef = useRef(ball);
     const keysPressed2 = useRef({})
