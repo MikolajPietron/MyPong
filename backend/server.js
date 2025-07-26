@@ -5,7 +5,7 @@ require('dotenv').config();
 const Game = require('./models/Game');
 
 const app = express();
-const PORT =process.env.PORT || 5000;
+// const PORT =process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
@@ -40,7 +40,18 @@ app.get('/api/getgamescore' , async (req, res) =>{
     }
 });
 
-module.exports = app;
+const PORT = process.env.PORT || 5000; // Use Render's PORT or fallback to 5000 for local testing
+app.listen(PORT, () => {
+    console.log(`🚀 Server listening on port ${PORT}`); // This message will now show in Render logs!
+});
+
+
+
+// module.exports = app;
+
+
+
+
 // app.listen(PORT, () =>{
 //     console.log(`🚀 Server listening on http://localhost:${PORT}`);
 // });
