@@ -738,6 +738,12 @@ body {
     
     letter-spacing: 2px;
   }
+  .leaderboardButton{
+   width: 60vw;
+   height: 7vh;
+   font-size: 6vw;
+   letter-spacing: 2px;
+}
   .HeroSelection button:active {
   box-shadow: 0 0 50px 20px rgba(255, 255, 255, 0.7);
   transition: box-shadow 0.3s ease;
@@ -745,7 +751,7 @@ body {
 
   .container {
     height: fit-content;
-    bottom: 20vh;
+    bottom: 15vh;
     
     gap: 0px;
     
@@ -776,10 +782,10 @@ body {
     min-height: 40px;
   }
   .showPlayersButton{
-    font-size: 0.6rem;
+    font-size: 0.9rem;
   }
   .showSoundsButton{
-    font-size: 0.6rem;
+    font-size: 0.9rem;
   }
   
   
@@ -833,8 +839,8 @@ body {
   }
   @media(max-width : 450px){
     .showPlayersButton, .showSoundsButton{
-      width: 30vw;
-      font-size: 2vw;
+      width: 25vw;
+      font-size: 2.5vw;
     }
     .andrzejGrubba{
     width: 20vw;
