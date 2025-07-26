@@ -1,10 +1,8 @@
 const serverless = require('serverless-http');
-const express = require('express');
+const app = require('../server');
 
-const app = express();
-
-app.get('/api/getgamescore', (req, res) => {
-  res.json([{ playerName: "Test", score: 100, date: new Date() }]);
+app.get('/api/test', (req, res) => {
+  res.json({ message: "API is working!" });
 });
 
 module.exports.handler = serverless(app);
