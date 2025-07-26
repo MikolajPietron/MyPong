@@ -31,7 +31,7 @@ function LeaderBoard() {
         {leaderboardData.map((entry, index) => (
           <div className="leaderEntry" key={index}>
             <span className="position">{index + 1}.</span>
-            <span className="playerName">{entry.playerName}</span>
+            <span className="playerNamee">{entry.playerName}</span>
             <span className="score">{entry.score} pts</span>
             <span className="date">{new Date(entry.date).toLocaleDateString()}</span>
           </div>
