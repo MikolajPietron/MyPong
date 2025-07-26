@@ -28,7 +28,7 @@
     const baseWidth = 1920; 
     const baseHeight = 1080;
 
-    const widthFactor = window.innerWidth / baseWidth;
+    const widthFactor = window.innerWidth  / baseWidth;
     const heightFactor = window.innerHeight / baseHeight;
 
     
@@ -272,7 +272,7 @@
 
 
     const clampedTarget = Math.max(0, Math.min(targetY, maxY));
-    const speed = 8.6 * speedFactor + 5;
+    const speed = 8.6 * speedFactor + 3;
     
       
 
