@@ -11,7 +11,7 @@
   import RockSong from './assets/RockSong.mp3';
   import NataliaPartyka from './assets/NataliaPartyka.png';
   import AndrzejGrubba from './assets/AndrzejGrubba.jpg';
-  import CurrentPlayer from './assets/userIconBlackBg2.png'
+  import CurrentPlayer from './assets/NowyZawodnik.png'
   import pingPongSound from './assets/pongSound.mp3';
   import { useLocation } from 'react-router-dom';
   import UserIcon from './assets/userIcon.png'

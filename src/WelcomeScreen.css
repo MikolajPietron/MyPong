@@ -456,8 +456,8 @@ body {
   border: none;
   pointer-events: none;
   transition: border-color 0.3s ease;
-  background-image: url('./assets/userIconBlackBg2.png');
-  background-size: contain;
+  background-image: url('./assets/NowyZawodnik.png');
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-color: white;
@@ -499,24 +499,7 @@ body {
 .currentUserTextInput::placeholder{
   text-align: center;
 }
-.currentUserButton{
-  align-self: bottom;
-  width: 90%;
-  height: 5vh;
-  margin-top: 17px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 5px;
-  border: none;
-  font-weight: bolder;
-  border: 2px solid white;
-  color: rgb(255, 255, 255);
-  letter-spacing: 2px;
-  font-size: 1vw;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  
-  
-}
+
 .grubbaContainer{
   display: flex;
   flex :1;
@@ -527,7 +510,7 @@ body {
   flex-direction: column;
   text-align: center;
   gap: 0px;
-  border: 2px solid yellow;
+  
   
 }
 .partykaContainer{
@@ -544,6 +527,7 @@ body {
   
 }
 .partykaText{
+  display: flex;
   width: 100%;
   height: fit-content;
   background-color: white;
@@ -570,14 +554,17 @@ body {
   border-radius: 10px;
   justify-content: center;
   align-items: center;
+  text-align: center;
   border-bottom-left-radius: 20px ;
   border-bottom-right-radius: 20px;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
+  display: flex;
 }
 .grubbaButton{
-   align-self: bottom;
-  width: 90%;
+  position: absolute;
+  bottom: 2px;
+  width: 25%;
   height: 5vh;
   background-color: rgb(0, 0, 0);
   border-radius: 5px;
@@ -596,8 +583,9 @@ body {
   transform: scale(1.1);
 }
 .partykaButton{
-  align-self: bottom;
-  width: 90%;
+  position: absolute;
+  bottom: 2px;
+  width: 25%;
   height: 5vh;
   background-color: rgb(0, 0, 0);
   border-radius: 5px;
@@ -613,6 +601,28 @@ body {
   margin-bottom: 20px;
   
   transition: transform 0.3s ease-in-out
+}
+.currentUserButton{
+  position: absolute;
+  bottom: 2px;
+  width: 25%;
+  height: 5vh;
+  background-color: rgb(0, 0, 0);
+  border-radius: 5px;
+  border: none;
+  font-weight: bolder;
+  border: 2px solid white;
+  color: rgb(255, 255, 255);
+  letter-spacing: 2px;
+  font-size: 1vw;
+  
+  cursor: pointer;
+  margin-top: auto;
+  margin-bottom: 20px;
+  
+  transition: transform 0.3s ease-in-out
+  
+  
 }
 .partykaButton:hover {
   transform: scale(1.1);
@@ -719,6 +729,25 @@ body {
 .x:hover{
   color: red;
 }
+@media (max-width: 1700px){
+  .choosePlayer{
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%,-50%);
+    z-index: 1000000;
+    width: 40vw;
+    
+  }
+  .partykaText{
+    height: 7vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .grubbaText{
+    height: 7vh;
+  }
+}
 @media (max-width: 768px) {
   .welcomeScreen{
     background-size: cover;
@@ -817,6 +846,9 @@ body {
     height: 35vh;
     width: 70vw;
   }
+  .currentUserTextInput{
+    font-size: 3vw;
+  }
   .partykaText{
     height: 5vh;
     justify-content: center;
@@ -859,7 +891,7 @@ body {
   }
   .currentUserButton{
     font-size: 3vw;
-    margin-top: 22px;
+    
   }
   .andrzejGrubba{
     background-repeat: no-repeat;
@@ -942,6 +974,9 @@ body {
     display: flex;
     
   }
+   .currentUserTextInput{
+    font-size: 4vw;
+  }
   .nataliaPartyka{
     width: 100%;
     border-radius: 10px;
@@ -974,6 +1009,15 @@ body {
     height: 25vh;
     margin-bottom: 40px;
     
+  }
+  .partykaButton{
+    bottom: 30px;
+  }
+  .grubbaButton{
+    bottom: 30px;
+  }
+  .currentUserButton{
+    bottom: 30px;
   }
   .locked{
     width: 20vw;
