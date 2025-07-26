@@ -513,8 +513,8 @@ body {
   font-size: 1vw;
   transition: all 0.3s ease;
   cursor: pointer;
-  margin-top: auto;
-  margin-bottom: 20px;
+  
+  
 }
 .grubbaContainer{
   display: flex;
@@ -526,9 +526,11 @@ body {
   flex-direction: column;
   text-align: center;
   gap: 0px;
+  border: 2px solid yellow;
   
 }
 .partykaContainer{
+  
   display: flex;
   flex :1;
   border: 2px solid rgb(255, 255, 255);
@@ -793,23 +795,98 @@ body {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    height: 50vh;
-    width: 95vw;
+    height: 55vh;
+    width: 80vw;
     z-index: 10000;
+    border: 4px solid white;
   }
   .logo{
     width: 40vw;
     height: 10vh;
   }
-  .andrzejGrubba{
-    width: 20vw;
+  .partykaContainer{
+    height: 35vh;
+    width: 70vw;
+  }
+  .grubbaContainer{
+    height: 35vh;
+    width: 70vw;
+  }
+  .currentUserContainer{
+    height: 35vh;
+    width: 70vw;
+  }
+  .partykaText{
+    height: 5vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 3vw;
+  }
+  .grubbaText{
+    height: 5vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 3vw;
+  }
+  .currentUserText{
+    height: 5vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 3vw;
+  }
+  .currentUser{
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 25vw;
     border-radius: 10px;
-    height: 10vh;
+    height: 20vh;
+    
+    padding: 0;
+    margin: 0;
+    border-bottom-left-radius: 0px ;
+    border-bottom-right-radius: 0px ;
+    border-top-left-radius: 20px ;
+    border-top-right-radius: 20px ;
+  }
+  .currentUserTextInput{
+    margin: 0;
+    padding: 0;
+    border: 2px solid black;
+  }
+  .currentUserButton{
+    font-size: 3vw;
+  }
+  .andrzejGrubba{
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    border-radius: 10px;
+    height: 20vh;
+    border-bottom-left-radius: 0px ;
+    border-bottom-right-radius: 0px ;
+    border-top-left-radius: 20px ;
+    border-top-right-radius: 20px ;
   }
   .nataliaPartyka{
-    width: 20vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
     border-radius: 10px;
-    height: 10vh;
+    height: 20vh;
+    border-bottom-left-radius: 0px ;
+    border-bottom-right-radius: 0px ;
+    border-top-left-radius: 20px ;
+    border-top-right-radius: 20px ;
+
+  }
+  .partykaButton{
+    font-size: 3vw;
+  }
+  .grubbaButton{
+    font-size: 3vw;
   }
   .locked{
     width: 20vw;
@@ -822,9 +899,10 @@ body {
     justify-content: center;
     justify-self: center;
     align-self: center;
-    display: grid;
-    gap: 0;
-    column-gap: 0;
+    display: flex;
+    flex-direction: row;
+    
+    column-gap: 10px;
   }
   .WybierzZawodnikaContainer{
     margin-top: 20px;
@@ -843,14 +921,57 @@ body {
       font-size: 2.5vw;
     }
     .andrzejGrubba{
-    width: 20vw;
+    width: 100%;
     border-radius: 10px;
     height: 10vh;
+    border-bottom-left-radius: 0px ;
+    border-bottom-right-radius: 0px ;
+    border-top-left-radius: 20px ;
+    border-top-right-radius: 20px ;
+  }
+  .grubbaContainer{
+    height: 25vh;
+    margin-bottom: 40px;
+  }
+  .grubbaText{
+    font-size: 4vw;
+  }
+  .HeroSelection{
+    display: flex;
+    
   }
   .nataliaPartyka{
-    width: 20vw;
+    width: 100%;
     border-radius: 10px;
     height: 10vh;
+    border-bottom-left-radius: 0px ;
+    border-bottom-right-radius: 0px ;
+    border-top-left-radius: 20px ;
+    border-top-right-radius: 20px ;
+  }
+  .currentUser{
+    width: 25vw;
+    border-radius: 10px;
+    height: 10vh;
+    border-bottom-left-radius: 0px ;
+    border-bottom-right-radius: 0px ;
+    border-top-left-radius: 20px ;
+    border-top-right-radius: 20px ;
+  }
+  .currentUserContainer{
+    height: 25vh;
+    margin-bottom: 40px;
+  }
+  .currentUserTextInput::placeholder{
+    font-size: 3vw;
+  }
+  .partykaText{
+    font-size: 4vw;
+  }
+  .partykaContainer{
+    height: 25vh;
+    margin-bottom: 40px;
+    
   }
   .locked{
     width: 20vw;
@@ -868,6 +989,9 @@ body {
   }
   .x{
     font-size: 8vw;
+  }
+  .choosePlayer{
+    height: 45vh;
   }
   }
 }
