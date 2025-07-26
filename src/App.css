@@ -614,6 +614,24 @@
   background-color: blue;
   border-color: white;
 }
+.winContainer{
+  width: 50vw;
+  height: 45vh;
+}
+.winnerText{
+  font-size: 5vw;
+}
+.playAgain{
+  width: 30vw;
+  font-size: 3vw;
+}
+.zapiszWynik{
+  width: 30vw;
+  font-size: 3vw;
+}
+.winnerAts{
+  width: 20vw;
+}
   
   @media (max-width:550px) {
     .ComputerPlayer{
@@ -622,6 +640,24 @@
         margin-top: 15px;
         border-radius: 10px;
         border: 2px solid white;
+    }
+    .playAgain{
+      height: 7vh;
+      width: 50vw;
+      font-size: 5vw;
+      border-radius: 10px;
+    }
+    .winnerText{
+      font-size: 10vw;
+    }
+    .zapiszWynik{
+      height: 7vh;
+      width: 50vw;
+      font-size: 5vw;
+      border-radius: 10px;
+    }
+    .winContainer{
+      width: 80vw;
     }
     .ComputerImage{
       width: 50%;
