@@ -647,6 +647,12 @@
         border-radius: 10px;
         border: 2px solid white;
     }
+    .leftPaddle{
+      height: 5.5vh;
+    }
+    .rightPaddle{
+      height: 5.5vh;
+    }
     .playAgain{
       height: 7vh;
       width: 50vw;

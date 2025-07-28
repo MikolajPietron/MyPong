@@ -35,6 +35,7 @@
     return Math.min(widthFactor, heightFactor);
   }
     const speedFactor = getSpeedFactor();
+    const ballSpeedAdjustment = Math.pow(1 / speedFactor, 0.40);
     const MAX_BALL_SPEED = 15 * speedFactor; 
 
     const [aiPaddleHits, setAiPaddleHits] = useState(0);
@@ -58,8 +59,8 @@
       
       x: 0,
       y: 0,
-      vx:  5 * speedFactor * (Math.random() > 0.5 ? 1 : -1),
-      vy:  5  * speedFactor * (Math.random() > 0.5 ? 1 : -1),
+      vx:  5 * speedFactor * ballSpeedAdjustment * (Math.random() > 0.5 ? 1 : -1),
+      vy:  5  * speedFactor * ballSpeedAdjustment * (Math.random() > 0.5 ? 1 : -1),
     })
     // const aiPaddleHitCount = useRef(0);ss
 
@@ -184,7 +185,7 @@
   }
   const rect = container.getBoundingClientRect();
   const angle = (Math.random() * Math.PI) / 3 - Math.PI / 6; // random angle
-  const speed = 7 * speedFactor;
+  const speed = 7 * speedFactor *ballSpeedAdjustment;
 
   return {
     x: rect.width / 2,
@@ -272,7 +273,7 @@
 
 
     const clampedTarget = Math.max(0, Math.min(targetY, maxY));
-    const speed = 8.6 * speedFactor;
+    const speed = 6.5 * speedFactor;
     
       
 
