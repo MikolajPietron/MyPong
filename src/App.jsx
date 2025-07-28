@@ -35,7 +35,7 @@
     return Math.min(widthFactor, heightFactor);
   }
     const speedFactor = getSpeedFactor();
-    const MAX_BALL_SPEED = 40 * speedFactor; 
+    const MAX_BALL_SPEED = 15 * speedFactor; 
 
     const [aiPaddleHits, setAiPaddleHits] = useState(0);
     const [paddleY, setPaddleY] = useState(200)
@@ -58,8 +58,8 @@
       
       x: 0,
       y: 0,
-      vx: 10 * speedFactor * (Math.random() > 0.5 ? 1 : -1),
-      vy: 10 * speedFactor * (Math.random() > 0.5 ? 1 : -1),
+      vx:  5 * speedFactor * (Math.random() > 0.5 ? 1 : -1),
+      vy:  5  * speedFactor * (Math.random() > 0.5 ? 1 : -1),
     })
     // const aiPaddleHitCount = useRef(0);ss
 
@@ -100,13 +100,13 @@
   // Start moving up
   function handleMouseDownUp() {
     if (moveIntervalRef.current) return;  // prevent multiple intervals
-    moveIntervalRef.current = setInterval(movePaddleUp, 16); // ~60fps
+    moveIntervalRef.current = setInterval(movePaddleUp, 8); // ~60fps
   }
 
   // Start moving down
   function handleMouseDownDown() {
     if (moveIntervalRef.current) return;
-    moveIntervalRef.current = setInterval(movePaddleDown, 16);
+    moveIntervalRef.current = setInterval(movePaddleDown, 8);
   }
 
   // Stop moving
@@ -184,7 +184,7 @@
   }
   const rect = container.getBoundingClientRect();
   const angle = (Math.random() * Math.PI) / 3 - Math.PI / 6; // random angle
-  const speed = 14 * speedFactor;
+  const speed = 7 * speedFactor;
 
   return {
     x: rect.width / 2,
@@ -272,7 +272,7 @@
 
 
     const clampedTarget = Math.max(0, Math.min(targetY, maxY));
-    const speed = 8.6 * speedFactor + 3;
+    const speed = 8.6 * speedFactor;
     
       
 
@@ -299,14 +299,14 @@
           if (keysPressed2.current['ArrowDown']) {
             const paddleHeight = rightPaddleRef.current?.getBoundingClientRect().height || 200;
             const maxTop = containerRect.height - paddleHeight - 5;
-            newY2 = Math.min(prev + 15, maxTop);
+            newY2 = Math.min(prev + 9, maxTop);
 
             setPaddleDirection('down');
           }
 
           else if (keysPressed2.current['ArrowUp']) {
             
-            newY2 = Math.max(prev - 15, 0);
+            newY2 = Math.max(prev - 9, 0);
             setPaddleDirection('up');
           } else{
             setPaddleDirection(null);
@@ -446,7 +446,7 @@ if (x + ballRect.width >= containerRect.width) {
 
 
 
-      }, 16)
+      }, 8)
 
       return () => {
         window.removeEventListener('touchmove', handleTouchMove);
