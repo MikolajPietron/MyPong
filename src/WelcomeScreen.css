@@ -33,7 +33,7 @@ body {
   opacity: 1;
   transition: opacity 1000ms ease;
   background-color: blue;
-  background-image: url("./assets/backgroundPaddles.png");
+  
   background-position-x: 70%;
   background-size: cover;
   background-position: center;
@@ -44,6 +44,11 @@ body {
 .welcomeScreen.fade-out {
   opacity: 0;
   pointer-events: none; /* Prevent clicks during fade */
+}
+.dashed{
+  border: 2px dashed white;
+  height: 100%;
+  
 }
 
 
@@ -334,8 +339,8 @@ body {
 .choosePlayer {
   position: fixed;
   display: flex;
-  left: 30px;
-  top: 150px;
+  left: 10px;
+  top: 250px;
   pointer-events: none;
   display: flex;
   flex-direction: column;

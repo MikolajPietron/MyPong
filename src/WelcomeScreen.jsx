@@ -141,7 +141,9 @@ const toggleOponentModal = () =>{
     toggleOponentModal();
     
   }}>TRUDNY</button>
+  
           </div>
+          <div className='dashed'></div>
           <div className='HardPlayerRight'>
             <img src={EasyPlayer} alt ='Poziom Łatwy' className='EasyPlayerImg'></img>
             <button className='EasyButton' onClick={() => {

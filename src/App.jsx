@@ -21,7 +21,9 @@
   import EasyAi from "./assets/EasyPlayer.png";
   import HardAi from "./assets/HardPlayer.png";
   import AtsLogo from './assets/atsAkanzaLogoBlue.png'
+  import AtsLogoGame from "./assets/AtsAkanza.svg"
   import { mdiBagPersonalPlusOutline, mdiPause, mdiVolumeOff } from '@mdi/js';
+  import { mdiGuitarElectric, mdiHome, mdiHumanHandsup, mdiNintendoGameBoy, mdiSofaSingle, mdiTennisBall } from "@mdi/js";
 
   function App() {
     const navigate = useNavigate();
@@ -79,7 +81,7 @@
   const gamePausedRef = useRef(gamePaused)
   const pongContainerRef = useRef(null);
   const lastHitRef = useRef(null);
-
+  const [pauseShown, setPauseShown] = useState(false);
 
    const moveIntervalRef = useRef(null);
 
@@ -150,7 +152,7 @@
     
     
     const location = useLocation();
-        const selectedMusic = location.state?.selectedMusic || null;
+      const [selectedMusic, setSelectedMusic] = useState(location.state?.selectedMusic || 'pingpong');
     const location2 = useLocation();
     const {selectedPlayer, currentUserName, selectedDifficulty} = location2.state || {};
 
@@ -183,7 +185,7 @@ if (selectedDifficulty === 'easy') {
     //   : null;
 
         function playPingSound() {
-    if (!isMuted && selectedMusic === 'ping' && pingSoundRef.current) {
+    if (!isMuted && selectedMusic === 'pingpong' && pingSoundRef.current) {
       pingSoundRef.current.pause();
       pingSoundRef.current.currentTime = 0;
       pingSoundRef.current.play().catch(err => console.log('Ping sound error:', err));
@@ -256,6 +258,7 @@ if (selectedDifficulty === 'easy') {
         }
         if (e.key === 'Escape') {
           setGamePaused(prev => !prev);
+          setPauseShown(prev => !prev);
         }
         keysPressed2.current[e.key] = true
         
@@ -549,6 +552,12 @@ useEffect(() => {
     };
   }, [selectedMusic, isMuted, gamePaused]);
 
+   function handleMusicChange(musicName) {
+    setSelectedMusic(musicName);
+    // You might also want to un-mute if it's currently muted.
+    // setIsMuted(false); 
+  }
+
 // ZAPIS DO BAZY DANYCH ----------------------------------------- ZAPIS DO BAZY DANYCH ----------------------------------------- ZAPIS DO BAZY DANYCH -----------------------------------------
   const handleSaveGame = async () => {
   const score = TotalHits * 10;
@@ -596,17 +605,59 @@ useEffect(() => {
           className="gameContainer" 
           style={{ position: 'relative', height: '100vh'}}
           >
+            <div className='pressPause'>
+              <h1 className='pressPauseText'>Nacisnij ESC aby zapauzowac</h1>
+            </div>
+            <div className={`pauseMenu ${pauseShown ? 'show' : ''}`} >
+              <div className='gamePausedContainer'>
+                <h1 className='gamePaused'>Gra zapauzowana</h1>
+              </div>
+              <div className='pauseButtonContainer'>
+                
+
+                <button className='muteButton' onClick={() => setIsMuted(prev => !prev)}><Icon path={mdiVolumeOff}  className='muteicon'/></button>
+
+                
+              <button className='pauseButton' onClick={() =>{
+              setGamePaused(prev => !prev); setPauseShown(false)
+              } }><Icon path={mdiPause} className='pauseicon' /></button>
+              
+              </div>
+              <div className='zmienandsong'>
+
+              <div className='zmienmuzyke'>
+                <h1 className='zmienmuzykeh1'>Zmien muzyke</h1>
+              </div>
+              
+              <div className='songButtons'>
+                <div className='arcadebitContainer'>
+                  <button className='arcadebitButton' onClick={() => handleMusicChange('8bit')}></button>
+                  <Icon path={mdiNintendoGameBoy}  className='biticon' color={"black"}/>
+                </div>
+                <div className='chillContainer'>
+                  <button className='chillButton' onClick={() => handleMusicChange('chill')}></button>
+                  <Icon path={mdiSofaSingle} className='chillicon'color={'black'}/>
+                </div>
+                <div className='rockContainer'>
+                  <button className='rockButton' onClick={() => handleMusicChange('rock') } ></button>
+                  <Icon path={mdiGuitarElectric} className='rockicon'color={"black"}/>
+                </div>
+                <div className='pingContainer'>
+                  <button className='pingButton' onClick={() => handleMusicChange('pingpong')}></button>
+                  <Icon path={mdiTennisBall} className='pingicon' color={"black"}/>
+                </div>
+              </div>
+              </div>
+              
+              
+              <h1 className='nacisnij'>ESC aby wznowic</h1>
+              
+
+          
+            </div>
+
             <h1 className='pongByATS'>Pong by ATS</h1>
-            <div className='muteButtonContainer'>
-              <button className='muteButton' onClick={() => setIsMuted(prev => !prev)}/>
-              <Icon path={mdiVolumeOff}  className='muteicon' />
-            </div>
-
-            <div className='pauseButtonContainer'>
-              <button className='pauseButton' onClick={() => setGamePaused(prev => !prev)} />
-              <Icon path={mdiPause} className='pauseicon' />
-
-            </div>
+            
 
                 <div className='pongPlusPlayer'>
                   
@@ -651,6 +702,7 @@ useEffect(() => {
 
                 
                     <div className='pongContainer' ref={pongContainerRef}>
+                      <img src= {AtsLogoGame} className='LogoGame'></img>
                       {!isgameStarted && (
                       <div className='pressSpace'>
                         <img src= {mystartGif} alt="Press Space to Start" />
@@ -703,8 +755,8 @@ useEffect(() => {
                                 src={myBall}
                                 alt="Ball"
                                 style={{
-                                  width: '80%',
-                                  height: '80%',
+                                  width: '65%',
+                                  height: '65%',
                                   position: 'absolute',
                                   left: '50%',
                                   top: '50%',

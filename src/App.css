@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Libertinus+Mono&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
+@font-face {
+    font-family: 'kollektif';
+    src: url('assets/fonts/Kollektif-Bold.ttf') format(truetype);
+    font-weight: bold;
+    font-style: normal;
+}
 .gameContainer {
   
   width: 100%;
@@ -10,9 +15,10 @@
   justify-content: center;
   align-items: center;
   display: flex;
-  background-image: url("./assets/backgroundPaddles.png");
+  overflow: hidden;
   
-  background-position-x: 50%;
+  
+  
   
 }
 .pongPlusPlayer {
@@ -156,7 +162,16 @@
   margin-bottom: 0px;
   flex-wrap: wrap; /* Optional: allows wrapping on small screens */
 }
-
+.pressPause{
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+}
+.pressPauseText{
+  color: white;
+  font-size: 0.8vw;
+  font-family: 'kollektif';
+}
 
 
 .pongContainer{
@@ -166,10 +181,21 @@
   border-right: 4px dashed white;
   height: 70%;
   width: 95%;
- 
+  
+  background-repeat: no-repeat;
   position: relative;
   
   background-color: rgb(0,0,255, 0.4);
+}
+
+.LogoGame{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  opacity: 0.2;
+  width: 50%;
+  height: 60%;
 }
 .bottomPoints{
   width: 90%;
@@ -235,10 +261,10 @@
   
 }
 .ball {
-  width: 2.5%;
+  width: 2%;
   height: 4%;
   background-color: white;
-  
+  padding: 2px;
   border-radius: 50%;
   position: absolute;
 }
@@ -362,71 +388,256 @@
   
   
 }
-.muteButtonContainer{
-  width: 4vw;
-  height: 6vh;
-  position: absolute;
-  top: 10px;
-  left: 100px;
-  background-color: transparent;
-  /* border: 2px solid #ff0000; */
-  display: flex;
-
-
-}
-.muteButton {
+.songButtons{
   width: 100%;
-  height: 100%;
-  background-color: transparent;
-  border:2px solid  white;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-  z-index: 100;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 15%;
+  
+  gap: 5px;
+  justify-content: center;
+  place-items: center;
 }
-.muteicon {
+.arcadebitContainer{
+  height: 5vh;
+  width: 3vw;
+ 
+  display: flex;
+  position: relative;
+}
+.arcadebitButton{
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.chillContainer{
+  height: 5vh;
+  width: 3vw;
+ 
+  display: flex;
+  position: relative;
+}
+.rockContainer{
+  height: 5vh;
+  width: 3vw;
+  
+  display: flex;
+  position: relative;
+}
+.rockButton{
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.rockicon{
   position: absolute;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  top: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 10px;
+  color: black;
+  pointer-events: none;
+}
+.pingContainer{
+  height: 5vh;
+  width: 3vw;
+  
+  display: flex;
+  position: relative;
+}
+.zmienmuzykeh1{
+  color: white;
+  font-size: 1.2vw;
+  font-family: 'kollektif';
+}
+.pingButton{
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.pingicon{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 10px;
+  color: black;
+  pointer-events: none;
+}
+.chillButton{
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.chillButton:hover{
+  background-color: transparent;
+}
+.chillicon{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 10px;
+  color: black;
+  pointer-events: none;
+}
+.arcadebitButton:hover{
+  background-color: transparent;
+}
+.rockButton:hover{
+  background-color: transparent;
+}
+.pingButton:hover{
+  background-color: transparent;
+}
+.biticon{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 10px;
+  color: black;
+  pointer-events: none;
+}
+.zmienandsong{
+  flex-direction: column;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.pauseMenu {
+  position: absolute;
+  bottom: 145px; /* Keep it at the top for proper positioning */
+  left: 20px;
+  height: 40vh;
+  width: 13vw;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 20px;
+  opacity: 0;
+  gap: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  /* Animate both the transform and opacity over 0.5 seconds */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  
+  /* Initial state: off-screen at the bottom */
+  transform: translateY(100vh); 
+}
+.gamePausedContainer{
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  height: 10%;
+  display: flex;
+  
+}
+.gamePaused{
+  position: absolute;
+  top: 5px;
+  font-size: 1.4vw;
+  font-family: 'kollektif';
   color: white;
 }
-.muteButton:hover {
+.nacisnij{
+  position: absolute;
+  bottom: 5px;
+  font-size: 1.4vw;
+  font-family: 'kollektif';
+  color: white;
+}
+.pauseMenu.show {
+  opacity: 1;
+  /* Animate it back to its original position */
+  transform: translateY(0); 
+}
+
+
+.pauseButtonContainer{
+  width: 100%;
+  height: 20%;
+  
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+.muteButtonContainer{
+  display: flex;
+}
+.muteButton{
+  height:7vh;
+  width:4vw;
+  background-color: white;
+  border: 2px solid white;
+  display: flex;
+  position: relative;
   border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+}
+.pauseButton{
+  height:7vh;
+  width:4vw;
+  background-color: white;
+  border: 2px solid white;
+  display: flex;
+  position: relative;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.pauseicon{
+  position: absolute;
+  height: 60%;
+  width: 60%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.muteicon{
+  position: absolute;
+  height: 60%;
+  width: 60%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  
+}
+.muteButton:hover {
+  background-color: transparent;
 }
 .muteButton:active {
   border-color: #000000;
 }
-.pauseButtonContainer {
-  width: 4vw;
-  height: 6vh;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: transparent;
-  display: flex;
-}
-.pauseButton{
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
-  border:2px solid  white;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-  z-index: 100;
-}
-.pauseicon {
-  position: absolute;
-  top: 50%;
-  width: 60%;
-  height: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-}
+
+
+
 .pauseButton:hover {
-  border-radius: 20px;
+  background-color: transparent;
 }
 .pauseButton:active {
   border-color: #000000;
@@ -496,7 +707,7 @@
 
 @media (max-width: 768px) {
   .gameContainer{
-    background-image: url("./assets/verticalPaddles.png");
+    
     background-repeat: no-repeat;
     background-size: contain; 
     background-position: center -50px;
@@ -504,6 +715,13 @@
   }
   .winnerText {
     font-size: 1rem;
+  }
+  .pauseMenu{
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%);
+    height: 20vh;
+    width: 30vw;
   }
 
   .pressSpace img {
