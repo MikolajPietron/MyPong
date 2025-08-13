@@ -58,12 +58,12 @@ body {
   background-color: blue;
   color: white;
   border: 4px solid white;
-  border-radius: 30px;
+  border-radius: 20px;
 }
 .welcomeScreen a.rules{
   position: relative;
   display: flex;
-  padding: 15px 30px;
+  padding: 20px;
   margin: 40px 0;
   color: blue;
   text-decoration: none;
@@ -118,6 +118,7 @@ body {
   margin-top: 40px;
   transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease, border-radius 0.3s ease;
   border-radius: 15px;
+  padding: 10px;
   width: 400px;
   height:85px;
   border: 4px solid #ffffff;
@@ -127,7 +128,7 @@ body {
   background-color: blue;
   color: white;
   border: 4px solid white;
-  border-radius: 30px;
+  border-radius: 20px;
 }
 @keyframes glareFlash {
   0% {
@@ -151,7 +152,7 @@ body {
   background-color: blue;
   color: white;
   border: 4px solid white;
-  border-radius: 30px;
+  border-radius: 20px;
   
   
 }
@@ -291,12 +292,12 @@ body {
 
 
 .logo{
-  width: 20vw;
-  height: 20vh;
+  width: 15vw;
+  height: 15vh;
   position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 25px;
+  left: 25px;
+  
 }
 .container{
     position: relative;
@@ -414,6 +415,113 @@ body {
   opacity: 1;
   pointer-events: auto;
 }
+.oponentContainer {
+  position: absolute;
+  right: 50px;
+  height: 25vh;
+  justify-content: center;
+  align-items: center;
+  width: 25vw;
+ border: 2px solid white;
+ border-radius: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+.HardPlayer{
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  display: flex;
+  
+}
+.HardButton{
+  height: 5vh;
+  width: 8vw;
+  font-size: 1vw;
+  color: blue;
+  border: 2px solid white;
+  border-radius: 15px;
+  background-color: white;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.HardButton:hover{
+  background-color: blue;
+  color: white;
+  border-radius: 20px;
+  
+}
+.HardPlayerImg{
+  width: 100%;
+  height: 60%;
+  border-radius: 10px;
+  border: 2px solid white;
+}
+.HardPlayerLeft{
+  padding: 10px;
+ 
+ 
+  width: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  place-items: center;
+}
+.HardPlayerRight{
+  padding: 10px;
+  
+  width: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  place-items: center;
+  
+}
+.EasyPlayer{
+  flex: 1;
+  position: relative;
+  
+  display: flex;
+  flex-direction: row;
+}
+.EasyButton{
+  height: 5vh;
+  width: 8vw;
+  font-size: 1vw;
+  color: blue;
+  border: 2px solid white;
+  border-radius: 15px;
+  background-color: white;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.EasyButton:hover{
+  background-color: blue;
+  color: white;
+  border-radius: 20px;
+}
+.EasyPlayerImg{
+  width: 100%;
+  height: 60%;
+  border-radius: 10px;
+  border: 2px solid white;
+}
+
+.oponentContainer.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .nataliaPartyka {
   
   background-color: transparent;
@@ -687,11 +795,33 @@ body {
   cursor: pointer;
   
 }
+.showOponentButton{
+  border: 3px solid rgb(255, 255, 255);
+  position: relative;
+  width: 200px;
+  height: 7vh;
+  border-radius: 15px;
+  background-color: white;
+  z-index: 100;
+  text-transform: uppercase;
+  font-weight: 900;
+  transition: all 0.5s ease;
+  color: blue;
+  font-family: 'kollektif', 'sans-serif';
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.showOponentButton:hover{
+  border-color: rgb(255, 255, 255);
+  background-color: blue;
+  color: white;
+  border-radius: 25px;
+}
 .showSoundsButton:hover{
   border-color: rgb(255, 255, 255);
   background-color: blue;
   color: white;
-  border-radius: 30px;
+  border-radius: 25px;
 }
 
 .showPlayersButton{
@@ -715,7 +845,7 @@ body {
   border-color: rgb(255, 255, 255);
   background-color: blue;
   color: white;
-  border-radius: 30px;
+  border-radius: 25px;
 }
 .x{
   position: absolute;
@@ -831,7 +961,7 @@ body {
     border: 4px solid white;
   }
   .logo{
-    width: 40vw;
+    width: 25vw;
     height: 10vh;
   }
   .partykaContainer{

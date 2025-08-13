@@ -18,6 +18,8 @@
   import Icon from "@mdi/react";
   import { BACKEND_BASE_URL } from './apiConfig.js'; 
   import Ai from "./assets/ComputerPlayer.png";
+  import EasyAi from "./assets/EasyPlayer.png";
+  import HardAi from "./assets/HardPlayer.png";
   import AtsLogo from './assets/atsAkanzaLogoBlue.png'
   import { mdiBagPersonalPlusOutline, mdiPause, mdiVolumeOff } from '@mdi/js';
 
@@ -81,6 +83,7 @@
 
    const moveIntervalRef = useRef(null);
 
+
   function movePaddleUp() {
     setPaddleY2(prev => {
       const containerHeight = pongContainerRef.current?.getBoundingClientRect().height || 0;
@@ -88,7 +91,7 @@
       return Math.max(prev - 5, 0);  // smaller step for smoothness
     });
   }
-
+ 
   function movePaddleDown() {
     setPaddleY2(prev => {
       const containerHeight = pongContainerRef.current?.getBoundingClientRect().height || 0;
@@ -149,7 +152,7 @@
     const location = useLocation();
         const selectedMusic = location.state?.selectedMusic || null;
     const location2 = useLocation();
-    const {selectedPlayer, currentUserName} = location2.state || {};
+    const {selectedPlayer, currentUserName, selectedDifficulty} = location2.state || {};
 
     let playerImage = null;
 
@@ -162,6 +165,14 @@
     }else{
       playerImage = null;
     }
+
+        let aiImageSrc = Ai; // Default image
+if (selectedDifficulty === 'easy') {
+    aiImageSrc = EasyAi;
+} else if (selectedDifficulty === 'hard') {
+    aiImageSrc = HardAi;
+}
+
 
     // const playerImage = selectedPlayer === 'nataliaPartyka'
     // ? NataliaPartyka
@@ -273,7 +284,13 @@
 
 
     const clampedTarget = Math.max(0, Math.min(targetY, maxY));
-    const speed = 6.5 * speedFactor;
+    
+    let aiSpeed = 6.5; // Default speed for "hard"
+    if (selectedDifficulty === 'easy') {
+        aiSpeed = 4.5; // A slower speed for "easy" mode
+    }
+
+    const speed = aiSpeed * speedFactor;
     
       
 
@@ -596,10 +613,13 @@ useEffect(() => {
                       <div className='PlayerVsPlayer'>
                         <div className='ComputerContainer'>
 
-                          <div className='ComputerPlayer'>
-                            <img src={Ai} className='ComputerImage'></img>
-                          </div>
-                          <div className='ComputerText'>Komputer</div>
+                          <div className='ComputerContainer'>
+                            <div className='ComputerPlayer'>
+                                <img src={aiImageSrc} className='ComputerImage' alt="AI Player"></img>
+                            </div>
+                            <div className='ComputerText'>Komputer</div>
+                        </div>
+                          
                         </div>
                         <div className='vsImage'></div>
                         <div className='humanPlayerContainer'>

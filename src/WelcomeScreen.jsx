@@ -14,6 +14,8 @@ import Logo from './assets/AtsAkanzaLogo.png';
 import Icon from "@mdi/react";
 import CurrentUser from './assets/userIconBlackBg.png';
 import LeaderBoard from './LeaderBoard.jsx';
+import HardPlayer from './assets/HardPlayer.png';
+import EasyPlayer from './assets/EasyPlayer.png';
 import { mdiGuitarElectric, mdiHome, mdiHumanHandsup, mdiNintendoGameBoy, mdiSofaSingle, mdiTennisBall } from "@mdi/js";
 
 
@@ -30,13 +32,17 @@ function WelcomeScreen() {
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [showMusicIcons, setShowMusicIcons] = useState(false);
   const [currentUserName, setCurrnetUserName] = useState(null);
+  const [showOponent, setShownOponent] = useState(false);
+const [selectedDifficulty, setSelectedDifficulty] = useState(null);
+const [selectedOpponent, setSelectedOpponent] = useState(null);
+
 
   const handleGameNavigation = (e) => {
     e.preventDefault();
     pauseAll();
      setFadeOut(true);
     setTimeout(() => {
-      navigation('/game', {state: {selectedMusic, selectedPlayer, currentUserName}});
+      navigation('/game', {state: {selectedMusic, selectedPlayer, currentUserName, selectedDifficulty, selectedOpponent}});
     }, 1000);
 
     
@@ -111,6 +117,9 @@ const closePlayerModal = () => {
 const toggleMusicIcons = () => {
   setShowMusicIcons(prev => !prev);
 }
+const toggleOponentModal = () =>{
+  setShownOponent(prev => !prev);
+}
 
 
 
@@ -121,6 +130,31 @@ const toggleMusicIcons = () => {
     <div className={`welcomeScreen ${fadeOut ? 'fade-out' : ''}`}>
       
       <img src={Logo} alt='Akanza Logo' className='logo' />
+      <div className={`oponentContainer ${showOponent ? 'show' : ''}`}>
+        <div className='HardPlayer'>
+          <div className='HardPlayerLeft'>
+
+            <img src={HardPlayer} alt ='Poziom Trudny' className='HardPlayerImg'></img>
+            <button className='HardButton'onClick={() => {
+    setSelectedDifficulty('hard'); // new state variable
+    setSelectedOpponent('hard');
+    toggleOponentModal();
+    
+  }}>TRUDNY</button>
+          </div>
+          <div className='HardPlayerRight'>
+            <img src={EasyPlayer} alt ='Poziom Łatwy' className='EasyPlayerImg'></img>
+            <button className='EasyButton' onClick={() => {
+    setSelectedDifficulty('easy'); // new state variable
+    setSelectedOpponent('easy');
+    toggleOponentModal();
+  }}>ŁATWY</button>
+          </div>
+        </div>
+        <div className='EasyPlayer'>
+
+        </div>
+      </div>
       <div className={`choosePlayer ${isShown ? 'show' : ''}`}>
         <span className='x' onClick={closePlayerModal}>&times;</span>
         <div className='WybierzZawodnikaContainer'>
@@ -197,6 +231,9 @@ const toggleMusicIcons = () => {
             </div>
             <div className='showSoundsContainer'>
               <button className='showSoundsButton' onClick={toggleMusicIcons}>Wybierz Muzyke</button>
+            </div>
+            <div className ='showOponent'>
+              <button className='showOponentButton' onClick={toggleOponentModal}>Wybierz przeciwnika</button>
             </div>
 
           </div>
