@@ -605,6 +605,9 @@ useEffect(() => {
           className="gameContainer" 
           style={{ position: 'relative', height: '100vh'}}
           >
+            <button className='mobilePauseToggle' onClick={() => setPauseShown(prev => !prev)}>
+              <Icon path={mdiPause} className='pauseiconmobile' />
+            </button>
             <div className='pressPause'>
               <h1 className='pressPauseText'>Nacisnij ESC aby zapauzowac</h1>
             </div>

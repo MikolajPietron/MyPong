@@ -164,6 +164,7 @@
 }
 .pressPause{
   position: absolute;
+  display: block;
   bottom: 0;
   right: 10px;
 }
@@ -686,6 +687,26 @@
 .arrowUp{
   font-size: 3vw;
 }
+.mobilePauseToggle{
+  height: 5vh;
+  width: 3vw;
+  border-radius: 10px;
+  background-color: white;
+  border: 2px solid white;
+  position: absolute;
+  left: 10px;
+  top:10px;
+  display: none;
+  aspect-ratio: 1/1;
+}
+.pauseiconmobile{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  aspect-ratio: 1/1;
+}
 @keyframes spinClockwise {
   0% { transform: translate(-50%, -50%) rotate(0deg); }
   100% { transform: translate(-50%, -50%) rotate(360deg); }
@@ -706,8 +727,13 @@
 
 
 @media (max-width: 768px) {
+  .mobilePauseToggle{
+    display: block;
+    width: 6vw;
+  }
   .gameContainer{
-    
+    justify-content: center;
+    align-items: center;
     background-repeat: no-repeat;
     background-size: contain; 
     background-position: center -50px;
@@ -716,13 +742,85 @@
   .winnerText {
     font-size: 1rem;
   }
-  .pauseMenu{
-    top: 50px;
+  
+  .pauseMenu {
+    position: absolute;
     left: 50%;
-    transform: translate(-50%);
-    height: 20vh;
+    top: 50px;              /* 50px from top */
+    right: auto;            /* reset just in case */
+    bottom: auto;           /* reset desktop bottom */
     width: 30vw;
+    height: 20vh;
+    gap: 10px;
+
+    /* Keep horizontal centering even before showing; slide from below */
+    transform: translateX(-50%) translateY(0);
   }
+  .nacisnij{
+    display: none;
+  }
+.zmienandsong{
+  
+  width: 100%;
+  gap: 0;
+}
+.songButtons{
+  
+  height: 40%;
+}
+.zmienmuzyke{
+  
+  
+}
+.zmienmuzykeh1{
+font-size: 2vw;
+}
+.arcadebitContainer{
+  height: 4vh;
+  border-radius: 1px;
+  width: 5vw;
+}
+.chillContainer{
+  height: 4vh;
+  border-radius: 1px;
+  width: 5vw;
+}
+.rockContainer{
+  height: 4vh;
+  border-radius: 1px;
+  width: 5vw;
+}
+.pingContainer{
+  height: 4vh;
+  border-radius: 1px;
+  width: 5vw;
+}
+  /* IMPORTANT: keep translateX(-50%) when .show is added */
+  .pauseMenu.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  .gamePausedContainer{}
+  .gamePaused{
+    font-size: 2vw;
+  }
+.pauseButtonContainer{
+  
+  width: 100%;
+  position: relative;
+  margin-top: 20px;
+}
+.muteButton{
+  height: 4vh;
+  width: 5vw;
+  border-radius: 10px;
+}
+.pauseButton{
+  height: 4vh;
+  width: 5vw;
+  border-radius: 10px;
+}
+
 
   .pressSpace img {
     visibility: hidden
@@ -773,15 +871,10 @@
     
   }
   .ball{
-    width: 4%;
-    height: 4%;
+    width: 3%;
+    height: 5%;
   }
-  .pauseButtonContainer{
-    height: 4vh;
-    width: 7vw;
-    left: 10px;
-    top: 10px;
-  }
+  
   .muteButtonContainer{
     height: 4vh;
     width: 7vw;
@@ -860,6 +953,56 @@
 }
   
   @media (max-width:550px) {
+    .pauseMenu{
+      width: 40vw;
+    }
+    .mobilePauseToggle{
+    display: block;
+    width: 8vw;
+  }
+    .zmienmuzykeh1{
+      font-size: 3vw;
+    }
+    .gamePaused{
+      font-size: 3vw;
+    }
+    .pauseButton{
+      width: 7vw;
+      height: 4vh;
+      aspect-ratio: 1/1;
+      border-radius: 5px;
+    }
+    .arcadebitButton{
+      border-radius: 5px;
+    }
+    .chillButton{
+      border-radius: 5px;
+    }
+    .rockButton{
+      border-radius: 5px;
+    }
+    .pingButton{
+      border-radius: 5px;
+    }
+    .arcadebitContainer{
+      width: 7vw;
+      
+    }
+    .chillContainer{
+      width: 7vw;
+    }
+    .rockContainer{
+      width: 7vw;
+    }
+    .pingContainer{
+      width: 7vw;
+    }
+    .muteButton{
+      width: 7vw;
+      height: 4vh;
+      aspect-ratio: 1/1;
+      border-radius: 5px;
+    }
     .ComputerPlayer{
         width: 12vw;
         height: 10vh;
@@ -921,6 +1064,45 @@
   }
    .arrowUp{
   font-size: 7vw;
+}
+@media (max-width : 395px){
+  .pingContainer{
+    width: 8vw;
+    height: 3vh;
+  }
+  .rockContainer{
+    width: 8vw;
+    height: 3vh;
+  }
+  .chillContainer{
+    width: 8vw;
+    height: 3vh;
+  }
+  .arcadebitContainer{
+    width: 8vw;
+    height: 3vh;
+  }
+  .pauseButton{
+    width: 8vw;
+    height: 3vh;
+  }
+  .muteButton{
+    width: 8vw;
+    height: 3vh;
+  }
+  .gamePaused{
+    font-size: 4vw;
+  }
+  .zmienmuzykeh1{
+      font-size: 4vw;
+    }
+    .ball{
+      width: 5%;
+    }
+    .mobilePauseToggle{
+    display: block;
+    width: 12vw;
+  }
 }
   }
   
