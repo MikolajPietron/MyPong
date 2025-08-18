@@ -1,15 +1,14 @@
   import { useEffect, useState, useRef } from 'react'
   import {useNavigate} from 'react-router-dom';
   import './App.css'
-  import mypongGif from './assets/mypong.gif';
+ 
   import mystartGif from './assets/Spacebar.gif';
   import myBall from './assets/FullA.png';
-  import PunktyGracz1 from './assets/punktyPlayer1.png';
-  import PunktyGracz2 from './assets/punktyPlayer2.png';
+  
   import BitSong from './assets/gameSong.mp3';
   import ChillSong from './assets/ChillLofiSong.mp3';
   import RockSong from './assets/RockSong.mp3';
-  import NataliaPartyka from './assets/NataliaPartyka.png';
+  import NataliaPartyka from './assets/NataliaPartyka.jpeg';
   import AndrzejGrubba from './assets/AndrzejGrubba.jpg';
   import CurrentPlayer from './assets/NowyZawodnik.png'
   import pingPongSound from './assets/pongSound.mp3';
@@ -22,8 +21,8 @@
   import HardAi from "./assets/HardPlayer.png";
   import AtsLogo from './assets/atsAkanzaLogoBlue.png'
   import AtsLogoGame from "./assets/AtsAkanza.svg"
-  import { mdiBagPersonalPlusOutline, mdiPause, mdiVolumeOff } from '@mdi/js';
-  import { mdiGuitarElectric, mdiHome, mdiHumanHandsup, mdiNintendoGameBoy, mdiSofaSingle, mdiTennisBall } from "@mdi/js";
+  import { mdiPause, mdiVolumeOff } from '@mdi/js';
+  import { mdiGuitarElectric, mdiNintendoGameBoy, mdiSofaSingle, mdiTennisBall } from "@mdi/js";
 
   function App() {
     const navigate = useNavigate();
@@ -42,7 +41,7 @@
     const ballSpeedAdjustment = Math.pow(1 / speedFactor, 0.40);
     const MAX_BALL_SPEED = 15 * speedFactor; 
 
-    const [aiPaddleHits, setAiPaddleHits] = useState(0);
+    
     const [paddleY, setPaddleY] = useState(200)
     const [paddleY2, setPaddleY2] = useState(200)
     const [Player2Points, setPlayer2Points] = useState(0)
@@ -70,7 +69,7 @@
 
     const ballRef = useRef(ball);
     const keysPressed2 = useRef({})
-    const escPressed = useRef({});
+    
     const paddleYRef = useRef(paddleY)
     const paddleY2Ref = useRef(paddleY2)
     const leftPaddleRef = useRef(null);
@@ -80,48 +79,14 @@
   const audioRefs = useRef({});
   const gamePausedRef = useRef(gamePaused)
   const pongContainerRef = useRef(null);
-  const lastHitRef = useRef(null);
   const [pauseShown, setPauseShown] = useState(false);
 
-   const moveIntervalRef = useRef(null);
+  
 
 
-  function movePaddleUp() {
-    setPaddleY2(prev => {
-      const containerHeight = pongContainerRef.current?.getBoundingClientRect().height || 0;
-      const paddleHeight = rightPaddleRef.current?.getBoundingClientRect().height || 0;
-      return Math.max(prev - 5, 0);  // smaller step for smoothness
-    });
-  }
  
-  function movePaddleDown() {
-    setPaddleY2(prev => {
-      const containerHeight = pongContainerRef.current?.getBoundingClientRect().height || 0;
-      const paddleHeight = rightPaddleRef.current?.getBoundingClientRect().height || 0;
-      const maxPos = containerHeight - paddleHeight - 5;
-      return Math.min(prev + 5, maxPos);
-    });
-  }
 
-  // Start moving up
-  function handleMouseDownUp() {
-    if (moveIntervalRef.current) return;  // prevent multiple intervals
-    moveIntervalRef.current = setInterval(movePaddleUp, 8); // ~60fps
-  }
-
-  // Start moving down
-  function handleMouseDownDown() {
-    if (moveIntervalRef.current) return;
-    moveIntervalRef.current = setInterval(movePaddleDown, 8);
-  }
-
-  // Stop moving
-  function handleMouseUp() {
-    if (moveIntervalRef.current) {
-      clearInterval(moveIntervalRef.current);
-      moveIntervalRef.current = null;
-    }
-  }
+ 
 
 
 
@@ -176,17 +141,11 @@ if (selectedDifficulty === 'easy') {
 }
 
 
-    // const playerImage = selectedPlayer === 'nataliaPartyka'
-    // ? NataliaPartyka
-    // : selectedPlayer === 'andrzejGrubba'
-    // ? AndrzejGrubba
-    // : selectedPlayer === 'currentUser'
-    // ?
-    //   : null;
+    
 
         function playPingSound() {
     if (!isMuted && selectedMusic === 'pingpong' && pingSoundRef.current) {
-      pingSoundRef.current.pause();
+      
       pingSoundRef.current.currentTime = 0;
       pingSoundRef.current.play().catch(err => console.log('Ping sound error:', err));
     }
@@ -238,8 +197,8 @@ if (selectedDifficulty === 'easy') {
           let newTop = touchY - containerRect.top - paddleHeight / 2;
           newTop = Math.max(0, Math.min(newTop, container.offsetHeight - paddleHeight - 5));
 
-          setPaddleY2(newTop);  // update the state so it's reactive
-      paddleY2Ref.current = newTop;  // keep ref updated for game loop
+          setPaddleY2(newTop);  
+      paddleY2Ref.current = newTop;  
 
           paddle.style.top = `${newTop}px`;
         }
@@ -288,9 +247,9 @@ if (selectedDifficulty === 'easy') {
 
     const clampedTarget = Math.max(0, Math.min(targetY, maxY));
     
-    let aiSpeed = 6.5; // Default speed for "hard"
+    let aiSpeed = 6.5; 
     if (selectedDifficulty === 'easy') {
-        aiSpeed = 4.5; // A slower speed for "easy" mode
+        aiSpeed = 4.5; 
     }
 
     const speed = aiSpeed * speedFactor;
@@ -343,11 +302,7 @@ if (selectedDifficulty === 'easy') {
             rect1.top > rect2.bottom
           );
         }
-        function getVelocityIncrement() {
-          const baseIncrement = 2; 
-          const speedFactor = getSpeedFactor();
-          return baseIncrement * speedFactor;
-        }
+       
       
         
 
@@ -355,7 +310,7 @@ if (selectedDifficulty === 'easy') {
   setBall(prev => {
     let { x, y, vx, vy } = prev;
 
-    // Update position
+    
     x += vx;
     y += vy;
 
@@ -368,7 +323,7 @@ if (selectedDifficulty === 'easy') {
   }
   setBallRotation(prevRotation => prevRotation + (vx * 0.5));
 
-    // Get container size
+   
     const container = pongContainerRef.current;
     const ballElement = ballRefElement.current;
     const paddleLeftRect = leftPaddleRef.current?.getBoundingClientRect();
@@ -380,10 +335,16 @@ if (selectedDifficulty === 'easy') {
       const ballRect = ballElement.getBoundingClientRect();
 
       // Bounce off top & bottom
-      if (y <= 5 || y + ballRect.height >= containerRect.height - 15) {
-        vy = -vy;
-        playPingSound();
-      }
+      // Bounce off top & bottom
+if (y <= 5) {
+  vy = -vy;
+  y = 5; // <--- Add this line to snap the ball to the top border
+  playPingSound();
+} else if (y + ballRect.height >= containerRect.height - 15) {
+  vy = -vy;
+  y = containerRect.height - 15 - ballRect.height; // <--- Add this line to snap the ball to the bottom border
+  playPingSound();
+}
 
       // Bounce off left & right
       if (x <= 0) {
@@ -402,8 +363,8 @@ if (x + ballRect.width >= containerRect.width) {
 
       // Collision with left Paddle
   if (isColliding(ballRect, paddleLeftRect) && vx < 0) {
-    vx = Math.abs(vx) + 1; // Reflect to the right
-    // Slight push-out to avoid sticking
+    vx = Math.abs(vx) + 1; 
+    
     playPingSound();
     setTotalHits(prev => prev + 1);
   }
@@ -554,8 +515,7 @@ useEffect(() => {
 
    function handleMusicChange(musicName) {
     setSelectedMusic(musicName);
-    // You might also want to un-mute if it's currently muted.
-    // setIsMuted(false); 
+     
   }
 
 // ZAPIS DO BAZY DANYCH ----------------------------------------- ZAPIS DO BAZY DANYCH ----------------------------------------- ZAPIS DO BAZY DANYCH -----------------------------------------
@@ -570,7 +530,7 @@ useEffect(() => {
     } else if (selectedPlayer === 'andrzejGrubba') {
       playerNameForDb = 'Andrzej Grubba';
     } else {
-      // Fallback if no specific player or current user is selected
+      
       playerNameForDb = 'Nieznajomy';
     }
 
@@ -664,23 +624,24 @@ useEffect(() => {
 
                 <div className='pongPlusPlayer'>
                   
-                      <div className='PlayerVsPlayer'>
-                        <div className='ComputerContainer'>
+                      <div className='PlayerVsPlayer' >
+                        <div className='ComputerContainer' >
 
-                          <div className='ComputerContainer'>
+                          
                             <div className='ComputerPlayer'>
                                 <img src={aiImageSrc} className='ComputerImage' alt="AI Player"></img>
                             </div>
                             <div className='ComputerText'>Komputer</div>
-                        </div>
+                        
                           
                         </div>
                         <div className='vsImage'></div>
-                        <div className='humanPlayerContainer'>
+                        <div className='humanPlayerContainer' >
                           <div className='HumanPlayer'
                         
                               style={{
                                 backgroundImage: playerImage ? `url(${playerImage})` : 'none',
+                                
                                 
                               }}
                               
@@ -800,30 +761,11 @@ useEffect(() => {
 
             </div>
         )}
-        <div className='moveButtonsMobile'>
-          <button
-  className='upButton'
-  
-  onTouchStart={handleMouseDownUp}
-  onTouchEnd={handleMouseUp}
-  onTouchCancel={handleMouseUp}
->
-  <span className='arrowUp'>&uarr;</span>
-</button>
 
-<button
-  className='downButton'
-  
-  onTouchStart={handleMouseDownDown}
-  onTouchEnd={handleMouseUp}
-  onTouchCancel={handleMouseUp}
->
-  <span className='arrowUp'>&darr;</span>
-</button>
 
         </div>
           
-      </div>
+     
     )
   }
 
