@@ -2,8 +2,16 @@
 @font-face {
     font-family: 'kollektif';
     src: url('assets/fonts/Kollektif-Bold.ttf') format(truetype);
-    font-weight: bold;
+    font-weight: lighter;
     font-style: normal;
+}
+@font-face {
+  font-family: 'norwester';
+  src: url('assets//fonts/norwester.otf');
+}
+@font-face {
+  font-family: 'glober';
+  src: url('assets/fonts/Glober\ SemiBold\ Free.otf');
 }
 
 
@@ -32,7 +40,7 @@ body {
   justify-content: center;
   opacity: 1;
   transition: opacity 1000ms ease;
-  background-color: blue;
+  background-color: #0517C9;
   
   background-position-x: 70%;
   background-size: cover;
@@ -40,6 +48,9 @@ body {
   background-repeat: no-repeat;
   
   
+}
+.welcomeScreen.blurred{
+  filter: blur(6px);
 }
 .welcomeScreen.fade-out {
   opacity: 0;
@@ -65,31 +76,7 @@ body {
   border: 4px solid white;
   border-radius: 20px;
 }
-.welcomeScreen a.rules{
-  position: relative;
-  display: flex;
-  padding: 30px;
-  margin: 40px 0;
-  color: blue;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, border-radius 0.3s ease;
-  letter-spacing: 10px;
-  overflow: hidden;
-  border-radius: 15px;
-  height: 30px;
-  width: 200px;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  font-family: 'kollektif', 'sans-serif';
-  border: 4px solid #ffffff;
-  font-size: 40px;
-  background-color: rgb(255, 255, 255);
-  
-  
 
-}
 .welcomeScreen a.game{
   position: relative;
   display: flex;
@@ -111,39 +98,19 @@ body {
   border: 4px solid #ffffff;
   font-size: 40px;
   font-weight: 900;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255,0.5);
 
 }
-.leaderboardButton{
-  letter-spacing: 10px;
-  color: blue;
-  font-weight: 900;
-  font-family: 'kollektif';
-  font-size: 40px;
-  margin-top: 40px;
-  transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease, border-radius 0.3s ease;
-  border-radius: 15px;
-  padding: 9px;
-  width: 400px;
-  height:85px;
-  border: 4px solid #ffffff;
-  cursor: pointer;
-}
+
 .leaderboardButton:hover{
-  background-color: blue;
-  color: white;
-  border: 4px solid white;
-  border-radius: 20px;
+  transform: scale(1.1);
 }
 
 
 
 .welcomeScreen a.rules:hover  {
   
-  background-color: blue;
-  color: white;
-  border: 4px solid white;
-  border-radius: 20px;
+  transform: scale(1.1);
   
   
 }
@@ -215,7 +182,7 @@ body {
   border-radius: 50px;
 }
 .musicButtons input[type = "radio"]:checked {
-  border-color: rgb(0, 0, 0);
+  
   border-radius: 50px;
   
   
@@ -283,18 +250,22 @@ body {
 
 
 .logo{
-  width: 12vw;
-  height: 15vh;
+  width: 8vw;
+  height: 10vh;
   position: absolute;
-  top: 25px;
-  left: 25px;
+  top: 40px;
+  left: 30px;
   
 }
 .container{
-    position: relative;
+  
+    position: fixed;
     align-self: center;
-    height: 60vh;
-    width: 90vw;
+    height: fit-content;
+    width: fit-content;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%,-50%);
     max-width: 500px;
     align-items: center;
     justify-content: start;
@@ -312,35 +283,45 @@ body {
 .choosePlayer {
   position: fixed;
   display: flex;
-  left: 10px;
-  top: 250px;
+  left: 50%;
+  top: 50%;
+  z-index: 1000;
+  transform: translate(-50%,-50%);
   pointer-events: none;
   display: flex;
-  flex-direction: column;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  place-items: center;
   opacity: 0;
-  height: 60vh;
-  width: 30vw;
-  transition: opacity 0.5s ease;
-  border: 5px solid white;
+  height: 75vh;
+  width: 40vw;
+  transition: all 0.3s ease;
+  border: 2px solid white;
   border-radius: 30px;
   background-color: blue;
   color: white;
   
   
 }
+.choosePlayer.show{
+  opacity: 1;
+  pointer-events: auto;
+}
 .HeroSelection{
   width: 100%;
-  height: 70%;
+  height: 100%;
+  
   align-items: center;
   position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   align-items: stretch;
-  margin-top: auto;
+  
   column-gap: 5px;
   padding-top: 20px;
-  border-top: 3px dashed white;
+  
   
 }
 .WybierzZawodnika{
@@ -363,10 +344,7 @@ body {
   margin-top: 15px;
   margin-bottom: 20px;
 }
-.HeroSelection button:hover {
-  box-shadow: 0 0 50px 20px rgba(255, 255, 255, 0.7);
-  transition: box-shadow 0.3s ease;
-}
+
 /* .HeroSelection button::after {
   content: "";
   position: absolute;
@@ -389,19 +367,21 @@ body {
   transform: rotate(25deg) translateX(100%);
 } */
 
-.choosePlayer.show{
-  opacity: 1;
-  pointer-events: auto;
-}
+
 .oponentContainer {
-  position: absolute;
-  right: 50px;
-  height: 25vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 100000;
+  transform: translate(-50%,-50%);
+  height: 45vh;
+  background-color: #0517C9;
   justify-content: center;
   align-items: center;
-  width: 25vw;
+  width: 35vw;
  border: 2px solid rgb(255, 255, 255);
  border-radius: 20px;
+ padding: 20px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -415,54 +395,85 @@ body {
   position: relative;
   display: flex;
   
-  flex-direction: row;
-  height: 80%;
+  padding: 20px;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  gap: 20px;
   
   
 }
 .HardButton{
-  height: 5vh;
-  width: 8vw;
-  font-size: 1vw;
-  color: blue;
+  position: absolute;
+  left: 75%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  height: 7vh;
+  width: 13vw;
+  font-size: 1.6vw;
+  color: rgb(255, 255, 255);
   border: 2px solid white;
   border-radius: 15px;
-  background-color: white;
+  background-color: #0517C9;
   font-weight: 800;
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease-out;
 }
-.HardButton:hover{
-  background-color: blue;
-  color: white;
-  border-radius: 20px;
-  
-}
+
 .HardPlayerImg{
-  width: 100%;
-  height: 60%;
+  width: 30%;
+  height: 100%;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 2px solid white;
 }
 .HardPlayerLeft{
   padding: 10px;
  
+ height: 33%;
  
-  width: 50%;
+
+  width: 90%;
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 20px;
   place-items: center;
+  transition: all 0.3s ease;
+}
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.HardPlayerLeft:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.HardPlayerRight:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.spacerWelcomeScreen{
+  width: 100%;
+  border-bottom: 1px solid white;
 }
 .HardPlayerRight{
   padding: 10px;
-  
-  width: 50%;
+ transition: all 0.3s ease;
+ height: 33%;
+ 
+  width: 90%;
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 20px;
   place-items: center;
   
@@ -475,27 +486,72 @@ body {
   flex-direction: row;
 }
 .EasyButton{
-  height: 5vh;
-  width: 8vw;
-  font-size: 1vw;
-  color: blue;
+  position: absolute;
+  left: 75%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  height: 7vh;
+  width: 13vw;
+  font-size: 1.6vw;
+  color: rgb(255, 255, 255);
   border: 2px solid white;
   border-radius: 15px;
-  background-color: white;
+  background-color: #0517C9;
   font-weight: 800;
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease-out;
 }
-.EasyButton:hover{
-  background-color: blue;
-  color: white;
-  border-radius: 20px;
+.NormalButton{
+  position: absolute;
+  left: 75%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  height: 7vh;
+  width: 13vw;
+  font-size: 1.6vw;
+  color: rgb(255, 255, 255);
+  border: 2px solid white;
+  border-radius: 15px;
+  background-color: #0517C9;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
 }
-.EasyPlayerImg{
-  width: 100%;
-  height: 60%;
+.NormalPlayerImg{
+  width: 30%;
+  height: 100%;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+}
+.NormalPlayerMiddle{
+  padding: 10px;
+ transition: all 0.3s ease;
+ height: 33%;
+ 
+  width: 90%;
+  position: relative;
+  display: flex;
+  flex-direction:row ;
+  gap: 20px;
+  place-items: center;
+}
+.NormalPlayerMiddle:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.EasyPlayerImg{
+  width: 30%;
+  height: 100%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 2px solid white;
 }
 
@@ -507,112 +563,128 @@ body {
 .nataliaPartyka {
   
   background-color: transparent;
-  width: 100%;
+  width: 50%;
+  
   height: 20vh;
   pointer-events: none;
-  border-bottom-left-radius: 0px ;
-  border-bottom-right-radius: 0px;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-radius: 15px;
   background-color: white;
   transition: border-color 0.3s ease;
   background-image: url("./assets/NataliaPartyka.jpeg");
   background-position: center 30%;
-  
+  border: 2px solid white;
   cursor: pointer;
   background-size: cover;
   
 }
 .andrzejGrubba {
-  pointer-events: none;
-  display: flex;
-  width: 100%;
-  height: 20vh;
   background-color: transparent;
+  width: 50%;
+  height: 20vh;
+  pointer-events: none;
+  border-radius: 15px;
+  border: 2px solid white;
   background-color: white;
-  cursor: pointer;
   transition: border-color 0.3s ease;
-  background-image: url("./assets/AndrzejGrubba.jpg");
+  
+  background-position: center 30%;
+  
+  cursor: pointer;
   background-size: cover;
-  background-position: center;
-  border-radius: 20px;
-  border-bottom-left-radius: 0px ;
-  border-bottom-right-radius: 0px;
+  background-image: url("./assets/AndrzejGrubba.jpg");
   
 }
 .currentUser{
-  width: 100%;
-  height: 20vh;
   background-color: transparent;
-  border: none;
+  width: 50%;
+  height: 20vh;
   pointer-events: none;
-  transition: border-color 0.3s ease;
-  background-image: url('./assets/NowyZawodnik.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  border-radius: 15px;
   background-color: white;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;  
-  border-bottom-left-radius: 0px ;
-  border-bottom-right-radius: 0px;
+  transition: border-color 0.3s ease;
+  border: 2px solid white;
+  background-position: center 30%;
+  
+  cursor: pointer;
+  background-size: cover;
+  background-image: url('./assets/NowyZawodnik.png');
+  
 }
 .currentUserText{
-   width: 100%;
-   height: 7vh;
-  padding-top: 2px;
-  background-color: white;
-  color: blue;
+   display: flex;
+  width: 100%;
+  
+  height: 4vh;
+  background-color: transparent;
+  color: rgb(255, 255, 255);
   font-family: 'kollektif';
   font-size: 1.5vw;
-  border-radius: 10px;
+  
+
   justify-content: center;
   align-items: center;
-  border-bottom-left-radius: 20px ;
-  border-bottom-right-radius: 20px;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
 }
 .currentUserTextInput{
-  height: 80%;
-  width: 80%;
-  background-color: white;
-  color: blue;
+  height: 100%;
+  width: 50%;
+  background-color: transparent;
+  border: 2px solid white;
+  color: rgb(255, 255, 255);
   font-family: 'kollektif';
   font-size: 1.3vw;
   border-radius: 10px;
-  border: 3px solid blue;
+  padding-left: 10px;
   justify-content: center;
   align-items: center;
   max-lines: 2;
+  text-align: center;
   
 }
+
 .currentUserTextInput::placeholder{
   text-align: center;
+  color: white;
 }
 
 .grubbaContainer{
+  position: relative;
   display: flex;
-  flex :1;
-  border: 2px solid rgb(255, 255, 255);
-  justify-content: flex-start;
-  align-items: center;
-  border-radius: 20px;
-  flex-direction: column;
+  width: 95%;
+  border-bottom: 2px solid white;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  flex-direction: row;
   text-align: center;
   gap: 0px;
   
   
 }
-.partykaContainer{
-  
+.currentUserContainer{
+  position: relative;
   display: flex;
-  flex :1;
-  border: 2px solid rgb(255, 255, 255);
-  justify-content: flex-start;
-  align-items: center;
+  width: 95%;
+  padding: 20px;
+  justify-content: center;
+  align-items: flex-start;
   border-radius: 20px;
-  flex-direction: column;
+  flex-direction: row;
+  
+  text-align: center;
+  gap: 0px;
+  
+}
+
+.partykaContainer{
+  position: relative;
+  display: flex;
+  width: 95%;
+ border-bottom: 2px solid white;
+  justify-content: center;
+  align-items: flex-start;
+   
+  padding:20px;
+  flex-direction: row;
   text-align: center;
   gap: 0px;
   
@@ -621,61 +693,57 @@ body {
   display: flex;
   width: 100%;
   height: fit-content;
-  background-color: white;
-  color: blue;
+  background-color: transparent;
+  color: rgb(255, 255, 255);
   font-family: 'kollektif';
   font-size: 1.5vw;
-  border-radius: 10px;
+  
   justify-content: center;
   align-items: center;
-  border-bottom-left-radius: 20px ;
-  border-bottom-right-radius: 20px;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
+  
   
   
 }
 .grubbaText{
-   width: 100%;
+    display: flex;
+  width: 100%;
   height: fit-content;
-  background-color: white;
-  color: blue;
+  background-color: transparent;
+  color: rgb(255, 255, 255);
   font-family: 'kollektif';
   font-size: 1.5vw;
-  border-radius: 10px;
+  
   justify-content: center;
   align-items: center;
-  text-align: center;
-  border-bottom-left-radius: 20px ;
-  border-bottom-right-radius: 20px;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-  display: flex;
 }
 .grubbaButton{
-  position: absolute;
-  bottom: 2px;
-  width: 25%;
-  height: 5vh;
+ position: absolute;
+  left: 66%;
+  top: 60%;
+  transform: translate(-50%,-50%);
+  width: 40%;
+  height: 6vh;
   background-color: rgb(255, 255, 255);
   border-radius: 5px;
   border: none;
   font-weight: bolder;
   border: 2px solid white;
   color: blue;
+  transition: all 0.3s ease;
   padding: 5px;
-  font-size: 1.3vw;
+  font-size: 1.5vw;
   
   cursor: pointer;
-  margin-top: auto;
-  margin-bottom: 20px;
 }
 
 .partykaButton{
   position: absolute;
-  bottom: 2px;
-  width: 25%;
-  height: 5vh;
+  left: 66%;
+  top: 60%;
+  transform: translate(-50%,-50%);
+  width: 40%;
+  height: 6vh;
+  border: 2px solid white;
   background-color: rgb(255, 255, 255);
   border-radius: 5px;
   border: none;
@@ -684,140 +752,221 @@ body {
   color: blue;
   
   padding: 5px;
-  font-size: 1.3vw;
-  
+  font-size: 1.5vw;
+  transition: all 0.3s ease;
   cursor: pointer;
-  margin-top: auto;
-  margin-bottom: 20px;
+  
   
   
 }
+.partykaButton:hover{
+  background-color: #0517C9;
+  color: white;
+}
+.grubbaButton:hover{
+  background-color: #0517C9;
+  color: white;
+}
+.currentUserButton:hover{
+  background-color: #0517C9;
+  color: white;
+}
+.settings{
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  display: flex;
+  gap: 0px;
+  font-weight: lighter;
+  width: fit-content;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: white;
+  padding: 10px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  
+  
+
+}
+.settingsButton{
+  background-color: transparent;
+  color: blue;
+  font-size: 1.2vw;
+  letter-spacing: 2px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "norwester";
+  transition: all 0.3s ease;
+
+
+}
+.settings:hover{
+  transform: scale(1.1);
+}
+
 .currentUserButton{
   position: absolute;
-  bottom: 2px;
-  width: 25%;
-  height: 5vh;
+  left: 66%;
+  top: 60%;
+  transform: translate(-50%,-50%);
+  width: 40%;
+  height: 6vh;
   background-color: rgb(255, 255, 255);
   border-radius: 5px;
   border: none;
   font-weight: bolder;
   border: 2px solid white;
   color: blue;
-  
+  transition: all 0.3s ease;
   padding: 5px;
-  font-size: 1.3vw;
+  font-size: 1.5vw;
   
   cursor: pointer;
-  margin-top: auto;
-  margin-bottom: 20px;
-  
+  transition: all 0.3s ease;
  
   
   
 }
 
-.currentUserContainer{
-  display: flex;
-  flex :1;
-  border: 2px solid rgb(255, 255, 255);
-  justify-content: flex-start;
-  align-items: center;
-  border-radius: 20px;
-  flex-direction: column;
-  text-align: center;
-  gap: 0px;
-  
-}
 
 
 
 
 .containerForTwo{
-  position: relative;
+  opacity: 0;
+  position: fixed;
+  flex-direction: column;
+  top: 100px;
+  height: 20vh;
+  width: 8vw;
+  padding: 20px;
+  border-radius: 15px;
+  right: 10px;
+  padding-top: 0;
+  border: 2px solid rgb(255, 255, 255);
+  transition: all 0.3s ease;
   display: flex;
-  flex-direction: row;
-  gap: 50px;
+  
+  
+}
+.containerForTwo.show{
+  opacity: 1;
 }
 .playerIconContainer,
-.showSoundsContainer {
+.showSoundsContainer,
+.showOponent {
   flex: 1;
-  max-width: 60%;
-  height: 7vh;
-  min-height: 20px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: fit-content;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid white;
+  transition: all 0.3s ease;
+  
+  
+}
+.bluePhotoContainer{
+  position: fixed;
+  left: 50%;
+  
+  top: 45%;
+  border-radius: 15px;
+  transform: translate(-50%,-50%);
+  height: fit-content;
+  width: 60%;
+ 
+  /* border: 2px solid white;
+  border-radius: 15px; */
+}
+.bluePhotoImg{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 15px;
+  opacity: 60%;
+  transition: all 0.3s ease;
+}
+.bluePhotoImg img{
+  border-radius:15px ;
+}
+.bluePhotoImg:hover{
+  transform: scale(1.01);
+}
+.playerIconContainer:hover{
+  transform: scale(1.1);
 }
 
 .showSoundsButton{
-  border: 3px solid rgb(255, 255, 255);
+  border: 3px solid none;
   position: relative;
-  width: 200px;
-  height: 7vh;
-  border-radius: 15px;
-  background-color: white;
+  width: 5vw;
+  height: 4vh;
+  border: none;
+  background-color: transparent;
   z-index: 100;
   text-transform: uppercase;
   font-weight: 900;
   transition: all 0.5s ease;
-  color: blue;
+  color: rgb(255, 255, 255);
   font-family: 'kollektif', 'sans-serif';
   font-size: 1.2rem;
   cursor: pointer;
   
 }
 .showOponentButton{
-  border: 3px solid rgb(255, 255, 255);
+ 
   position: relative;
-  width: 200px;
-  height: 7vh;
-  border-radius: 15px;
-  background-color: white;
+  width: 5vw;
+  height: 4vh;
+  
+  background-color: transparent;
   z-index: 100;
+  border: none;
   text-transform: uppercase;
   font-weight: 900;
   transition: all 0.5s ease;
-  color: blue;
+  color: rgb(255, 255, 255);
   font-family: 'kollektif', 'sans-serif';
   font-size: 1.2rem;
   cursor: pointer;
 }
-.showOponentButton:hover{
-  border-color: rgb(255, 255, 255);
-  background-color: blue;
-  color: white;
-  border-radius: 25px;
-}
-.showSoundsButton:hover{
-  border-color: rgb(255, 255, 255);
-  background-color: blue;
-  color: white;
-  border-radius: 25px;
+
+.showSoundsContainer:hover{
+  transform: scale(1.1);
 }
 
 .showPlayersButton{
-  border: 3px solid rgb(255, 255, 255);
+  border: none;
   position: relative;
-  width: 200px;
-  height: 7vh;
+  width: 7vw;
+  height: 4vh;
+  
   border-radius: 15px;
   text-transform: uppercase;
   font-weight: 900;
   z-index: 100;
-  background-color: white;
+  background-color: transparent;
   transition: all 0.5s ease;
-  color: blue;
+  color: rgb(255, 255, 255);
   font-family: 'kollektif', 'sans-serif';
   font-size: 1.2rem;
   cursor: pointer;
   
 }
-.showPlayersButton:hover{
-  border-color: rgb(255, 255, 255);
-  background-color: blue;
-  color: white;
-  border-radius: 25px;
+.showOponent:hover{
+  transform: scale(1.1);
 }
 .x{
   position: absolute;
+  
   top: 0px;
+  z-index: 1000000;
   right: 15px;
   color: white;
   font-size: 3vw;
@@ -827,16 +976,93 @@ body {
 .x:hover{
   color: red;
 }
+.stopka{
+  position: fixed;
+  display: flex;
+  justify-content: flex-end;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  
+  
+  border-top: 2px solid rgb(255, 255, 255);
+  
+}
+.stopkaContainer{
+  position: relative;
+ 
+  display: flex;
+  width:fit-content;
+  justify-content: center;
+  flex-direction: column;
+  place-items: center;
+  gap: 20px;
+  margin-right: 20px;
+  
+  
+}
+.leaderboardButton{
+  letter-spacing: 10px;
+  color: white;
+  height: fit-content;
+  font-family: 'kollektif';
+  font-size: 1vw;
+ 
+  transition: all 0.3s ease;
+  
+  
+  
+ 
+  cursor: pointer;
+}
+.rules{
+  
+  position: relative;
+  display: flex;
+  font-size: 1vw;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  letter-spacing: 10px;
+  
+ 
+  height: fit-content;
+  width: fit-content;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-family: 'kollektif', 'sans-serif';
+  
+  
+  
+  
+  
+
+}
+.stopka h1{
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  font-weight: lighter;
+  font-size: 0.8vw;
+  margin-left: 10px;
+  color: white;
+  font-family:  'norwester';
+  letter-spacing: 2px;
+}
 @media (max-width: 1700px){
   .choosePlayer{
     left: 50%;
-    top: 60%;
+    top: 50%;
     transform: translate(-50%,-50%);
     z-index: 1000000;
     width: 40vw;
     
   }
-  
+  .bluePhotoContainer{
+    width: 70%;
+  }
   
   .partykaText{
     height: 7vh;
@@ -855,27 +1081,58 @@ body {
     background-repeat: no-repeat;
     position: relative;
   }
-  .welcomeScreen a.game{
+  .grubbaButton,.partykaButton,.currentUserButton{
+    left: 70%;
+    font-size: 3vw
+  }
+  .andrzejGrubba, .nataliaPartyka, .currentUser{
     width: 50vw;
-    height: 1vh;
-    font-size: 5vw;
-    padding: 25px;
+  }
+  .bluePhotoContainer{
+    width: 95vw;
+    height: fit-content;
+  }
+  .stopka{
+    height:7vh;
+    padding: 5px;
+  }
+  .stopka h1{
+    font-size: 2.5vw;
+  }
+  
+  .settings{
+    height: 1.5vh;
     
+  }
+  .settingsButton{
+    font-size: 2vw;
+  }
+  .welcomeScreen a.game{
+    width: 40vw;
+    height: 0.5vh;
+    font-size: 4vw;
+    padding: 20px;
+    border: 2px solid white;
     letter-spacing: 2px;
   }
   .oponentContainer{
     position: absolute;
-    top: 37%;
+    top: 50%;
     left: 50%;
+    
     transform: translate(-50%, -50%);
     z-index: 10000;
+    border-radius: 20px;
     width: 75vw;
-    background-color: blue;
+    background-color: transparent;
     height: 45vh;
     border: none;
   }
   .HardPlayer{
     border: 3px solid white;
+    border-radius: 15px;
+    background-color: blue;
+    width: 100%;
   }
   .HardButton{
     width: 20vw;
@@ -887,43 +1144,69 @@ body {
     height: 5vh;
     font-size: 2.5vw;
   }
+  .NormalButton{
+    width: 20vw;
+    height: 5vh;
+    font-size: 2.5vw;
+  }
   
   .welcomeScreen a.rules {
     
-    width: 30vw;
-    padding: 10px;
-    font-size: 5vw;
+    width: fit-content;
+    height: fit-content;
+    
+    font-size: 2vw;
     
     letter-spacing: 2px;
   }
   .leaderboardButton{
-   width: 50vw;
-   height: 7.5vh;
-   padding: 0;
-   font-size: 5vw;
+   width: fit-content;
+   height: fit-content;
+   
+   font-size: 2vw;
    letter-spacing: 2px;
 }
-  .HeroSelection button:active {
-  box-shadow: 0 0 50px 20px rgba(255, 255, 255, 0.7);
-  transition: box-shadow 0.3s ease;
-}
+
 
   .container {
     height: fit-content;
-    bottom: 15vh;
+    
+    bottom: 20vh;
     
     gap: 0px;
     
     
   }
   .containerForTwo{
+    width: 20vw;
     gap: 20px;
   }
   .showPlayersButton, .showSoundsButton, .showOponentButton{
     width: 20vw;
     height: 5vh;
   }
-  
+  .choosePlayer{
+    width: 80vw;
+  }
+  .partykaText{
+    font-size: 4vw;  }
+  .grubbaText{
+    font-size: 4vw;
+
+  }
+  .currentUserText{
+    font-size: 4vw;
+  }
+  .currentUserTextInput{
+    width: 30vw;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .currentUserTextInput::placeholder{
+    font-size: 2vw;
+  }
   
 
   
@@ -951,237 +1234,107 @@ body {
   }
   
   
-  .choosePlayer {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    height: 55vh;
-    width: 80vw;
-    z-index: 10000;
-    border: 4px solid white;
-  }
+  
   .logo{
-    width: 25vw;
+    top: 20px;
+    width: 15vw;
     height: 10vh;
   }
-  .partykaContainer{
-    height: 35vh;
-    width: 70vw;
-  }
-  .grubbaContainer{
-    height: 35vh;
-    width: 70vw;
-  }
-  .currentUserContainer{
-    height: 35vh;
-    width: 70vw;
-  }
-  .currentUserTextInput{
-    font-size: 3vw;
-  }
-  .partykaText{
-    height: 5vh;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 3vw;
-  }
-  .grubbaText{
-    height: 5vh;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 3vw;
-  }
-  .currentUserText{
-    height: 5vh;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 3vw;
-  }
-  .currentUser{
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 25vw;
-    border-radius: 10px;
-    height: 20vh;
-    
-    padding: 0;
-    margin: 0;
-    border-bottom-left-radius: 0px ;
-    border-bottom-right-radius: 0px ;
-    border-top-left-radius: 20px ;
-    border-top-right-radius: 20px ;
-  }
-  .currentUserTextInput{
-    margin: 0;
-    padding: 0;
-    border: 2px solid blue;
-  }
-  .currentUserButton{
-    font-size: 3vw;
-    
-  }
-  .andrzejGrubba{
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    border-radius: 10px;
-    height: 20vh;
-    border-bottom-left-radius: 0px ;
-    border-bottom-right-radius: 0px ;
-    border-top-left-radius: 20px ;
-    border-top-right-radius: 20px ;
-  }
-  .nataliaPartyka{
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    border-radius: 10px;
-    height: 20vh;
-    border-bottom-left-radius: 0px ;
-    border-bottom-right-radius: 0px ;
-    border-top-left-radius: 20px ;
-    border-top-right-radius: 20px ;
 
-  }
-  .partykaButton{
-    font-size: 3vw;
-  }
-  .grubbaButton{
-    font-size: 3vw;
-  }
+ 
   .locked{
     width: 20vw;
     border-radius: 10px;
     height: 10vh;
   }
-  .HeroSelection{
-    align-items: center;
-    place-items: center;
-    justify-content: center;
-    justify-self: center;
-    align-self: center;
-    display: flex;
-    flex-direction: row;
-    
-    column-gap: 10px;
-  }
-  .WybierzZawodnikaContainer{
-    margin-top: 20px;
-    width: 30vw;
-    height: 8vh;
-  }
-  .WybierzZawodnika{
-    font-size: 5vw;
-  }
+
   .x{
     font-size: 7vw;
+  }
+  @media(max-width:600px) {
+    .logo{
+      width: 20vw;
+      height: 15vw;
+    }
   }
   @media (max-width :500px){
     .oponentContainer{
     width: 80vw;
     height: 50vh;
-    top: 39%;
-    border: none;
-  }
-  .HardPlayer{
-    border: 3px solid white;
-  }
-  }
-  @media(max-width : 450px){
-    .showPlayersButton, .showSoundsButton, .showOponentButton{
-      width: 25vw;
-      font-size: 2.5vw;
-    }
-    .andrzejGrubba{
-    width: 100%;
-    border-radius: 10px;
-    height: 10vh;
-    border-bottom-left-radius: 0px ;
-    border-bottom-right-radius: 0px ;
-    border-top-left-radius: 20px ;
-    border-top-right-radius: 20px ;
-  }
-  
-  .grubbaContainer{
-    height: 25vh;
-    margin-bottom: 40px;
-  }
-  .grubbaText{
-    font-size: 4vw;
-  }
-  .HeroSelection{
-    display: flex;
     
   }
-   .currentUserTextInput{
-    font-size: 4vw;
-  }
-  .nataliaPartyka{
-    width: 100%;
-    border-radius: 10px;
-    height: 10vh;
-    border-bottom-left-radius: 0px ;
-    border-bottom-right-radius: 0px ;
-    border-top-left-radius: 20px ;
-    border-top-right-radius: 20px ;
-  }
-  .currentUser{
+  .grubbaButton,.partykaButton,.currentUserButton{
+    left: 68%;
+    height: 4vh;
     width: 25vw;
-    border-radius: 10px;
-    height: 10vh;
-    border-bottom-left-radius: 0px ;
-    border-bottom-right-radius: 0px ;
-    border-top-left-radius: 20px ;
-    border-top-right-radius: 20px ;
-  }
-  .currentUserContainer{
-    height: 25vh;
-    margin-bottom: 40px;
   }
   .currentUserTextInput::placeholder{
     font-size: 3vw;
   }
-  .partykaText{
-    font-size: 4vw;
-  }
-  .partykaContainer{
-    height: 25vh;
-    margin-bottom: 40px;
-    
-  }
-  .partykaButton{
-    bottom: 30px;
-  }
-  .grubbaButton{
-    bottom: 30px;
-  }
-  .currentUserButton{
-    bottom: 30px;
-  }
-  .locked{
+  .logo{
     width: 20vw;
-    border-radius: 10px;
-    height: 10vh;
-  }
-  .WybierzZawodnikaContainer{
-    margin-top: 20px;
-    width: 40vw;
     height: 8vh;
+    left: 20px;
+  }
+  .containerForTwo{
+    width: 30vw;
+  }
+  .container{
+    bottom: 35vh;
+  }
+  .welcomeScreen a.game{
+    height: 0.1vw;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  .HardPlayer{
+    border: 3px solid white;
+  }
+  .settingsButton{
+    font-size: 3vw;
+  }
+  .welcomeScreen a.rules {
     
+    font-size: 3vw;
   }
-  .WybierzZawodnika{
-    font-size: 5vw;
+  .leaderboardButton{
+   font-size: 3vw;
+}
   }
+  @media(max-width : 450px){
+    .showPlayersButton, .showSoundsButton, .showOponentButton{
+      width: 25vw;
+      font-size: 3vw;
+    }
+    .currentUserTextInput{
+      height: 3vh;
+      border-radius: 5px;
+    }
+    .settingsButton{
+      font-style: 7vw;
+    }
+ 
   .x{
     font-size: 8vw;
   }
-  .choosePlayer{
-    height: 45vh;
+  
+  .welcomeScreen a.game{
+      width: 50vw;
+  }
+  .container{
+    bottom: 35%;
+    position: fixed;
+    left:50%;
+  }
+  .logo{
+    width: 20vw;
+    height: 6vh;
   }
   }
+  /* @media(max-width:350px){
+
+  } */
+  
 }
 
 

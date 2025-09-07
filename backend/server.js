@@ -18,10 +18,11 @@ mongoose.connect(process.env.MONGO_URI)
 
 
 app.post('/api/gamescore', async (req, res) =>{
-    const {playerName, score, totalHits,date} = req.body;
+    console.log("REQ BODY:", req.body);  //
+    const {playerName, score, totalHits,date, difficulty} = req.body;
 
     try{
-        const game = new Game ({playerName, score, totalHits, date});   
+        const game = new Game ({playerName, score, totalHits, date, difficulty});   
         await game.save();
         res.status(201).json({message : "Game Saved"});
     }catch (err){

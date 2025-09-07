@@ -33,6 +33,7 @@ function LeaderBoard() {
             <span className="position">{index + 1}.</span>
             <span className="playerNamee">{entry.playerName}</span>
             <span className="score">{entry.score} pts</span>
+            <span className="diff">{entry.difficulty}</span>
             <span className="date">{new Date(entry.date).toLocaleDateString()}</span>
           </div>
         ))}

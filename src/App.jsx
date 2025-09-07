@@ -4,7 +4,7 @@
  
   import mystartGif from './assets/Spacebar.gif';
   import myBall from './assets/FullA.png';
-  
+  import Logo from './assets/AtsAkanzaLogo.png';
   import BitSong from './assets/gameSong.mp3';
   import ChillSong from './assets/ChillLofiSong.mp3';
   import RockSong from './assets/RockSong.mp3';
@@ -26,6 +26,7 @@
 
   function App() {
     const navigate = useNavigate();
+    
 
     function getSpeedFactor() {
     const baseWidth = 1920; 
@@ -133,13 +134,8 @@
       playerImage = null;
     }
 
-        let aiImageSrc = Ai; // Default image
-if (selectedDifficulty === 'easy') {
-    aiImageSrc = EasyAi;
-} else if (selectedDifficulty === 'hard') {
-    aiImageSrc = HardAi;
-}
-
+const defaultAiImageSrc = Ai;
+console.log("In Game, selectedDifficulty =", selectedDifficulty);
 
     
 
@@ -247,9 +243,12 @@ if (selectedDifficulty === 'easy') {
 
     const clampedTarget = Math.max(0, Math.min(targetY, maxY));
     
-    let aiSpeed = 6.5; 
+    let aiSpeed = 7.0; 
     if (selectedDifficulty === 'easy') {
-        aiSpeed = 4.5; 
+        aiSpeed = 3.5; 
+    }
+    if(selectedDifficulty === 'normal') {
+      aiSpeed = 5.5;
     }
 
     const speed = aiSpeed * speedFactor;
@@ -533,6 +532,12 @@ useEffect(() => {
       
       playerNameForDb = 'Nieznajomy';
     }
+    console.log("Saving game with payload:", {
+  playerName: playerNameForDb,
+  score,
+  totalHits: TotalHits,
+  difficulty: selectedDifficulty,
+});
 
   try {
     const response = await fetch(`${BACKEND_BASE_URL}/api/gamescore`, {
@@ -543,7 +548,8 @@ useEffect(() => {
       body: JSON.stringify({
         playerName: playerNameForDb,
         score: score,
-        totalHits: TotalHits
+        totalHits: TotalHits,
+        difficulty : selectedDifficulty,
       }),
     });
     
@@ -565,6 +571,7 @@ useEffect(() => {
           className="gameContainer" 
           style={{ position: 'relative', height: '100vh'}}
           >
+            <img src={Logo} alt='Akanza Logo' className='logoapp' onClick={() => navigate("/")}/>
             <button className='mobilePauseToggle' onClick={() => setPauseShown(prev => !prev)}>
               <Icon path={mdiPause} className='pauseiconmobile' />
             </button>
@@ -619,7 +626,7 @@ useEffect(() => {
           
             </div>
 
-            <h1 className='pongByATS'>Pong by ATS</h1>
+            
             
 
                 <div className='pongPlusPlayer'>
@@ -629,8 +636,21 @@ useEffect(() => {
 
                           
                             <div className='ComputerPlayer'>
-                                <img src={aiImageSrc} className='ComputerImage' alt="AI Player"></img>
-                            </div>
+    {selectedDifficulty === 'hard' ? (
+        <>
+            <Icon path={mdiTennisBall} color="white" size={2} className='hardIcon' />
+            <Icon path={mdiTennisBall} color="white" size={2} className='hardIcon' />
+            <Icon path={mdiTennisBall} color="white" size={2} className='hardIcon' />
+        </>
+    ) : selectedDifficulty === 'normal' ? (
+        <>
+            <Icon path={mdiTennisBall} color="white" size={2} className='normalIcon' />
+            <Icon path={mdiTennisBall} color="white" size={2} className='normalIcon' />
+        </>
+    ) : (
+        <Icon path={mdiTennisBall}  color="white" size={2} className='easyIcon' />
+    )}
+</div>
                             <div className='ComputerText'>Komputer</div>
                         
                           
@@ -666,7 +686,7 @@ useEffect(() => {
 
                 
                     <div className='pongContainer' ref={pongContainerRef}>
-                      <img src= {AtsLogoGame} className='LogoGame'></img>
+                      
                       {!isgameStarted && (
                       <div className='pressSpace'>
                         <img src= {mystartGif} alt="Press Space to Start" />
@@ -732,11 +752,12 @@ useEffect(() => {
 
                     </div>
 
-                    <div className='bottomPoints'>
+                    
+                </div>
+                <div className='bottomPoints'>
                       <div className='Player1points'><span className='player2pointstext'>{Player1Points}</span></div>
                       <div className='Player2points'><span className='player1pointstext'>{Player2Points}</span></div>
                     </div>
-                </div>
             
             
             
@@ -757,7 +778,7 @@ useEffect(() => {
               </div>
               <button className='playAgain' onClick={() => navigate('/')}>Zagraj jeszcze raz!</button>
               <button className='zapiszWynik'  onClick={handleSaveGame}>Zapisz wynik!</button>
-              <img src= {AtsLogo} alt = "AtsAkanzaLogo" className='winnerAts'></img>
+              
 
             </div>
         )}
