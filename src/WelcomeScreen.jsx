@@ -155,7 +155,7 @@ const toggleSettings = () =>{
       </div>
       <div className='settings'>
         <Icon path= {mdiCog} size={1} color = "blue"/>
-        <button  className ="settingsButton"onClick={(toggleSettings)}>Settings</button>
+        <button  className ="settingsButton"onClick={(toggleSettings)}>SETTINGS</button>
       </div>
       <div className={`containerForTwo ${isSettingsShown ? 'show' : ''}`}>
             <div className='playerIconContainer'>

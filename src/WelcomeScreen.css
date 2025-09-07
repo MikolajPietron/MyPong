@@ -783,6 +783,7 @@ body {
   height: fit-content;
   justify-content: center;
   align-items: center;
+  place-items: center;
   flex-direction: row;
   background-color: white;
   padding: 10px;
@@ -795,12 +796,17 @@ body {
 .settingsButton{
   background-color: transparent;
   color: blue;
-  font-size: 1.2vw;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  place-items: center;
+  font-size: 1vw;
+  display: flex;
   letter-spacing: 2px;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: "norwester";
+  font-family: "Kollektif";
   transition: all 0.3s ease;
 
 
