@@ -10,7 +10,7 @@
   import RockSong from './assets/RockSong.mp3';
   import NataliaPartyka from './assets/NataliaPartyka.jpeg';
   import AndrzejGrubba from './assets/AndrzejGrubba.jpg';
-  import CurrentPlayer from './assets/NowyZawodnik.png'
+  import CurrentPlayer from './assets/NowyZawodnik.svg'
   import pingPongSound from './assets/pongSound.mp3';
   import { useLocation } from 'react-router-dom';
   import UserIcon from './assets/userIcon.png'
@@ -519,7 +519,14 @@ useEffect(() => {
 
 // ZAPIS DO BAZY DANYCH ----------------------------------------- ZAPIS DO BAZY DANYCH ----------------------------------------- ZAPIS DO BAZY DANYCH -----------------------------------------
   const handleSaveGame = async () => {
-  const score = TotalHits * 10;
+    const difficultyMultiplier = selectedDifficulty === 'easy' ? 1
+                             : selectedDifficulty === 'normal' ? 2
+                             : 3;
+
+  const hitsFactor = TotalHits > 0 ? TotalHits : 1;
+  const basePoints = 100;
+  const score = Math.ceil(difficultyMultiplier * (basePoints / hitsFactor)) *10;
+  
   let playerNameForDb;
 
    if (selectedPlayer === 'currentUser') {
@@ -532,12 +539,7 @@ useEffect(() => {
       
       playerNameForDb = 'Nieznajomy';
     }
-    console.log("Saving game with payload:", {
-  playerName: playerNameForDb,
-  score,
-  totalHits: TotalHits,
-  difficulty: selectedDifficulty,
-});
+   
 
   try {
     const response = await fetch(`${BACKEND_BASE_URL}/api/gamescore`, {
@@ -562,6 +564,7 @@ useEffect(() => {
     alert('Błąd podczas zapisu wyniku');
   }
 };
+const isMobile = window.innerWidth <= 550;
 
 
 
@@ -657,10 +660,16 @@ useEffect(() => {
                         </div>
                         <div className='vsImage'></div>
                         <div className='humanPlayerContainer' >
+                          
                           <div className='HumanPlayer'
                         
                               style={{
                                 backgroundImage: playerImage ? `url(${playerImage})` : 'none',
+                                justifyContent : "center",
+                                placeItems : "center",
+                                backgroundSize: isMobile ? "4vw" : "2.5vw",
+                                backgroundPositionX : "50%",
+                                backgroundPositionY : "50%"
                                 
                                 
                               }}

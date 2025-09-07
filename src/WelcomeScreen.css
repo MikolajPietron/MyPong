@@ -598,16 +598,17 @@ body {
   background-color: transparent;
   width: 50%;
   height: 20vh;
+  
   pointer-events: none;
   border-radius: 15px;
-  background-color: white;
+  background-color: #0517C9;
   transition: border-color 0.3s ease;
   border: 2px solid white;
   background-position: center 30%;
-  
+  background-repeat: no-repeat;
   cursor: pointer;
-  background-size: cover;
-  background-image: url('./assets/NowyZawodnik.png');
+  background-size: 4.5vw;
+  background-image: url('./assets/NowyZawodnik.svg');
   
 }
 .currentUserText{
@@ -1085,8 +1086,14 @@ body {
     left: 70%;
     font-size: 3vw
   }
-  .andrzejGrubba, .nataliaPartyka, .currentUser{
+  .andrzejGrubba, .nataliaPartyka{
     width: 50vw;
+  }
+  .currentUser{
+    width: 50vw;
+    background-size: 10vw;
+    background-position-x: 50%;
+    background-position-y:50% ;
   }
   .bluePhotoContainer{
     width: 95vw;
@@ -1312,6 +1319,9 @@ body {
     }
     .settingsButton{
       font-style: 7vw;
+    }
+    .currentUser{
+      background-size: 15vw;
     }
  
   .x{

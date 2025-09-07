@@ -24,20 +24,28 @@ function LeaderBoard() {
   <div className="leaderBoardContainer">
     <span className="closeButton" onClick={() => navigate('/')}>&times;</span>
     <div className="tablicaWynikowContainer">
-      <h1 className="tablicaWynikow">TABLICA WYNIKÓW</h1>
+      <h1 className="tablicaWynikow">LEADERBOARD</h1>
       
     </div>
     <div className="leaderList">
-        {leaderboardData.map((entry, index) => (
-          <div className="leaderEntry" key={index}>
-            <span className="position">{index + 1}.</span>
-            <span className="playerNamee">{entry.playerName}</span>
-            <span className="score">{entry.score} pts</span>
-            <span className="diff">{entry.difficulty}</span>
-            <span className="date">{new Date(entry.date).toLocaleDateString()}</span>
-          </div>
-        ))}
+  {leaderboardData.map((entry, index) => {
+    let placeClass = '';
+    if (index === 0) placeClass = 'gold';
+    else if (index === 1) placeClass = 'silver';
+    else if (index === 2) placeClass = 'bronze';
+
+    return (
+      <div className={`leaderEntry ${placeClass}`} key={index}>
+        <span className="position">{index + 1}.</span>
+        <span className="playerNamee">{entry.playerName}</span>
+        <span className="score">{entry.score} pts</span>
+        <span className="diff">{entry.difficulty}</span>
+        <span className="date">{new Date(entry.date).toLocaleDateString()}</span>
       </div>
+    );
+  })}
+</div>
+
   </div>
 );
 

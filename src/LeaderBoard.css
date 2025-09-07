@@ -4,7 +4,7 @@
     display: flex;
     height: 90vh;
     width: 40vw;
-    border-radius: 50px ;
+    border-radius: 20px ;
     border: 4px solid rgb(255, 255, 255);
     left: 50%;
     top: 50%;
@@ -26,7 +26,7 @@
     height: 6vh;
     border: 4px solid rgb(255, 255, 255);
     background-color: white;
-    border-radius: 30px;
+    border-radius: 5px;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -53,7 +53,8 @@
 .leaderList{
      position: relative;
   border: 2px solid rgb(255, 255, 255);
-  border-radius: 30px;
+  border-radius: 15px;
+  color: white;
   /* Change 'height' to 'max-height' */
   max-height: 80%; /* This means it will take up to 80% of its parent's height */
   width: 90%;
@@ -69,6 +70,28 @@
   /* Add flex-shrink to prevent it from growing beyond max-height if parent is flex item */
   flex-shrink: 0; 
 }
+.leaderEntry.gold {
+  border: none;
+    background-color: #c0a300; /* gold */
+    color: black;
+    border: none;
+}
+
+.leaderEntry.silver {
+    background-color: #a5a5a5; /* silver */
+    color: black;
+    border: none;
+}
+
+.leaderEntry.bronze {
+    background-color: #9c4e00; /* bronze */
+    color: rgb(0, 0, 0);
+    border: none;
+}
+.leaderEntry.bronze span, .leaderEntry.silver span, .leaderEntry.gold span{
+  color: black;
+}
+
 .leaderEntry{
     position: relative;
     display: flex;
@@ -78,7 +101,7 @@
     width: 97%;
     border: 2px solid blue;
     padding: 10px;
-    border-radius: 30px;
+    border-radius: 10px;
     background-color: blue;
     justify-content: flex-start;
     align-items: center;

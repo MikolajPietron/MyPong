@@ -136,17 +136,16 @@
   width: 7vw;
   border: 3px solid white;
   border-radius: 20px;
-  background-size: cover;
+  background-size: contain;
   justify-content: center;
   justify-items: center;
   align-self: center;
   background-repeat: no-repeat;
-  background-position: left -20% top 30%;
+  place-items: center;
   display: flex;
   z-index: 10000;
   position: relative;
-   position: relative;
-  
+   
 
 }
 .defaultUser{
@@ -156,7 +155,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
+  width: 40%;
   height: 60%;
 }
 .PlayerVsPlayer {
@@ -947,7 +946,7 @@ font-size: 2vw;
   .HumanPlayer{
     width: 10vw;
     height: 6vh;
-    
+    background-size: 4vw;
     border-radius: 10px;
   }
   .vsImage{
@@ -1000,7 +999,7 @@ font-size: 2vw;
     }
     .pongContainer{
     width: 80vw;
-    height: 25vh;
+    height: 30vh;
   }
     .mobilePauseToggle{
     display: block;
@@ -1100,6 +1099,7 @@ font-size: 2vw;
         height: 10vh;
         margin-top: 15px;
         border-radius: 10px;
+        
         border: 2px solid white;
     }
     .vsImage{
