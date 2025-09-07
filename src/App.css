@@ -21,6 +21,9 @@
   
   
 }
+.KomputerImageGame{
+  width: 70%;
+}
 .logoapp{
   width: 8vw;
   height: 10vh;
@@ -155,8 +158,8 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 40%;
-  height: 60%;
+  width: 45%;
+  height: 70%;
 }
 .PlayerVsPlayer {
   
@@ -756,6 +759,9 @@
     position: fixed;
     top: 20%;
   }
+  .KomputerImageGame{
+    width: 70%;
+  }
   .ComputerContainer{
     margin-bottom: 10px;
   }
@@ -1000,6 +1006,7 @@ font-size: 2vw;
     .pongContainer{
     width: 80vw;
     height: 30vh;
+    
   }
     .mobilePauseToggle{
     display: block;

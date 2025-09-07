@@ -650,8 +650,12 @@ const isMobile = window.innerWidth <= 550;
             <Icon path={mdiTennisBall} color="white" size={2} className='normalIcon' />
             <Icon path={mdiTennisBall} color="white" size={2} className='normalIcon' />
         </>
-    ) : (
+    ) :  selectedDifficulty === 'easy' ? (
         <Icon path={mdiTennisBall}  color="white" size={2} className='easyIcon' />
+    ) : (
+        <img src={Ai} className='KomputerImageGame'
+          
+        ></img>
     )}
 </div>
                             <div className='ComputerText'>Komputer</div>
