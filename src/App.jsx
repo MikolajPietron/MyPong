@@ -55,6 +55,8 @@
     const [ballRotation, setBallRotation] = useState(0);
     const [TotalHits, setTotalHits] = useState(0);
     
+     
+    
 
 
     
@@ -81,6 +83,8 @@
   const gamePausedRef = useRef(gamePaused)
   const pongContainerRef = useRef(null);
   const [pauseShown, setPauseShown] = useState(false);
+  const [countdown, setCountdown] = useState(0);
+  const [isCountingDown, setIsCountingDown] = useState(false); 
 
   
 
@@ -212,8 +216,9 @@ const defaultAiImageSrc = Ai;
           
         }
         if (e.key === 'Escape') {
-          setGamePaused(prev => !prev);
-          setPauseShown(prev => !prev);
+          setGamePaused(true);
+          setPauseShown(true);
+          
         }
         keysPressed2.current[e.key] = true
         
@@ -565,6 +570,35 @@ useEffect(() => {
   }
 };
 const isMobile = window.innerWidth <= 550;
+const handleUnpause = () => {
+    // If a countdown is already running, do nothing
+    if (countdown > 0) return;
+
+    // 1. Initiate the visual countdown and transition state
+    setCountdown(3);
+    setIsCountingDown(true);
+
+    // Ensure the pause menu stays visible (pauseShown = true) 
+    // and the game logic remains frozen (gamePaused = true) initially.
+    
+    // Set up the countdown interval, ticking every 1000ms (1 second)
+    const countdownInterval = setInterval(() => {
+        setCountdown(prev => {
+            if (prev === 1) {
+                // When countdown hits 1, it's time to UNPAUSE everything
+                clearInterval(countdownInterval);
+                
+                // 2. CLOSE THE MODAL and UNFREEZE THE GAME LOGIC
+                setPauseShown(false); 
+                setGamePaused(false);
+                setIsCountingDown(false); // Countdown is over
+
+                return 0;
+            }
+            return prev - 1;
+        });
+    }, 1000); // 1000ms = 1 second interval
+};
 
 
 
@@ -574,12 +608,17 @@ const isMobile = window.innerWidth <= 550;
           className="gameContainer" 
           style={{ position: 'relative', height: '100vh'}}
           >
+            {isCountingDown && (
+        <div className='pauseCountdown'>
+            {countdown > 0 ? countdown : ''}
+        </div>
+    )}
             <img src={Logo} alt='Akanza Logo' className='logoapp' onClick={() => navigate("/")}/>
             <button className='mobilePauseToggle' onClick={() => {setPauseShown(true); setGamePaused(true)}}>
               <Icon path={mdiPause} className='pauseiconmobile' />
             </button>
             <div className='pressPause'>
-              <h1 className='pressPauseText'>Press ESC to pause</h1>
+              <h1 className='pressPauseText'>PRESS ESC TO PAUSE</h1>
             </div>
             <div className={`pauseMenu ${pauseShown ? 'show' : ''}`} >
               <div className='gamePausedContainer'>
@@ -592,8 +631,11 @@ const isMobile = window.innerWidth <= 550;
 
                 
               <button className='pauseButton' onClick={() =>{
-               setPauseShown(false); setGamePaused(false);
-              } }><Icon path={mdiPlay} className='pauseicon' /></button>
+               setPauseShown(false); handleUnpause();
+               
+              } }
+              disabled={countdown > 0}
+              ><Icon path={mdiPlay} className='pauseicon' /></button>
               
               </div>
               <div className='zmienandsong'>
@@ -789,8 +831,8 @@ const isMobile = window.innerWidth <= 550;
               <div className='winnerText'>
               {Player1Points >= 10 ? 'Przegrana!' : 'Wygrana!!!'}
               </div>
-              <button className='playAgain' onClick={() => navigate('/')}>Zagraj jeszcze raz!</button>
-              <button className='zapiszWynik'  onClick={handleSaveGame}>Zapisz wynik!</button>
+              <button className='playAgain' onClick={() => navigate('/')}>Play again!</button>
+              <button className='zapiszWynik'  onClick={handleSaveGame}>Save your score!</button>
               
 
             </div>

@@ -543,7 +543,7 @@
 }
 .zmienandsong{
   flex-direction: column;
-  gap: 0px;
+  gap: 20px;
   
   display: flex;
   align-items: center;
@@ -725,6 +725,20 @@
   display: none;
   aspect-ratio: 1/1;
 }
+.pauseCountdown {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* Ensure it's on top of everything */
+    font-size: 10rem; /* Make it large and visible */
+    font-weight: bold;
+    font-family: "kollektif", sans-serif;
+    color: white; /* Choose a visible color */
+    text-shadow: 0 0 10px black;
+    pointer-events: none; /* Allows clicks to pass through */
+    transition: font-size 0.2s ease-out; /* Optional smooth size change */
+}
 .pauseiconmobile{
   position: absolute;
   left: 50%;
@@ -756,6 +770,10 @@
   .bottomPoints{
     position: fixed;
     top: 20%;
+  }
+  .pauseCountdown{
+    font-size: 15vw;
+    top: 58%;
   }
   .KomputerImageGame{
     width: 70%;
@@ -1183,7 +1201,7 @@ font-size: 2vw;
     bottom: 10px;
   }
   .pongPlusPlayer{
-    border: 2px solid red;
+    
     height: 100vh;
     width: 100vw;
   }
@@ -1326,6 +1344,22 @@ font-size: 2vw;
     
     margin-top: 30px;
     height: 13vh;
+  }
+  .winContainer{
+    width: 40vw;
+    height: 65vh;
+    border-radius: 10px;
+    top: 60%;
+    gap: 20px;
+    
+  }
+  .playAgain, .zapiszWynik{
+    width: 30vw;
+    height: 12vh;
+    font-size: 3vw;
+    margin-top: 15px;
+    border-radius: 10px;
+    padding: 5px;
   }
   
 }
