@@ -161,8 +161,8 @@ const toggleSettings = () =>{
             <div className='playerIconContainer'>
               <Icon path= {mdiAccount} color= "white" size = {1.5}/>
               <button className='showPlayersButton' onClick={togglePlayersModal}>
-  {selectedPlayer === 'nataliaPartyka' ? 'Natalia' : 
-   selectedPlayer === 'andrzejGrubba' ? 'Andrzej' : 
+  {selectedPlayer === 'Partyka' ? 'Natalia' : 
+   selectedPlayer === 'Grubba' ? 'Andrzej' : 
    selectedPlayer === 'currentUser' ? currentUserName || 'My Player' : 
    'My Player'}
 </button>
