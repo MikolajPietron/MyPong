@@ -249,11 +249,7 @@
   width: 100%;
   
   color: white;
-  text-shadow:
-  -3px -3px 0 #000,
-   3px -3px 0 #000,
-  -3px  3px 0 #000,
-   3px  3px 0 #000;
+  
   font-family: 'kollektif';
 }
 
@@ -547,7 +543,8 @@
 }
 .zmienandsong{
   flex-direction: column;
-  gap: 10px;
+  gap: 0px;
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -579,6 +576,7 @@
   width: 100%;
   height: 10%;
   display: flex;
+  
   
 }
 .gamePaused{
@@ -1173,6 +1171,161 @@ font-size: 2vw;
     width: 12vw;
   }
 }
+  }
+  
+}
+@media (orientation: landscape) and (max-width: 768px) {
+  
+  .pongContainer{
+    position: fixed;
+    width: 55vw;
+    height: 70vh;
+    bottom: 10px;
+  }
+  .pongPlusPlayer{
+    border: 2px solid red;
+    height: 100vh;
+    width: 100vw;
+  }
+  /* position stays relative, centered in screen */
+  .PlayerVsPlayer{
+    
+    position: fixed;  
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: 30%;
+    transform: translate(-50%, -50%);
+  }
+  .ComputerContainer{
+    
+    height: 100%;
+    margin: 0;
+    gap: 5px;
+  }
+  .ComputerPlayer{
+    height: 60%;
+  }
+  .ComputerText{
+    font-size: 2vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 4vh;
+    padding: 2px;
+  }
+  .vsImage{
+    display: none;
+  }
+  .humanPlayerContainer{
+    
+    height: 100%;
+    margin: 0;
+    gap: 5px;
+  }
+  .HumanPlayer{
+    height: 60%;
+    object-fit: contain;
+  }
+  .playerName{
+    font-size: 2vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 4vh;
+    padding: 2px;
+  }
+  .logoapp{
+    width: 10vw;
+    height: 15vh;
+    top: 20px;
+    left: 20px;
+  }
+  .bottomPoints{
+    top: 5%;
+    align-items: center;
+    width: 50vw;
+    font-size: 1vw;
+    left: 50%;
+    transform: translate(-50%, 0);
+    gap: 30px;
+    justify-content: center;
+    
+  }
+  .Player1points, .Player2points{
+    width: 8vw;
+    height: 100%;
+    border-radius: 10px;
+    border: 3px solid white;
+    font-size: 1vw;
+  }
+  .player1pointstext, .player2pointstext{
+    font-size: 5vw;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .leftPaddle{
+    height: 15vh;
+    width: 1vw;
+  }
+  .rightPaddle{
+    height: 15vh;
+    width: 1vw;
+  }
+  .mobilePauseToggle{
+    display: flex;
+    position: fixed;
+    top: 10px;
+    width: 5vw;
+    height: 10vh;
+    z-index: 100000;
+  }
+  .pauseMenu{
+    position: fixed;
+    left: 50%;
+    top: 33%;
+    transform: translate(-50%, -50%);  
+    height: 55vh;
+    width: 25vw;  
+    z-index: 10000;
+    background-color: #0517C9;     
+    gap: 0px;     
+  }
+  .muteButton, .pauseButton{
+    height: 10vh;
+    width: 5vw;
+    border-radius: 5px;
+  }
+  .muteicon, .pauseicon{
+    height: 90%;
+    width: 90%;
+  }
+  .arcadebitContainer,.chillContainer, .rockContainer, .pingContainer{
+    height: 8vh;
+    width: 4vw;
+    border-radius: 0px;
+  }
+  .arcadebitButton, .chillButton, .rockButton, .pingButton{
+    border-radius: 5px;
+  }
+  .zmienmuzykeh1{
+    font-size: 1.8vw;
+  }
+  .songButtons{
+    height: 25%;
+    gap: 10px;
+  }
+  .zmienandsong{
+    gap: 5px;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .pauseButtonContainer{
+    
+    margin-top: 30px;
+    height: 13vh;
   }
   
 }

@@ -21,7 +21,7 @@
   import HardAi from "./assets/HardPlayer.png";
   import AtsLogo from './assets/atsAkanzaLogoBlue.png'
   import AtsLogoGame from "./assets/AtsAkanza.svg"
-  import { mdiPause, mdiVolumeOff } from '@mdi/js';
+  import { mdiPlay, mdiPause, mdiVolumeOff } from '@mdi/js';
   import { mdiGuitarElectric, mdiNintendoGameBoy, mdiSofaSingle, mdiTennisBall } from "@mdi/js";
 
   function App() {
@@ -124,9 +124,9 @@
 
     let playerImage = null;
 
-    if(selectedPlayer === 'andrzejGrubba'){
+    if(selectedPlayer === 'Grubba'){
       playerImage = AndrzejGrubba;
-    }else if(selectedPlayer === 'nataliaPartyka'){
+    }else if(selectedPlayer === 'Partyka'){
       playerImage = NataliaPartyka;
     }else if(selectedPlayer === 'currentUser'){
       playerImage = CurrentPlayer;
@@ -135,7 +135,7 @@
     }
 
 const defaultAiImageSrc = Ai;
-console.log("In Game, selectedDifficulty =", selectedDifficulty);
+
 
     
 
@@ -531,9 +531,9 @@ useEffect(() => {
 
    if (selectedPlayer === 'currentUser') {
       playerNameForDb = currentUserName || 'Nieznajomy';
-    } else if (selectedPlayer === 'nataliaPartyka') {
+    } else if (selectedPlayer === 'Partyka') {
       playerNameForDb = 'Natalia Partyka';
-    } else if (selectedPlayer === 'andrzejGrubba') {
+    } else if (selectedPlayer === 'Grubba') {
       playerNameForDb = 'Andrzej Grubba';
     } else {
       
@@ -575,15 +575,15 @@ const isMobile = window.innerWidth <= 550;
           style={{ position: 'relative', height: '100vh'}}
           >
             <img src={Logo} alt='Akanza Logo' className='logoapp' onClick={() => navigate("/")}/>
-            <button className='mobilePauseToggle' onClick={() => setPauseShown(prev => !prev)}>
+            <button className='mobilePauseToggle' onClick={() => {setPauseShown(true); setGamePaused(true)}}>
               <Icon path={mdiPause} className='pauseiconmobile' />
             </button>
             <div className='pressPause'>
-              <h1 className='pressPauseText'>Nacisnij ESC aby zapauzowac</h1>
+              <h1 className='pressPauseText'>Press ESC to pause</h1>
             </div>
             <div className={`pauseMenu ${pauseShown ? 'show' : ''}`} >
               <div className='gamePausedContainer'>
-                <h1 className='gamePaused'>Gra zapauzowana</h1>
+                <h1 className='gamePaused'>Game Paused</h1>
               </div>
               <div className='pauseButtonContainer'>
                 
@@ -592,14 +592,14 @@ const isMobile = window.innerWidth <= 550;
 
                 
               <button className='pauseButton' onClick={() =>{
-              setGamePaused(prev => !prev); setPauseShown(false)
-              } }><Icon path={mdiPause} className='pauseicon' /></button>
+               setPauseShown(false); setGamePaused(false);
+              } }><Icon path={mdiPlay} className='pauseicon' /></button>
               
               </div>
               <div className='zmienandsong'>
 
               <div className='zmienmuzyke'>
-                <h1 className='zmienmuzykeh1'>Zmien muzyke</h1>
+                <h1 className='zmienmuzykeh1'>Change Music</h1>
               </div>
               
               <div className='songButtons'>
@@ -671,9 +671,9 @@ const isMobile = window.innerWidth <= 550;
                                 backgroundImage: playerImage ? `url(${playerImage})` : 'none',
                                 justifyContent : "center",
                                 placeItems : "center",
-                                backgroundSize: isMobile ? "4vw" : "2.5vw",
+                                backgroundSize: isMobile ? "100%" : "100%",
                                 backgroundPositionX : "50%",
-                                backgroundPositionY : "50%"
+                                backgroundPositionY : "30%"
                                 
                                 
                               }}

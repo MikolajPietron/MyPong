@@ -138,7 +138,7 @@ const toggleOponentModal = () =>{
   setShownOponent(prev => !prev);
 }
 const toggleSettings = () =>{
-  setSettingsShown(true);
+  setSettingsShown(prev => !prev);
 }
 
 
@@ -269,7 +269,7 @@ const toggleSettings = () =>{
           <button
             className="partykaButton"
             onClick={() => {
-              setSelectedPlayer("nataliaPartyka");
+              setSelectedPlayer("Partyka");
               togglePlayersModal();
             }}
           >
@@ -283,7 +283,7 @@ const toggleSettings = () =>{
           <button
             className="grubbaButton"
             onClick={() => {
-              setSelectedPlayer("andrzejGrubba");
+              setSelectedPlayer("Grubba");
               togglePlayersModal();
             }}
           >
