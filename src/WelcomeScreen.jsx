@@ -235,7 +235,7 @@ const toggleSettings = () =>{
         </Modal>
       </div>
       <div className='stopka'>
-        <h1>Developed by Akanza</h1>
+        <h1>DEVELOPED BY AKANZA</h1>
         <div className='stopkaContainer'>
               <a className='leaderboardButton' onClick={() =>navigation("/leaderboard")}>RANKING</a>
           
@@ -248,7 +248,7 @@ const toggleSettings = () =>{
             setIsModalOpen(true);
           }}
         >
-           Rules
+           RULES
         </a>
         </div>
           

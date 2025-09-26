@@ -98,7 +98,7 @@ body {
   border: 4px solid #ffffff;
   font-size: 40px;
   font-weight: 900;
-  background-color: rgb(255, 255, 255,0.5);
+  background-color: rgb(255, 255, 255,1);
 
 }
 
@@ -992,6 +992,7 @@ body {
   height: 10%;
   
   
+  
   border-top: 2px solid rgb(255, 255, 255);
   
 }
@@ -1055,9 +1056,10 @@ body {
   font-size: 0.8vw;
   margin-left: 10px;
   color: white;
-  font-family:  'norwester';
+  font-family:  'Kollektif', 'sans-serif';
   letter-spacing: 2px;
 }
+
 @media (max-width: 1700px){
   .choosePlayer{
     left: 50%;
@@ -1351,6 +1353,65 @@ body {
 
   } */
   
+}
+@media (orientation: landscape) and (max-width: 768px) {
+  
+  .stopka{
+    
+    height: 12vh;
+  }
+  .leaderboardButton{
+    font-size: 1.5vw;
+  }
+  .stopkaContainer a.rules{
+    font-size: 1.5vw;
+  }
+  .stopkaContainer{
+    gap: 10px;
+    
+  }
+  .stopka h1{
+    margin-left: 0;
+    font-size: 1vw;
+  }
+  .settings{
+    height: 4vh;
+    width: 15vw;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+  }
+  .settingsButton{
+    font-size: 1.8vw;
+    font-weight: bolder;
+  }
+  /* .settings svg{
+    width: 1px;
+    
+  } */
+  .welcomeScreen a.game{
+    position: fixed;
+    top: 45%;
+    height: 0.1vh;
+    border-radius: 10px;
+    font-size: 3vw;
+    width: 30vw;
+  }
+  .bluePhotoContainer{
+    
+    object-fit: cover;
+    width: 55%;
+    height: 70%;
+  }
+  .bluePhotoImg{
+    
+    object-fit: cover;
+    
+  }
+  .logo{
+    width: 10vw;
+    height: 15vh;
+  }
 }
 
 
