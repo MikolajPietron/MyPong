@@ -1200,7 +1200,7 @@ font-size: 2vw;
     position: fixed;
     width: 55vw;
     height: 65vh;
-    bottom: 20px;
+    bottom: 35px;
   }
   .pongPlusPlayer{
     
@@ -1262,7 +1262,7 @@ font-size: 2vw;
     left: 20px;
   }
   .bottomPoints{
-    top: 11%;
+    top: 6%;
     
     align-items: center;
     width: 50vw;
