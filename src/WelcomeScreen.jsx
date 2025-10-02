@@ -153,9 +153,9 @@ const toggleSettings = () =>{
       <div className='bluePhotoContainer'>
         <img src={bluePhoto} alt='akanzaBackground'className='bluePhotoImg'></img>
       </div>
-      <div className='settings'>
+      <div className='settings'onClick={(toggleSettings)}>
         <Icon path= {mdiCog} size={1} color = "blue"/>
-        <button  className ="settingsButton"onClick={(toggleSettings)}>SETTINGS</button>
+        <button  className ="settingsButton">SETTINGS</button>
       </div>
       <div className={`containerForTwo ${isSettingsShown ? 'show' : ''}`}>
             <div className='playerIconContainer'>
@@ -328,7 +328,11 @@ const toggleSettings = () =>{
       onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
     >
       <div className='HardPlayer'>
-        <div className='HardPlayerLeft'>
+        <div className='HardPlayerLeft' onClick={() => {
+              setSelectedDifficulty('hard');
+              setSelectedOpponent('hard');
+              toggleOponentModal();
+            }}>
           <div className="HardPlayerImg">
             <Icon path={mdiTennisBall} size={2} color="white"/>
             <Icon path={mdiTennisBall} size={2} color="white"/>
@@ -336,11 +340,7 @@ const toggleSettings = () =>{
           </div>
           <button
             className='HardButton'
-            onClick={() => {
-              setSelectedDifficulty('hard');
-              setSelectedOpponent('hard');
-              toggleOponentModal();
-            }}
+            
           >
             HARD
           </button>
@@ -348,18 +348,18 @@ const toggleSettings = () =>{
 
         <div className='spacerWelcomeScreen'/>
         
-        <div className='NormalPlayerMiddle'>
+        <div className='NormalPlayerMiddle' onClick={() => {
+              setSelectedDifficulty('normal');
+              setSelectedOpponent('normal');
+              toggleOponentModal();
+            }}>
           <div className="NormalPlayerImg">
             <Icon path={mdiTennisBall} size={2} color="white"/>
             <Icon path={mdiTennisBall} size={2} color="white"/>
           </div>
           <button
             className='NormalButton'
-            onClick={() => {
-              setSelectedDifficulty('normal');
-              setSelectedOpponent('normal');
-              toggleOponentModal();
-            }}
+            
           >
             NORMAL
           </button>
@@ -367,17 +367,17 @@ const toggleSettings = () =>{
 
         <div className='spacerWelcomeScreen'/>
         
-        <div className='HardPlayerRight'>
+        <div className='HardPlayerRight' onClick={() => {
+              setSelectedDifficulty('easy');
+              setSelectedOpponent('easy');
+              toggleOponentModal();
+            }}>
           <div className='EasyPlayerImg'>
             <Icon path={mdiTennisBall} size={2} color="white"/>
           </div>
           <button
             className='EasyButton'
-            onClick={() => {
-              setSelectedDifficulty('easy');
-              setSelectedOpponent('easy');
-              toggleOponentModal();
-            }}
+            
           >
             EASY
           </button>
